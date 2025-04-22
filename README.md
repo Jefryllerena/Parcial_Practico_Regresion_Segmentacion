@@ -1,2 +1,2 @@
-# Parcial_Practico_Regresion_Segmentacion
- Parcial Final Aprendizaje de Máquina
+# Parcial_Practico
+ Parcial Práctico Aprendizaje de Máquina
