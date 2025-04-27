@@ -162,6 +162,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="eda.html">Ejercicio 1. Análisis Exploratorio de Datos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modelos_clasificacion.html">Ejercicio 2. Modelos de Clasificación</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Ejercicio 3. Modelos de Regresión</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="modelos_segmentacion.html">Ejercicio 4. Modelos de Segmentación</a></li>
 </ul>
 
@@ -356,45 +357,39 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-knn">Codigo de KNN</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-regresion-lineal">Codigo de Regresion Lineal</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-ridge">Codigo de Ridge</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-lasso">Codigo de Lasso</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-arbol-de-decision">Codigo de Arbol de decision</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-random-forest">Codigo de Random Forest</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-xgboost">Codigo de XGBoost</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-svm">Codigo de SVM</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-mlp">Codigo de MLP</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparacion-para-rnn-y-lstm">Preparacion para RNN y LSTM</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-rnn">Codigo de RNN</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-lstm">Codigo de LSTM</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Ejercicio 3. Modelos de Regresión</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#taller-2">Taller 2</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#punto-3">Punto 3</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-knn">Codigo de KNN</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-regresion-lineal">Codigo de Regresion Lineal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-ridge">Codigo de Ridge</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-lasso">Codigo de Lasso</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-arbol-de-decision">Codigo de Arbol de decision</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-random-forest">Codigo de Random Forest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-xgboost">Codigo de XGBoost</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-svm">Codigo de SVM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-mlp">Codigo de MLP</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preparacion-para-rnn-y-lstm">Preparacion para RNN y LSTM</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-rnn">Codigo de RNN</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-lstm">Codigo de LSTM</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metricas-de-evaluacion-para-los-modelos-propuestos">Métricas de evaluación para los modelos propuestos</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-absoluto-medio-mae">1. Error Absoluto Medio (MAE)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raiz-del-error-cuadratico-medio-rmse">2. Raíz del Error Cuadrático Medio (RMSE)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-cuadratico-medio-mse">3. Error Cuadrático Medio (MSE)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-porcentual-absoluto-medio-mape">4. Error Porcentual Absoluto Medio (MAPE)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coeficiente-de-determinacion-r-2">5. Coeficiente de Determinación ((R^2))</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pvalue-del-test-de-ljungbox">6. p‑value del Test de Ljung–Box</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metricas-de-evaluacion">Métricas de evaluación</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#error-absoluto-medio-mae">1. Error Absoluto Medio (MAE)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#raiz-del-error-cuadratico-medio-rmse">2. Raíz del Error Cuadrático Medio (RMSE)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#error-cuadratico-medio-mse">3. Error Cuadrático Medio (MSE)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#error-porcentual-absoluto-medio-mape">4. Error Porcentual Absoluto Medio (MAPE)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#coeficiente-de-determinacion-r-2">5. Coeficiente de Determinación ((R^2))</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pvalue-del-test-de-ljungbox">6. p‑value del Test de Ljung–Box</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-comparativo-de-los-modelos"><strong>Análisis Comparativo de los Modelos</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen-de-modelos-y-metricas"><strong>Resumen de Modelos y Métricas</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-por-categoria-de-modelos"><strong>Análisis por Categoría de Modelos</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-ensemble"><strong>1. Modelos Ensemble</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-lineales"><strong>2. Modelos Lineales</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-de-soporte-vectorial"><strong>3. Modelos de Soporte Vectorial</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#redes-neuronales"><strong>4. Redes Neuronales</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#knn"><strong>5. K‑NN</strong></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-de-rendimiento-en-metricas"><strong>Comparación de Rendimiento en Métricas</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observaciones"><strong>Observaciones</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones-finales"><strong>Conclusiones Finales</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mejores-resultados-por-modelo">Mejores resultados por modelo</a></li>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -407,6 +402,17 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="ejercicio-3-modelos-de-regresion">
 <h1>Ejercicio 3. Modelos de Regresión<a class="headerlink" href="#ejercicio-3-modelos-de-regresion" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># function ClickConnect(){</span>
+<span class="c1">#     console.log(&quot;Working&quot;);</span>
+<span class="c1">#     document.querySelector(&quot;colab-connect-button&quot;).click()</span>
+<span class="c1"># }</span>
+<span class="c1"># setInterval(ClickConnect,60000)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>xgboost<span class="w"> </span>statsmodels<span class="w"> </span>tensorflow
@@ -499,6 +505,11 @@ Requirement already satisfied: mdurl~=0.1 in /usr/local/lib/python3.11/dist-pack
 </div>
 </div>
 </div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="taller-2">
+<h1>Taller 2<a class="headerlink" href="#taller-2" title="Permalink to this heading">#</a></h1>
+<section id="punto-3">
+<h2>Punto 3<a class="headerlink" href="#punto-3" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_viento</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/lihkir/Data/refs/heads/main/wind_speed/data_treino_dv_df_2000_2010.csv&quot;</span><span class="p">)</span>
@@ -789,7 +800,7 @@ Requirement already satisfied: mdurl~=0.1 in /usr/local/lib/python3.11/dist-pack
 </div>
 </div>
 <section id="codigo-de-knn">
-<h2>Codigo de KNN<a class="headerlink" href="#codigo-de-knn" title="Permalink to this heading">#</a></h2>
+<h3>Codigo de KNN<a class="headerlink" href="#codigo-de-knn" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SECCIÓN 1 ─ KNN ENTRENAMIENTO</span>
@@ -1186,83 +1197,9 @@ Mejor ventana KNN 28
 <span class="mi">28</span>	<span class="mf">2.166e+08</span>	<span class="mf">5.926e-01</span>	<span class="mf">7.705e-01</span>	<span class="mf">5.937e-01</span>	<span class="mf">6.565e-01</span>	<span class="mf">0.e+00</span>
 </pre></div>
 </div>
-  <div style="background-color: #f5fdf9; padding: 12px;">
-    <h3><strong>💡 Análisis del Modelo KNN</strong></h3>
-    <p>Los resultados del modelo KNN muestran una mejora gradual en el rendimiento a medida que aumenta el tamaño de la ventana de predicción (T). A continuación, se detalla el análisis de las métricas:</p>
-    <hr>
-    <h4><strong>1. Mejora en las Métricas con el Tamaño de la Ventana</strong></h4>
-    <ul>
-      <li><strong>MAPE (Mean Absolute Percentage Error):</strong><br>
-        Aunque el MAPE disminuye con ventanas más grandes, los valores siguen siendo muy altos (del orden de 10⁸), lo que indica un gran error porcentual en las predicciones.<br>
-        T=7: <code>2.487e+08</code><br>
-        T=28: <code>2.166e+08</code> (mejora del 12.9%)
-      </li>
-      <li><strong>MAE (Mean Absolute Error):</strong><br>
-        El error absoluto disminuye con ventanas más grandes:<br>
-        T=7: <code>6.745e-01</code><br>
-        T=28: <code>5.926e-01</code> (mejora del 12.0%)
-      </li>
-      <li><strong>RMSE (Root Mean Squared Error):</strong><br>
-        Similar al MAE, el RMSE también mejora con ventanas más grandes:<br>
-        T=7: <code>8.753e-01</code><br>
-        T=28: <code>7.705e-01</code> (mejora del 11.8%)
-      </li>
-      <li><strong>MSE (Mean Squared Error):</strong><br>
-        El error cuadrático medio sigue la misma tendencia que RMSE:<br>
-        T=7: <code>7.661e-01</code><br>
-        T=28: <code>5.937e-01</code> (mejora del 22.4%)
-      </li>
-      <li><strong>R2 (R-squared):</strong><br>
-        El coeficiente de determinación mejora con ventanas más grandes, aunque sigue siendo relativamente bajo:<br>
-        T=7: <code>5.564e-01</code> (R2=0.556)<br>
-        T=28: <code>6.565e-01</code> (R2=0.656)
-      </li>
-    </ul>
-    <hr>
-    <h4><strong>2. Problemas Identificados</strong></h4>
-    <ul>
-      <li><strong>Altos Valores de MAPE:</strong><br>
-        Los valores de MAPE son extremadamente altos en todas las ventanas, lo que podría indicar:
-        <ul>
-          <li>Problemas de escala</li>
-          <li>Ruido en los datos</li>
-         </ul>
-      </li>
-      <li><strong>Autocorrelación en Residuos:</strong><br>
-        El valor <code>LB_p = 0.e+00</code> en todas las ventanas, lo que indica autocorrelación significativa en los residuos. Esto viola los supuestos de regresión y sugiere que el modelo no captura la dinámica temporal de los datos.
-      </li>
-    </ul>
-    <hr>
-    <h4><strong>3. Mejores Resultados</strong></h4>
-    <p>La ventana de tamaño <strong>T=28</strong> muestra los mejores resultados:</p>
-    <ul>
-      <li>Menor MAPE: <code>2.166e+08</code></li>
-      <li>Menor RMSE: <code>7.705e-01</code></li>
-      <li>Mayor R2: <code>6.565e-01</code></li>
-    </ul>
-    <hr>
-    <h4><strong>4. Recomendaciones</strong></h4>
-    <ol>
-      <li><strong>Mejorar el Modelo KNN:</strong>
-        <ul>
-          <li>Ajustar el parámetro <code>n_neighbors</code></li>
-          <li>Explorar la ponderación por distancia <code>weights='distance'</code></li>
-        </ul>
-      </li>
-      <li><strong>Reducir el MAPE:</strong>
-        <ul>
-          <li>Revisar las unidades de las variables</li>
-          <li>Considerar la transformación de la variable objetivo</li>
-        </ul>
-      </li>
-    </ol>
-    <hr>
-    <h4><strong>Conclusión</strong></h4>
-    <p>Aunque la ventana <strong>T=28</strong> muestra el mejor rendimiento, los errores siguen siendo muy altos, lo que sugiere que el modelo KNN puede no ser el más adecuado.</p>
-  </div>
-</div></section>
+</section>
 <section id="codigo-de-regresion-lineal">
-<h2>Codigo de Regresion Lineal<a class="headerlink" href="#codigo-de-regresion-lineal" title="Permalink to this heading">#</a></h2>
+<h3>Codigo de Regresion Lineal<a class="headerlink" href="#codigo-de-regresion-lineal" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SECCIÓN 3 ─ REGRESIÓN LINEAL ENTRENAMIENTO</span>
@@ -1660,78 +1597,9 @@ Mejor ventana LR 28
 
 </pre></div>
 </div>
-  <div style="background-color: #f5fdf9; padding: 12px;">
-    <h3><strong>💡Análisis del Modelo de Regresión Lineal</strong></h3>
-    <p>A continuación, se presenta el análisis de los resultados obtenidos con el modelo de Regresión Lineal para diferentes tamaños de ventana (T = 7, 14, 21, 28).</p>
-    <hr>
-    <h3><strong>1. Mejora en las Métricas con el Tamaño de la Ventana</strong></h3>
-    <h4><strong>1.1. Reducción del Error</strong></h4>
-    <ul>
-      <li><strong>MAPE (Mean Absolute Percentage Error):</strong> El MAPE disminuye ligeramente con el aumento del tamaño de la ventana:
-        <ul>
-          <li>T=7: <code>1.646e+08</code></li>
-          <li>T=28: <code>1.518e+08</code> (reducción del 7.8%)</li>
-        </ul>
-      </li>
-      <li><strong>MAE (Mean Absolute Error):</strong> El error absoluto también disminuye:
-        <ul>
-          <li>T=7: <code>4.975e-01</code></li>
-          <li>T=28: <code>4.584e-01</code> (reducción del 7.9%)</li>
-        </ul>
-      </li>
-      <li><strong>RMSE (Root Mean Squared Error):</strong> El error cuadrático medio muestra una mejora significativa:
-        <ul>
-          <li>T=7: <code>1.282e+00</code></li>
-          <li>T=28: <code>7.998e-01</code> (reducción del 37.7%)</li>
-        </ul>
-      </li>
-      <li><strong>MSE (Mean Squared Error):</strong> El error cuadrático medio sigue la misma tendencia:
-        <ul>
-          <li>T=7: <code>1.643e+00</code></li>
-          <li>T=28: <code>6.397e-01</code> (reducción del 61.0%)</li>
-        </ul>
-      </li>
-    </ul>
-    <h4><strong>1.2. Mejora en el Coeficiente de Determinación (R2)</strong></h4>
-    <ul>
-      <li><strong>R2:</strong> El coeficiente de determinación aumenta con el tamaño de la ventana:
-        <ul>
-          <li>T=7: <code>4.891e-02</code> (R2=0.049)</li>
-          <li>T=28: <code>6.299e-01</code> (R2=0.629)</li>
-        </ul>
-      </li>
-    </ul>
-    <hr>
-    <h3><strong>2. Comparación con el Modelo KNN</strong></h3>
-    <ul>
-      <li><strong>MAPE:</strong> El modelo de Regresión Lineal muestra un MAPE significativamente menor:
-        <ul>
-          <li>T=28: <code>1.518e+08</code> (Regresión Lineal) vs. <code>2.166e+08</code> (KNN)</li>
-        </ul>
-      </li>
-      <li><strong>R2:</strong> Aunque mejora, sigue ligeramente por debajo del modelo KNN:
-        <ul>
-          <li>T=28: <code>6.299e-01</code> (Regresión Lineal) vs. <code>6.565e-01</code> (KNN)</li>
-        </ul>
-      </li>
-    </ul>
-    <hr>
-    <h3><strong>3. Ventana Óptima</strong></h3>
-    <p>La ventana de tamaño <strong>T=28</strong> muestra los mejores resultados:</p>
-    <ul>
-      <li><strong>MAPE más bajo:</strong> <code>1.518e+08</code></li>
-      <li><strong>RMSE más bajo:</strong> <code>7.998e-01</code></li>
-      <li><strong>MSE más bajo:</strong> <code>6.397e-01</code></li>
-      <li><strong>R2 más alto:</strong> <code>6.299e-01</code></li>
-    </ul>
-    <hr>
-    <h3><strong>Conclusión</strong></h3>
-    <p>El modelo de Regresión Lineal mejora sus métricas con ventanas mayores y supera al modelo KNN en MAPE y RMSE, pero su capacidad de capturar la dinámica temporal sigue siendo limitada.</p>
-  </div>
-</div>
 </section>
 <section id="codigo-de-ridge">
-<h2>Codigo de Ridge<a class="headerlink" href="#codigo-de-ridge" title="Permalink to this heading">#</a></h2>
+<h3>Codigo de Ridge<a class="headerlink" href="#codigo-de-ridge" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SECCIÓN 5 ─ RIDGE ENTRENAMIENTO</span>
@@ -2128,77 +1996,9 @@ Mejor ventana Ridge 14
 
 </pre></div>
 </div>
-  <div style="background-color: #f5fdf9; padding: 12px;">
-    <p><strong>💡Análisis de los Resultados del Modelo Ridge</strong></p>
-    <p>El modelo Ridge se corrio con diferentes tamaños de ventana (7, 14, 21, y 28).</p>
-    <h4>1. Mejora en las Métricas con el Tamaño de la Ventana</h4>
-    <strong>MAPE (Mean Absolute Percentage Error):</strong>
-    <ul>
-      <li>T=7: 1.571e+08</li>
-      <li>T=14: 1.530e+08 (mejora del 2.6%)</li>
-      <li>T=21: 1.518e+08 (mejora del 3.4% respecto a T=7)</li>
-      <li>T=28: 1.519e+08 (similar a T=21)</li>
-    </ul>
-    <p>El MAPE sigue siendo muy elevado, lo cual indica un alto error porcentual en las predicciones.</p>
-    <strong>MAE (Mean Absolute Error):</strong>
-    <ul>
-      <li>T=7: 4.794e-01</li>
-      <li>T=14: 4.644e-01 (mejora del 3.2%)</li>
-      <li>T=21: 4.602e-01 (mejora del 3.9% respecto a T=7)</li>
-      <li>T=28: 4.578e-01 (mejora del 4.5% respecto a T=7)</li>
-    </ul>
-    <strong>RMSE (Root Mean Squared Error):</strong>
-    <ul>
-      <li>T=7: 7.274e-01</li>
-      <li>T=14: 7.183e-01 (mejora del 1.3%)</li>
-      <li>T=21: 8.000e-01 (empeora en un 10.3% respecto a T=14)</li>
-      <li>T=28: 7.828e-01 (mejora del 2.2% respecto a T=21)</li>
-    </ul>
-    <strong>MSE (Mean Squared Error):</strong>
-    <ul>
-      <li>T=7: 5.290e-01</li>
-      <li>T=14: 5.160e-01 (mejora del 2.5%)</li>
-      <li>T=21: 6.400e-01 (empeora en un 23.8% respecto a T=14)</li>
-      <li>T=28: 6.127e-01 (mejora del 4.3% respecto a T=21)</li>
-    </ul>
-    <strong>R2 (R-squared):</strong>
-    <ul>
-      <li>T=7: 6.937e-01 (R2=0.693)</li>
-      <li>T=14: 7.014e-01 (R2=0.701, mejora del 1.5%)</li>
-      <li>T=21: 6.296e-01 (R2=0.629, empeora en un 10.8% respecto a T=14)</li>
-      <li>T=28: 6.454e-01 (R2=0.645, mejora del 2.5% respecto a T=21)</li>
-    </ul>
-    <h4>2. Mejor Ventana</h4>
-    <p>La mejor ventana para el modelo Ridge es T=14, ya que presenta:</p>
-    <ul>
-      <li>El MAPE más bajo: 1.530e+08</li>
-      <li>El RMSE más bajo: 7.183e-01</li>
-      <li>El MSE más bajo: 5.160e-01</li>
-      <li>El R2 más alto: 7.014e-01 (R2=0.701)</li>
-    </ul>
-    <h4>3. Observaciones</h4>
-    <strong>MAPE Elevado:</strong>
-    <p>Los valores de MAPE son extremadamente altos en todas las ventanas, lo que indica un error porcentual significativo en las predicciones. Esto podría darse por:</p>
-    <ul>
-      <li>Escala de las variables: Las variables explicativas o la variable objetivo podrían tener una escala muy grande.</li>
-      <li>Ruido en los datos: La presencia de ruido o outliers podría estar afectando el rendimiento del modelo.</li>
-    </ul>
-    <strong>Autocorrelación en Residuos:</strong>
-    <p>El valor LB_p es 0.e+00 en todas las ventanas, lo que indica autocorrelación significativa en los residuos. Esto sugiere que el modelo no está capturando adecuadamente la dinámica temporal de los datos.</p>
-    <strong>Rendimiento Inconsistente:</strong>
-    <p>Para T=21, se observa un empeoramiento en el RMSE y el MSE respecto a T=14, lo que podría indicar sobreajuste o la presencia de ruido en los datos para este tamaño de ventana.</p>
-    <h4>4. Comparación con Otros Modelos</h4>
-    <strong>Modelo de Regresión Lineal:</strong>
-    <p>En comparación con los resultados de la Regresión Lineal, el modelo Ridge presenta un mejor R2 y menores valores de MAE y RMSE para la mayoría de las ventanas. Sin embargo, el MAPE sigue siendo muy elevado en ambos modelos.</p>
-    <strong>Modelo KNN:</strong>
-    <p>El modelo Ridge muestra un mejor desempeño en términos de MAE, RMSE y MSE en casi todas las ventanas, y un R2 comparable o superior.</p>
-    <h4>5. Conclusión</h4>
-    <p>El modelo Ridge muestra un rendimiento superior en comparación con los otros modelos evaluados, especialmente para la ventana T=14. Sin embargo, los altos valores de MAPE y la autocorrelación en los residuos sugieren que el modelo aún no está capturando adecuadamente la dinámica temporal de los datos.</p>
-  </div>
-</div>
 </section>
 <section id="codigo-de-lasso">
-<h2>Codigo de Lasso<a class="headerlink" href="#codigo-de-lasso" title="Permalink to this heading">#</a></h2>
+<h3>Codigo de Lasso<a class="headerlink" href="#codigo-de-lasso" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SECCIÓN 7 ─ LASSO ENTRENAMIENTO</span>
@@ -2595,9 +2395,9 @@ Mejor ventana Lasso 28
 
 </pre></div>
 </div>
-<div style="background-color: #f5fdf9; padding: 12px;"> <h3><strong>💡Análisis del Modelo Lasso</strong></h3> <p>A continuación, se presenta el análisis de los resultados obtenidos con el modelo Lasso para diferentes tamaños de ventana (T = 7, 28).</p> <hr> <h3><strong>1. Mejora en las Métricas con el Tamaño de la Ventana</strong></h3> <h4><strong>1.1. Reducción del Error</strong></h4> <ul> <li><strong>MAPE (Mean Absolute Percentage Error):</strong> El MAPE disminuye ligeramente con el aumento del tamaño de la ventana: <ul> <li>T=7: <code>3.530e+08</code></li> <li>T=28: <code>3.356e+08</code> (reducción del 4.9%)</li> </ul> </li> <li><strong>MAE (Mean Absolute Error):</strong> El error absoluto también disminuye: <ul> <li>T=7: <code>7.098e-01</code></li> <li>T=28: <code>6.392e-01</code> (reducción del 9.9%)</li> </ul> </li> <li><strong>RMSE (Root Mean Squared Error):</strong> El error cuadrático medio muestra una mejora: <ul> <li>T=7: <code>9.081e-01</code></li> <li>T=28: <code>8.142e-01</code> (reducción del 10.3%)</li> </ul> </li> <li><strong>MSE (Mean Squared Error):</strong> El error cuadrático medio sigue una tendencia similar: <ul> <li>T=7: <code>8.247e-01</code></li> <li>T=28: <code>6.629e-01</code> (reducción del 19.8%)</li> </ul> </li> </ul> <h4><strong>1.2. Mejora en el Coeficiente de Determinación (R2)</strong></h4> <ul> <li><strong>R2:</strong> El coeficiente de determinación aumenta con el tamaño de la ventana: <ul> <li>T=7: <code>5.225e-01</code> (R2=0.522)</li> <li>T=28: <code>6.165e-01</code> (R2=0.616)</li> </ul> </li> </ul> <hr> <h3><strong>2. Ventana Óptima</strong></h3> <p>La ventana de tamaño <strong>T=28</strong> muestra los mejores resultados:</p> <ul> <li><strong>MAPE más bajo:</strong> <code>3.356e+08</code></li> <li><strong>RMSE más bajo:</strong> <code>8.142e-01</code></li> <li><strong>MSE más bajo:</strong> <code>6.629e-01</code></li> <li><strong>R2 más alto:</strong> <code>6.165e-01</code></li> </ul> <hr> <h3><strong>3. Observaciones</strong></h3> <ul> <li><strong>MAPE Elevado:</strong> Los valores de MAPE siguen siendo muy altos, lo que podría deberse a: <ul> <li>Escala de las variables.</li> </li> <li>Limitaciones del modelo Lasso para capturar relaciones no lineales.</li> </ul> </li> <li><strong>Autocorrelación en los residuos:</strong> El valor LB_p es 0.e+00 en todas las ventanas, indicando que el modelo no captura adecuadamente la dinámica temporal.</li> </ul> <hr> <h3> <h3><strong>Conclusión</strong></h3> <p>El modelo Lasso mejora sus métricas con ventanas mayores, alcanzando su mejor desempeño en T=28. Sin embargo, presenta limitaciones importantes, especialmente en el MAPE y la autocorrelación de los residuos, lo que sugiere la necesidad de ajustes adicionales o el uso de modelos más complejos para capturar la dinámica de los datos.</p> </div></section>
+</section>
 <section id="codigo-de-arbol-de-decision">
-<h2>Codigo de Arbol de decision<a class="headerlink" href="#codigo-de-arbol-de-decision" title="Permalink to this heading">#</a></h2>
+<h3>Codigo de Arbol de decision<a class="headerlink" href="#codigo-de-arbol-de-decision" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SECCIÓN 9 ─ ÁRBOL DE DECISIÓN ENTRENAMIENTO</span>
@@ -2993,9 +2793,9 @@ Mejor ventana DT 28
 <span class="mi">28</span>	<span class="mf">1.489e+08</span>	<span class="mf">5.145e-01</span>	<span class="mf">6.918e-01</span>	<span class="mf">4.786e-01</span>	<span class="mf">7.231e-01</span>	<span class="mf">0.e+00</span>
 </pre></div>
 </div>
-<div style="background-color: #f5fdf9; padding: 12px;"> <h3><strong>💡Análisis del Modelo de Árbol de Decisión</strong></h3> <p>A continuación, se presenta el análisis de los resultados obtenidos con el modelo de Árbol de Decisión para diferentes tamaños de ventana (T = 7, 28).</p> <hr> <h3><strong>1. Mejora en las Métricas con el Tamaño de la Ventana</strong></h3> <h4><strong>1.1. Reducción del Error</strong></h4> <ul> <li><strong>MAPE (Mean Absolute Percentage Error):</strong> El MAPE disminuye con el aumento del tamaño de la ventana: <ul> <li>T=7: <code>1.740e+08</code></li> <li>T=28: <code>1.489e+08</code> (reducción del 14.5%)</li> </ul> </li> <li><strong>MAE (Mean Absolute Error):</strong> El error absoluto también disminuye: <ul> <li>T=7: <code>6.015e-01</code></li> <li>T=28: <code>5.145e-01</code> (reducción del 14.5%)</li> </ul> </li> <li><strong>RMSE (Root Mean Squared Error):</strong> El error cuadrático medio muestra una mejora: <ul> <li>T=7: <code>8.064e-01</code></li> <li>T=28: <code>6.918e-01</code> (reducción del 14.2%)</li> </ul> </li> <li><strong>MSE (Mean Squared Error):</strong> El error cuadrático medio sigue una tendencia similar: <ul> <li>T=7: <code>6.503e-01</code></li> <li>T=28: <code>4.786e-01</code> (reducción del 26.4%)</li> </ul> </li> </ul> <h4><strong>1.2. Mejora en el Coeficiente de Determinación (R2)</strong></h4> <ul> <li><strong>R2:</strong> El coeficiente de determinación mejora con el tamaño de la ventana: <ul> <li>T=7: <code>6.235e-01</code> (R2=0.623)</li> <li>T=28: <code>7.231e-01</code> (R2=0.723)</li> </ul> </li> </ul> <hr> <h3><strong>2. Mejor Ventana</strong></h3> <p>La ventana de tamaño <strong>T=28</strong> muestra los mejores resultados:</p> <ul> <li><strong>MAPE más bajo:</strong> <code>1.489e+08</code></li> <li><strong>MAE más bajo:</strong> <code>5.145e-01</code></li> <li><strong>RMSE más bajo:</strong> <code>6.918e-01</code></li> <li><strong>MSE más bajo:</strong> <code>4.786e-01</code></li> <li><strong>R2 más alto:</strong> <code>7.231e-01</code></li> </ul> <hr> <h3><strong>3. Observaciones</strong></h3> <ul> <li><strong>MAPE Elevado:</strong> Aunque mejora con ventanas más grandes, sigue siendo alto debido posiblemente a: <ul> <li>Relaciones no lineales no capturadas completamente.</li></li> </ul> </li> <li><strong>Autocorrelación en Residuos:</strong> El valor <code>LB_p=0.e+00</code> en todas las ventanas indica fuerte autocorrelación, reflejando que el modelo no captura bien la dinámica temporal.</li> <li><strong>Sobreajuste Potencial:</strong> La mejora al aumentar el tamaño de la ventana puede estar asociada a una mejor generalización del modelo ante más datos.</li> </ul> <hr> <h3><strong>4. Comparación con los anteriores Modelos</strong></h3> <ul> <li><strong>Modelo Lasso:</strong> El Árbol de Decisión supera ampliamente al Lasso, especialmente en R2.</li> <li><strong>Modelo Ridge:</strong> Mejor R2 en ventanas grandes comparado con Ridge.</li> <li><strong>Modelo KNN:</strong> Mejor R2 y menores errores en todas las ventanas.</li> <li><strong>Regresión Lineal:</strong> Supera ampliamente en R2 y errores a la Regresión Lineal.</li> </ul> <hr> <h3><strong>Conclusión</strong></h3> <p>El modelo de Árbol de Decisión muestra mejoras claras con ventanas más grandes, siendo <strong>T=28</strong> el mejor escenario. No obstante, los altos valores de MAPE y la autocorrelación en los residuos indican la necesidad de explorar métodos más robustos y complejos para mejorar el desempeño predictivo.</p> </div></section>
+</section>
 <section id="codigo-de-random-forest">
-<h2>Codigo de Random Forest<a class="headerlink" href="#codigo-de-random-forest" title="Permalink to this heading">#</a></h2>
+<h3>Codigo de Random Forest<a class="headerlink" href="#codigo-de-random-forest" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SECCIÓN 11 ─ RANDOM FOREST ENTRENAMIENTO</span>
@@ -3391,9 +3191,9 @@ Mejor ventana RF 28
 <span class="mi">28</span>	<span class="mf">1.514e+08</span>	<span class="mf">4.763e-01</span>	<span class="mf">6.280e-01</span>	<span class="mf">3.944e-01</span>	<span class="mf">7.718e-01</span>	<span class="mf">0.e+00</span>
 </pre></div>
 </div>
-<div style="background-color: #f5fdf9; padding: 12px;"> <h3><strong>💡Análisis de los Resultados del Modelo Random Forest</strong></h3> <p>A continuación, se realiza el análisis de los resultados obtenidos con el modelo Random Forest, utilizando diferentes tamaños de ventana (T = 7, 14, 21, 28).</p> <hr> <h3><strong>1. Mejora en las Métricas con el Tamaño de la Ventana</strong></h3> <h4><strong>1.1. Reducción del Error</strong></h4> <ul> <li><strong>MAPE (Mean Absolute Percentage Error):</strong> El MAPE disminuye gradualmente con el aumento del tamaño de la ventana: <ul> <li>T=7: <code>1.816e+08</code></li> <li>T=28: <code>1.514e+08</code> (reducción del 16.6%)</li> </ul> </li> <li><strong>MAE (Mean Absolute Error):</strong> El error absoluto también disminuye con el aumento del tamaño de la ventana: <ul> <li>T=7: <code>5.088e-01</code></li> <li>T=28: <code>4.763e-01</code> (reducción del 6.3%)</li> </ul> </li> <li><strong>RMSE (Root Mean Squared Error):</strong> El error cuadrático medio muestra una mejora constante: <ul> <li>T=7: <code>6.694e-01</code></li> <li>T=28: <code>6.280e-01</code> (reducción del 6.1%)</li> </ul> </li> <li><strong>MSE (Mean Squared Error):</strong> El error cuadrático medio sigue una tendencia similar al RMSE: <ul> <li>T=7: <code>4.481e-01</code></li> <li>T=28: <code>3.944e-01</code> (reducción del 12.0%)</li> </ul> </li> </ul> <h4><strong>1.2. Mejora en el Coeficiente de Determinación (R2)</strong></h4> <ul> <li><strong>R2:</strong> El coeficiente de determinación mejora con el tamaño de la ventana: <ul> <li>T=7: <code>7.405e-01</code> (R2=0.740)</li> <li>T=28: <code>7.718e-01</code> (R2=0.772)</li> </ul> </li> </ul> <hr> <h3><strong>2. Mejor Ventana</strong></h3> <p>La mejor ventana para el modelo Random Forest es <strong>T=28</strong>, ya que presenta:</p> <ul> <li><strong>MAPE más bajo:</strong> <code>1.514e+08</code></li> <li><strong>MAE más bajo:</strong> <code>4.763e-01</code></li> <li><strong>RMSE más bajo:</strong> <code>6.280e-01</code></li> <li><strong>MSE más bajo:</strong> <code>3.944e-01</code></li> <li><strong>R2 más alto:</strong> <code>7.718e-01</code></li> </ul> <hr> <h3><strong>3. Observaciones</strong></h3> <ul> <li><strong>MAPE Elevado:</strong> Aunque mejora con ventanas más grandes, los valores siguen siendo muy altos debido a: <ul> <li>Escala de las variables o de la variable objetivo.</li> </li> </ul> </li> <li><strong>Autocorrelación en Residuos:</strong> El valor <code>LB_p=0.e+00</code> en todas las ventanas indica autocorrelación significativa, reflejando que el modelo no captura adecuadamente la dinámica temporal.</li> </li> </ul> <hr> <h3><strong>4. Comparación con los Otros Modelos</strong></h3> <ul> <li><strong>Modelo de Árbol de Decisión:</strong> Random Forest supera al Árbol de Decisión en todas las métricas, especialmente en R2.</li> <li><strong>Modelo Lasso:</strong> Random Forest ofrece un mejor rendimiento en MAPE, MAE, RMSE, MSE y R2.</li> <li><strong>Modelo KNN:</strong> Random Forest muestra un mejor R2 y menores errores (MAE, RMSE) en todas las ventanas.</li> <li><strong>Modelo Ridge:</strong> En ventanas pequeñas (T=7 y T=14), Random Forest tiene un mejor R2 y menores errores que Ridge.</li> </ul> <hr> <h3><strong>Conclusión</strong></h3> <p>El modelo Random Forest muestra un rendimiento mejorado con ventanas más grandes, alcanzando su mejor desempeño en <strong>T=28</strong>. Sin embargo, los valores elevados de MAPE y la autocorrelación en los residuos sugieren que se necesita un enfoque más robusto para manejar la complejidad de los datos. Se recomienda explorar modelos más complejos, ajustar hiperparámetros y añadir características temporales para mejorar las predicciones.</p> </div></section>
+</section>
 <section id="codigo-de-xgboost">
-<h2>Codigo de XGBoost<a class="headerlink" href="#codigo-de-xgboost" title="Permalink to this heading">#</a></h2>
+<h3>Codigo de XGBoost<a class="headerlink" href="#codigo-de-xgboost" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SECCIÓN 13 ─ XGBOOST ENTRENAMIENTO</span>
@@ -3799,81 +3599,9 @@ Mejor ventana XGB 28
 
 </pre></div>
 </div>
-<div style="background-color: #f5fdf9; padding: 12px;">
-  <h3><strong>💡 Análisis del Modelo XGBoost</strong></h3>
-  <p>Los resultados del modelo XGBoost para diferentes tamaños de ventana (T = 7, 14, 21, 28) muestran una mejora constante en las métricas a medida que aumenta el tamaño de la ventana.</p>
-  <hr>
-  <h3><strong>1. Mejora en las Métricas con el Tamaño de la Ventana</strong></h3>
-  <h4><strong>1.1. Reducción del Error</strong></h4>
-  <ul>
-    <li><strong>MAPE (Mean Absolute Percentage Error):</strong> El MAPE disminuye significativamente con el aumento del tamaño de la ventana:
-      <ul>
-        <li>T=7: <code>2.384e+08</code></li>
-        <li>T=28: <code>1.903e+08</code> (reducción del 20.2%)</li>
-      </ul>
-    </li>
-    <li><strong>MAE (Mean Absolute Error):</strong> El error absoluto disminuye con el aumento del tamaño de la ventana:
-      <ul>
-        <li>T=7: <code>5.554e-01</code></li>
-        <li>T=28: <code>4.831e-01</code> (reducción del 13.1%)</li>
-      </ul>
-    </li>
-    <li><strong>RMSE (Root Mean Squared Error):</strong> El error cuadrático medio muestra una mejora constante:
-      <ul>
-        <li>T=7: <code>7.285e-01</code></li>
-        <li>T=28: <code>6.360e-01</code> (reducción del 12.7%)</li>
-      </ul>
-    </li>
-    <li><strong>MSE (Mean Squared Error):</strong> El error cuadrático medio sigue una tendencia similar al RMSE:
-      <ul>
-        <li>T=7: <code>5.307e-01</code></li>
-        <li>T=28: <code>4.044e-01</code> (reducción del 23.9%)</li>
-      </ul>
-    </li>
-  </ul>
-  <h4><strong>1.2. Mejora en el Coeficiente de Determinación (R2)</strong></h4>
-  <ul>
-    <li><strong>R2:</strong> El coeficiente de determinación mejora con el tamaño de la ventana:
-      <ul>
-        <li>T=7: <code>6.927e-01</code> (R2=0.692)</li>
-        <li>T=28: <code>7.660e-01</code> (R2=0.766)</li>
-      </ul>
-    </li>
-  </ul>
-  <hr>
-  <h3><strong>2. Mejor Ventana</strong></h3>
-  <p>La mejor ventana para el modelo XGBoost es <strong>T=28</strong>, ya que presenta:</p>
-  <ul>
-     <li><strong>MAPE más bajo:</strong> <code>1.903e+08</code></li>
-     <li><strong>MAE más bajo:</strong> <code>4.831e-01</code></li>
-     <li><strong>RMSE más bajo:</strong> <code>6.360e-01</code></li>
-     <li><strong>MSE más bajo:</strong> <code>4.044e-01</code></li>
-     <li><strong>R2 más alto:</strong> <code>7.660e-01</code></li>
-  </ul>
-  <hr>
-  <h3><strong>3. Observaciones</strong></h3>
-  <ul>
-     <li><strong>MAPE Elevado:</strong> Aunque el MAPE mejora con ventanas más grandes, los valores siguen siendo altos, lo que indica un alto error porcentual en las predicciones. Esto podría deberse a:
-      <ul>
-        <li>Relaciones complejas que el modelo XGBoost no captura completamente.
-     </ul>
-     </li>
-     <li><strong>Autocorrelación en Residuos:</strong> El valor <code>LB_p=0.e+00</code> en todas las ventanas indica autocorrelación significativa en los residuos, sugiriendo que el modelo no captura adecuadamente la dinámica temporal.</li>
-  </ul>
-  <hr>
-  <h3><strong>4. Comparación con los Otros Modelos</strong></h3>
-  <ul>
-    <li><strong>Modelo Random Forest:</strong> XGBoost supera a Random Forest en todas las métricas, especialmente en R2.</li>
-    <li><strong>Modelo de Árbol de Decisión:</strong> XGBoost ofrece un mejor rendimiento en MAPE, MAE, RMSE, MSE y R2.</li>
-    <li><strong>Modelo Ridge:</strong> En ventanas más pequeñas (T=7 y T=14), XGBoost tiene un mejor R2 y menores errores que Ridge.</li>
-    <li><strong>Modelo KNN:</strong> XGBoost muestra un mejor R2 y menores errores (MAE, RMSE) en todas las ventanas.</li>
-  </ul>
-  <hr>
-  <h3><strong>Conclusión</strong></h3>
-  <p>El modelo XGBoost muestra un rendimiento superior en comparación con otros modelos evaluados, alcanzando su mejor desempeño en <strong>T=28</strong>. Sin embargo, los altos valores de MAPE y la autocorrelación en los residuos sugieren que se necesita un enfoque más robusto para manejar la complejidad de los datos. </p>
-</div></section>
+</section>
 <section id="codigo-de-svm">
-<h2>Codigo de SVM<a class="headerlink" href="#codigo-de-svm" title="Permalink to this heading">#</a></h2>
+<h3>Codigo de SVM<a class="headerlink" href="#codigo-de-svm" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SECCIÓN 15 ─ SVM ENTRENAMIENTO</span>
@@ -4270,82 +3998,9 @@ Mejor ventana SVM 28
 
 </pre></div>
 </div>
-<div style="background-color: #f5fdf9; padding: 12px;">
-  <h3><strong>💡 Análisis del Modelo SVM</strong></h3>
-  <p>A continuación, se presenta el análisis de los resultados obtenidos con el modelo SVM (Máquinas de Soporte Vectorial), utilizando diferentes tamaños de ventana (T = 7, 14, 21, 28).</p>
-  <hr>
-  <h3><strong>1. Mejora en las Métricas con el Tamaño de la Ventana</strong></h3>
-  <h4><strong>1.1. Reducción del Error</strong></h4>
-  <ul>
-    <li><strong>MAPE (Mean Absolute Percentage Error):</strong> El MAPE disminuye ligeramente con el aumento del tamaño de la ventana:
-      <ul>
-        <li>T=7: <code>1.686e+08</code></li>
-        <li>T=28: <code>1.577e+08</code> (reducción del 6.5%)</li>
-      </ul>
-    </li>
-    <li><strong>MAE (Mean Absolute Error):</strong> El error absoluto también disminuye ligeramente con el aumento del tamaño de la ventana:
-      <ul>
-        <li>T=7: <code>4.860e-01</code></li>
-        <li>T=28: <code>4.515e-01</code> (reducción del 7.2%)</li>
-      </ul>
-    </li>
-    <li><strong>RMSE (Root Mean Squared Error):</strong> El error cuadrático medio muestra una mejora más notable:
-      <ul>
-        <li>T=7: <code>1.107e+00</code></li>
-        <li>T=28: <code>7.305e-01</code> (reducción del 34.1%)</li>
-      </ul>
-    </li>
-    <li><strong>MSE (Mean Squared Error):</strong> El error cuadrático medio sigue una tendencia similar al RMSE:
-      <ul>
-        <li>T=7: <code>1.226e+00</code></li>
-        <li>T=28: <code>5.337e-01</code> (reducción del 56.5%)</li>
-      </ul>
-    </li>
-  </ul>
-  <h4><strong>1.2. Mejora en el Coeficiente de Determinación (R2)</strong></h4>
-  <ul>
-    <li><strong>R2:</strong> El coeficiente de determinación mejora significativamente con el tamaño de la ventana:
-      <ul>
-        <li>T=7: <code>2.902e-01</code> (R2=0.290)</li>
-        <li>T=28: <code>6.912e-01</code> (R2=0.691)</li>
-      </ul>
-    </li>
-  </ul>
-  <hr>
-  <h3><strong>2. Mejor Ventana</strong></h3>
-  <p>La mejor ventana para el modelo SVM es <strong>T=28</strong>, ya que presenta:</p>
-  <ul>
-    <li><strong>MAPE más bajo:</strong> <code>1.577e+08</code></li>
-    <li><strong>MAE más bajo:</strong> <code>4.515e-01</code></li>
-    <li><strong>RMSE más bajo:</strong> <code>7.305e-01</code></li>
-    <li><strong>MSE más bajo:</strong> <code>5.337e-01</code></li>
-    <li><strong>R2 más alto:</strong> <code>6.912e-01</code></li>
-  </ul>
-  <hr>
-  <h3><strong>3. Observaciones</strong></h3>
-  <ul>
-    <li><strong>MAPE Elevado:</strong> Aunque el MAPE mejora con ventanas más grandes, los valores siguen siendo muy altos, lo que indica un alto error porcentual en las predicciones.
-      <ul>
-      </ul>
-    </li>
-    <li><strong>Autocorrelación en Residuos:</strong> El valor <code>LB_p=0.e+00</code> en todas las ventanas indica autocorrelación significativa en los residuos, sugiriendo que el modelo no está capturando adecuadamente la dinámica temporal de los datos.</li>
-    <li><strong>Complejidad del Modelo:</strong> El SVM puede estar limitado en su capacidad para capturar relaciones complejas, especialmente si se utiliza un kernel lineal. Un kernel no lineal podría mejorar el rendimiento pero también aumentaría la complejidad computacional.</li>
-  </ul>
-  <hr>
-  <h3><strong>4. Comparación con los Otros Modelos</strong></h3>
-  <ul>
-    <li><strong>Modelo XGBoost:</strong> SVM tiene un desempeño inferior en términos de MAPE, MAE y R2 en todas las ventanas.</li>
-    <li><strong>Modelo Random Forest:</strong> SVM ofrece resultados inferiores a los de Random Forest, especialmente en R2.</li>
-    <li><strong>Modelo Ridge:</strong> En ventanas más pequeñas, SVM tiene un R2 inferior al de Ridge, pero en ventanas más grandes, SVM alcanza un R2 similar.</li>
-    <li><strong>Modelo Lasso:</strong> SVM supera a Lasso en términos de R2 y errores en ventanas más grandes.</li>
-  </ul>
-  <hr>
-  <h3>
-  <h3><strong>Conclusión</strong></h3>
-  <p>El modelo SVM muestra una mejora en las métricas con ventanas más grandes, alcanzando su mejor desempeño en <strong>T=28</strong>. Sin embargo, su rendimiento sigue siendo inferior al de modelos como Random Forest y XGBoost. Los altos valores de MAPE y la autocorrelación en los residuos sugieren que se necesita un enfoque más robusto para manejar la complejidad de los datos.</p>
-</div></section>
+</section>
 <section id="codigo-de-mlp">
-<h2>Codigo de MLP<a class="headerlink" href="#codigo-de-mlp" title="Permalink to this heading">#</a></h2>
+<h3>Codigo de MLP<a class="headerlink" href="#codigo-de-mlp" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SECCIÓN 17 ─ MLP ENTRENAMIENTO</span>
@@ -4745,84 +4400,9 @@ Mejor ventana MLP 28
 
 </pre></div>
 </div>
-<div style="background-color: #f5fdf9; padding: 12px;">
-  <h3><strong>💡 Análisis del Modelo MLP</strong></h3>
-  <p>A continuación, se presenta el análisis de los resultados obtenidos con el modelo MLP (Redes Neuronales Multicapa), utilizando diferentes tamaños de ventana (T = 7, 14, 21, 28).</p>
-  <hr>
-  <h3><strong>1. Mejora en las Métricas con el Tamaño de la Ventana</strong></h3>
-  <h4><strong>1.1. Reducción del Error</strong></h4>
-  <ul>
-    <li><strong>MAPE (Mean Absolute Percentage Error):</strong> El MAPE disminuye con el aumento del tamaño de la ventana:
-      <ul>
-        <li>T=7: <code>2.154e+08</code></li>
-        <li>T=28: <code>2.193e+08</code> (mejora del 1.7%)</li>
-      </ul>
-      El MAPE sigue siendo elevado, lo que indica un alto error porcentual en las predicciones.
-    </li>
-    <li><strong>MAE (Mean Absolute Error):</strong> El error absoluto disminuye con el aumento del tamaño de la ventana:
-      <ul>
-        <li>T=7: <code>1.090e+00</code></li>
-        <li>T=28: <code>6.218e-01</code> (reducción del 43.0%)</li>
-      </ul>
-    </li>
-    <li><strong>RMSE (Root Mean Squared Error):</strong> El error cuadrático medio también muestra una mejora:
-      <ul>
-        <li>T=7: <code>2.496e+00</code></li>
-        <li>T=28: <code>9.768e-01</code> (reducción del 60.9%)</li>
-      </ul>
-    </li>
-    <li><strong>MSE (Mean Squared Error):</strong> El error cuadrático medio sigue una tendencia similar al RMSE:
-      <ul>
-        <li>T=7: <code>6.230e+00</code></li>
-        <li>T=28: <code>9.541e-01</code> (reducción del 86.7%)</li>
-      </ul>
-    </li>
-  </ul>
-  <h4><strong>1.2. Mejora en el Coeficiente de Determinación (R2)</strong></h4>
-  <ul>
-    <li><strong>R2:</strong> El coeficiente de determinación mejora significativamente con el tamaño de la ventana:
-      <ul>
-        <li>T=7: <code>-2.607e+00</code> (R2=-2.607)</li>
-        <li>T=28: <code>4.479e-01</code> (R2=0.448)</li>
-      </ul>
-    </li>
-  </ul>
-  <hr>
-  <h3><strong>2. Mejor Ventana</strong></h3>
-  <p>La mejor ventana para el modelo MLP es <strong>T=28</strong>, ya que presenta:</p>
-  <ul>
-    <li><strong>MAPE más bajo:</strong> <code>2.193e+08</code></li>
-    <li><strong>MAE más bajo:</strong> <code>6.218e-01</code></li>
-    <li><strong>RMSE más bajo:</strong> <code>9.768e-01</code></li>
-    <li><strong>MSE más bajo:</strong> <code>9.541e-01</code></li>
-    <li><strong>R2 más alto:</strong> <code>4.479e-01</code></li>
-  </ul>
-  <hr>
-  <h3><strong>3. Observaciones</strong></h3>
-  <ul>
-    <li><strong>MAPE Elevado:</strong> Aunque el MAPE mejora con ventanas más grandes, los valores siguen siendo muy altos, lo que indica un alto error porcentual en las predicciones. Esto podría deberse a:
-      <ul>
-        <li><strong>Complejidad del modelo:</strong> A pesar de ser un modelo más complejo, el MLP no está capturando adecuadamente las relaciones en los datos.</li>
-        <li><strong>Sobreajuste o Subajuste:</strong> El modelo podría estar sufriendo de sobreajuste en entrenamiento (overfitting) o no estar ajustándose adecuadamente (underfitting).</li>
-      </ul>
-    </li>
-    <li><strong>Autocorrelación en Residuos:</strong> El valor <code>LB_p=0.e+00</code> en todas las ventanas indica autocorrelación significativa en los residuos, lo que sugiere que el modelo no está capturando adecuadamente la dinámica temporal de los datos.</li>
-    <li><strong>Convergencia del Modelo:</strong> Es posible que el modelo no haya convergido adecuadamente durante el entrenamiento, especialmente en ventanas más pequeñas, lo que se refleja en los valores negativos de R2 en T=7 y T=14.</li>
-  </ul>
-  <hr>
-  <h3><strong>4. Comparación con los Otros Modelos</strong></h3>
-  <ul>
-    <li><strong>Modelo XGBoost:</strong> MLP ofrece un R2 inferior en todas las ventanas, pero un MAE comparable en T=28.</li>
-    <li><strong>Modelo Random Forest:</strong> Random Forest supera al MLP en términos de R2 y errores en ventanas más pequeñas.</li>
-    <li><strong>Modelo SVM:</strong> MLP muestra un R2 superior en ventanas más grandes (T=28) pero un MAPE más alto.</li>
-  </ul>
-  <hr>
-  <h3><strong>Conclusión</strong></h3>
-  <p>El modelo MLP muestra una mejora significativa en las métricas con ventanas más grandes, alcanzando su mejor desempeño en <strong>T=28</strong>. Sin embargo, los altos valores de MAPE y la autocorrelación en los residuos sugieren que se necesita un enfoque más robusto para manejar la complejidad de los datos. </p>
-</div>
 </section>
 <section id="preparacion-para-rnn-y-lstm">
-<h2>Preparacion para RNN y LSTM<a class="headerlink" href="#preparacion-para-rnn-y-lstm" title="Permalink to this heading">#</a></h2>
+<h3>Preparacion para RNN y LSTM<a class="headerlink" href="#preparacion-para-rnn-y-lstm" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">escX</span><span class="o">=</span><span class="n">MinMaxScaler</span><span class="p">()</span>
@@ -4848,7 +4428,7 @@ Mejor ventana MLP 28
 </div>
 </div>
 <section id="codigo-de-rnn">
-<h3>Codigo de RNN<a class="headerlink" href="#codigo-de-rnn" title="Permalink to this heading">#</a></h3>
+<h4>Codigo de RNN<a class="headerlink" href="#codigo-de-rnn" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">resultados_RNN</span><span class="o">=</span><span class="p">[]</span>
@@ -5260,82 +4840,9 @@ T 28 MAPE 81532773739784.02 MAE 0.6360790882518187 RMSE 0.8323317840577478 MSE 0
   </div>
 </div></div>
 </div>
-<div style="background-color: #f5fdf9; padding: 12px;">
-  <h3><strong>💡 Análisis del Modelo RNN</strong></h3>
-  <p>Los resultados del modelo RNN (Red Neuronal Recurrente) para diferentes tamaños de ventana (T = 7, 14, 21, 28) muestran una tendencia de mejora en las métricas a medida que aumenta el tamaño de la ventana. A continuación, se presenta su análisis.</p>
-  <hr>
-  <h3><strong>1. Mejora en las Métricas con el Tamaño de la Ventana</strong></h3>
-  <h4><strong>1.1. Reducción del Error</strong></h4>
-  <ul>
-    <li><strong>MAPE (Mean Absolute Percentage Error):</strong> El MAPE disminuye significativamente con el aumento del tamaño de la ventana:
-      <ul>
-        <li>T=7: <code>9.012e+13</code></li>
-        <li>T=28: <code>8.153e+13</code> (reducción del 9.6%)</li>
-      </ul>
-      Aunque el MAPE sigue siendo elevado, la tendencia muestra una mejora en la precisión de las predicciones con ventanas más grandes.
-    </li>
-    <li><strong>MAE (Mean Absolute Error):</strong> El error absoluto disminuye con el aumento del tamaño de la ventana:
-      <ul>
-        <li>T=7: <code>6.247e-01</code></li>
-        <li>T=28: <code>6.361e-01</code> (reducción del 2.0%)</li>
-      </ul>
-    </li>
-    <li><strong>RMSE (Root Mean Squared Error):</strong> El error cuadrático medio muestra una mejora notable:
-      <ul>
-        <li>T=7: <code>8.162e-01</code></li>
-        <li>T=28: <code>8.323e-01</code> (reducción del 2.0%)</li>
-      </ul>
-    </li>
-    <li><strong>MSE (Mean Squared Error):</strong> El error cuadrático medio sigue una tendencia similar al RMSE:
-      <ul>
-        <li>T=7: <code>6.662e-01</code></li>
-        <li>T=28: <code>6.928e-01</code> (reducción del 3.9%)</li>
-      </ul>
-    </li>
-  </ul>
-  <h4><strong>1.2. Mejora en el Coeficiente de Determinación (R2)</strong></h4>
-  <ul>
-    <li><strong>R2:</strong> El coeficiente de determinación mejora significativamente con el tamaño de la ventana:
-      <ul>
-        <li>T=7: <code>5.692e-01</code> (R2=0.569)</li>
-        <li>T=28: <code>5.521e-01</code> (R2=0.552)</li>
-      </ul>
-    </li>
-  </ul>
-  <hr>
-  <h3><strong>2. Mejor Ventana</strong></h3>
-  <p>La mejor ventana para el modelo RNN es <strong>T=28</strong>, ya que presenta:</p>
-  <ul>
-    <li><strong>MAPE más bajo:</strong> <code>8.153e+13</code></li>
-    <li><strong>MAE más bajo:</strong> <code>6.361e-01</code></li>
-    <li><strong>RMSE más bajo:</strong> <code>8.323e-01</code></li>
-    <li><strong>MSE más bajo:</strong> <code>6.928e-01</code></li>
-    <li><strong>R2 más alto:</strong> <code>5.521e-01</code></li>
-  </ul>
-  <hr>
-  <h3><strong>3. Observaciones</strong></h3>
-  <ul>
-    <li><strong>MAPE Elevado:</strong> Aunque el MAPE mejora con ventanas más grandes, los valores siguen siendo muy altos, lo que indica un alto error porcentual en las predicciones. Esto podría deberse a:
-      <ul>
-        <li><strong>Complejidad del modelo:</strong> El RNN puede estar limitado en su capacidad para capturar relaciones complejas en los datos.</li>
-        </ul>
-     </li>
-     <li><strong>Autocorrelación en Residuos:</strong> El valor <code>LB_p</code> es extremadamente pequeño en todas las ventanas, lo que indica autocorrelación significativa en los residuos. Esto sugiere que el modelo no está capturando adecuadamente la dinámica temporal de los datos.</li>
-    </li>
-  </ul>
-  <hr>
-  <h3><strong>4. Comparación con Otros Modelos</strong></h3>
-  <ul>
-    <li><strong>Modelo XGBoost:</strong> RNN ofrece un rendimiento similar en términos de MAPE y R2 en ventanas más grandes.</li>
-    <li><strong>Modelo Random Forest:</strong> Random Forest supera al RNN en términos de R2 y errores en ventanas más pequeñas.</li>
-    <li><strong>Modelo MLP:</strong> RNN muestra un R2 superior en ventanas más grandes (T=28) pero un MAPE más alto.</li>
-  </ul>
-  <hr>
-  <h3><strong>Conclusión</strong></h3>
-  <p>El modelo RNN muestra una mejora en las métricas con ventanas más grandes, alcanzando su mejor desempeño en <strong>T=28</strong>. Sin embargo, los altos valores de MAPE y la autocorrelación en los residuos sugieren que se necesita un enfoque más robusto para manejar la complejidad de los datos.</p>
-</div></section>
+</section>
 <section id="codigo-de-lstm">
-<h3>Codigo de LSTM<a class="headerlink" href="#codigo-de-lstm" title="Permalink to this heading">#</a></h3>
+<h4>Codigo de LSTM<a class="headerlink" href="#codigo-de-lstm" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">resultados_LSTM</span><span class="o">=</span><span class="p">[]</span>
@@ -5744,87 +5251,12 @@ T 28 MAPE 92244943409364.36 MAE 0.6300531539634896 RMSE 0.819763590963819 MSE 0.
   </div>
 </div></div>
 </div>
-<div style="background-color: #f5fdf9; padding: 12px;">
-  <h3><strong>💡 Análisis del Modelo LSTM</strong></h3>
-  <p>A continuación, se presenta el análisis de los resultados obtenidos con el modelo LSTM (Long Short-Term Memory), utilizando diferentes tamaños de ventana (T = 7, 14, 21, 28).</p>
-  <hr>
-  <h3><strong>1. Mejora en las Métricas con el Tamaño de la Ventana</strong></h3>
-  <h4><strong>1.1. Reducción del Error</strong></h4>
-  <ul>
-    <li><strong>MAPE (Mean Absolute Percentage Error):</strong> El MAPE disminuye con el aumento del tamaño de la ventana:
-      <ul>
-        <li>T=7: <code>9.464e+13</code></li>
-        <li>T=28: <code>9.224e+13</code> (reducción del 2.6%)</li>
-      </ul>
-      Aunque el MAPE sigue siendo elevado, la tendencia muestra una mejora en la precisión de las predicciones con ventanas más grandes.
-    </li>
-    <li><strong>MAE (Mean Absolute Error):</strong> El error absoluto disminuye ligeramente con el aumento del tamaño de la ventana:
-      <ul>
-        <li>T=7: <code>6.273e-01</code></li>
-        <li>T=28: <code>6.301e-01</code> (reducción del 0.4%)</li>
-      </ul>
-    </li>
-    <li><strong>RMSE (Root Mean Squared Error):</strong> El error cuadrático medio muestra una mejora modesta:
-      <ul>
-        <li>T=7: <code>8.194e-01</code></li>
-        <li>T=28: <code>8.198e-01</code> (reducción del 0.5%)</li>
-      </ul>
-    </li>
-    <li><strong>MSE (Mean Squared Error):</strong> El error cuadrático medio sigue una tendencia similar al RMSE:
-      <ul>
-        <li>T=7: <code>6.715e-01</code></li>
-        <li>T=28: <code>6.720e-01</code> (reducción del 0.7%)</li>
-      </ul>
-    </li>
-  </ul>
-  <h4><strong>1.2. Mejora en el Coeficiente de Determinación (R2)</strong></h4>
-  <ul>
-    <li><strong>R2:</strong> El coeficiente de determinación mejora ligeramente con el tamaño de la ventana:
-      <ul>
-        <li>T=7: <code>5.658e-01</code> (R2=0.566)</li>
-        <li>T=28: <code>5.655e-01</code> (R2=0.566)</li>
-      </ul>
-    </li>
-  </ul>
-  <hr>
-  <h3><strong>2. Mejor Ventana</strong></h3>
-  <p>La mejor ventana para el modelo LSTM es <strong>T=28</strong>, ya que presenta:</p>
-  <ul>
-    <li><strong>MAPE más bajo:</strong> <code>9.224e+13</code></li>
-    <li><strong>MAE más bajo:</strong> <code>6.301e-01</code></li>
-    <li><strong>RMSE más bajo:</strong> <code>8.198e-01</code></li>
-    <li><strong>MSE más bajo:</strong> <code>6.720e-01</code></li>
-    <li><strong>R2 más alto:</strong> <code>5.655e-01</code></li>
-  </ul>
-  <hr>
-  <h3><strong>3. Observaciones</strong></h3>
-  <ul>
-    <li><strong>MAPE Elevado:</strong> Aunque el MAPE mejora con ventanas más grandes, los valores siguen siendo muy altos, lo que indica un alto error porcentual en las predicciones. Esto podría deberse a:
-      <ul>
-        <li><strong>Complejidad del modelo:</strong> El LSTM puede estar limitado en su capacidad para capturar relaciones complejas en los datos.</li>
-    </ul>
-    </li>
-    <li><strong>Autocorrelación en Residuos:</strong> El valor <code>LB_p</code> es extremadamente pequeño en todas las ventanas, lo que indica autocorrelación significativa en los residuos. Esto sugiere que el modelo no está capturando adecuadamente la dinámica temporal de los datos.</li>
-    <li><strong>Complejidad del Modelo:</strong> Aunque el LSTM es una arquitectura más avanzada que el RNN, su rendimiento puede verse limitado si no se ajustan adecuadamente los hiperparámetros o si no se utilizan técnicas de regularización.</li>
-  </ul>
-  <hr>
-  <h3><strong>4. Comparación con Otros Modelos</strong></h3>
-  <ul>
-    <li><strong>Modelo XGBoost:</strong> LSTM ofrece un rendimiento similar en términos de MAPE y R2 en ventanas más grandes.</li>
-    <li><strong>Modelo RNN:</strong> LSTM muestra un rendimiento ligeramente mejor en términos de R2 y errores en ventanas más pequeñas.</li>
-    <li><strong>Modelo MLP:</strong> LSTM supera al MLP en términos de R2 y errores en ventanas más pequeñas.</li>
-  </ul>
-  <hr>
-  <h3><strong>Conclusión</strong></h3>
-  <p>El modelo LSTM muestra una mejora moderada en las métricas con ventanas más grandes, alcanzando su mejor desempeño en <strong>T=28</strong>. Sin embargo, los altos valores de MAPE y la autocorrelación en los residuos sugieren que se necesita un enfoque más robusto para manejar la complejidad de los datos. Se recomienda ajustar la arquitectura del modelo, explorar técnicas de regularización y considerar arquitecturas más avanzadas para mejorar las predicciones.</p>
-    </ul>
-  <hr>
-</div></section>
 </section>
-<section id="metricas-de-evaluacion-para-los-modelos-propuestos">
-<h2>Métricas de evaluación para los modelos propuestos<a class="headerlink" href="#metricas-de-evaluacion-para-los-modelos-propuestos" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="metricas-de-evaluacion">
+<h3>Métricas de evaluación<a class="headerlink" href="#metricas-de-evaluacion" title="Permalink to this heading">#</a></h3>
 <section id="error-absoluto-medio-mae">
-<h3>1. Error Absoluto Medio (MAE)<a class="headerlink" href="#error-absoluto-medio-mae" title="Permalink to this heading">#</a></h3>
+<h4>1. Error Absoluto Medio (MAE)<a class="headerlink" href="#error-absoluto-medio-mae" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p><strong>Qué mide:</strong> el promedio de la magnitud de los errores sin considerar su signo.</p></li>
 <li><p><strong>Interpretación:</strong> “En promedio nos equivocamos ± MAE unidades”. Sensible a la escala de la variable.</p></li>
@@ -5833,7 +5265,7 @@ $<span class="math notranslate nohighlight">\(\text{MAE} = \frac{1}{n}\sum_{i=1}
 </ul>
 </section>
 <section id="raiz-del-error-cuadratico-medio-rmse">
-<h3>2. Raíz del Error Cuadrático Medio (RMSE)<a class="headerlink" href="#raiz-del-error-cuadratico-medio-rmse" title="Permalink to this heading">#</a></h3>
+<h4>2. Raíz del Error Cuadrático Medio (RMSE)<a class="headerlink" href="#raiz-del-error-cuadratico-medio-rmse" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p><strong>Qué mide:</strong> penaliza los errores grandes al elevarlos al cuadrado y luego hace la raíz cuadrada para volver a la escala original.</p></li>
 <li><p><strong>Interpretación:</strong> error típico; cuanto menor, mejor. Al cuadrar, magnifica outliers.</p></li>
@@ -5842,7 +5274,7 @@ $<span class="math notranslate nohighlight">\(\text{RMSE} = \sqrt{\frac{1}{n}\su
 </ul>
 </section>
 <section id="error-cuadratico-medio-mse">
-<h3>3. Error Cuadrático Medio (MSE)<a class="headerlink" href="#error-cuadratico-medio-mse" title="Permalink to this heading">#</a></h3>
+<h4>3. Error Cuadrático Medio (MSE)<a class="headerlink" href="#error-cuadratico-medio-mse" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p><strong>Qué mide:</strong> el promedio de los errores al cuadrado.</p></li>
 <li><p><strong>Interpretación:</strong> igual que RMSE pero manteniéndose en unidades al cuadrado; útil para optimización matemática.</p></li>
@@ -5851,7 +5283,7 @@ $<span class="math notranslate nohighlight">\(\text{MSE} = \frac{1}{n}\sum_{i=1}
 </ul>
 </section>
 <section id="error-porcentual-absoluto-medio-mape">
-<h3>4. Error Porcentual Absoluto Medio (MAPE)<a class="headerlink" href="#error-porcentual-absoluto-medio-mape" title="Permalink to this heading">#</a></h3>
+<h4>4. Error Porcentual Absoluto Medio (MAPE)<a class="headerlink" href="#error-porcentual-absoluto-medio-mape" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p><strong>Qué mide:</strong> error absoluto relativo al valor real, expresado en porcentaje.</p></li>
 <li><p><strong>Interpretación:</strong> “En promedio erramos X %”. Se distorsiona cuando (y_i) se acerca a 0.</p></li>
@@ -5860,7 +5292,7 @@ $<span class="math notranslate nohighlight">\(\text{MAPE} = \frac{100}{n}\sum_{i
 </ul>
 </section>
 <section id="coeficiente-de-determinacion-r-2">
-<h3>5. Coeficiente de Determinación ((R^2))<a class="headerlink" href="#coeficiente-de-determinacion-r-2" title="Permalink to this heading">#</a></h3>
+<h4>5. Coeficiente de Determinación ((R^2))<a class="headerlink" href="#coeficiente-de-determinacion-r-2" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p><strong>Qué mide:</strong> proporción de la varianza explicada por el modelo respecto a la varianza total.</p></li>
 <li><p><strong>Interpretación:</strong> (R^2=1) perfecto; (R^2=0) no explica nada; puede ser negativo si el modelo es peor que usar la media.</p></li>
@@ -5869,7 +5301,7 @@ $<span class="math notranslate nohighlight">\(R^2 = 1 - \frac{\sum_{i=1}^{n}(y_i
 </ul>
 </section>
 <section id="pvalue-del-test-de-ljungbox">
-<h3>6. p‑value del Test de Ljung–Box<a class="headerlink" href="#pvalue-del-test-de-ljungbox" title="Permalink to this heading">#</a></h3>
+<h4>6. p‑value del Test de Ljung–Box<a class="headerlink" href="#pvalue-del-test-de-ljungbox" title="Permalink to this heading">#</a></h4>
 <ul>
 <li><p><strong>Qué mide:</strong> contraste de hipótesis sobre si <strong>los residuos</strong> presentan autocorrelación grupal hasta un rezago (h).</p></li>
 <li><p><strong>Interpretación:</strong></p>
@@ -5886,259 +5318,122 @@ $<span class="math notranslate nohighlight">\(Q = n(n+2)\sum_{k=1}^{h}\frac{\hat
 </ul>
 </section>
 </section>
-<hr class="docutils" />
-<section id="analisis-comparativo-de-los-modelos">
-<h2><strong>Análisis Comparativo de los Modelos</strong><a class="headerlink" href="#analisis-comparativo-de-los-modelos" title="Permalink to this heading">#</a></h2>
-<p>A continuación, se presenta un análisis y comparativo de los diferentes modelos evaluados para predecir la velocidad del viento, utilizando diversos tamaños de ventana (T). Los modelos analizados incluyen métodos ensemble, modelos lineales, máquinas de soporte vectorial (SVM) y redes neuronales.</p>
-<hr class="docutils" />
-<section id="resumen-de-modelos-y-metricas">
-<h3><strong>Resumen de Modelos y Métricas</strong><a class="headerlink" href="#resumen-de-modelos-y-metricas" title="Permalink to this heading">#</a></h3>
-<p>La siguiente tabla resume el desempeño de cada modelo con su ventana óptima:</p>
+<section id="mejores-resultados-por-modelo">
+<h3>Mejores resultados por modelo<a class="headerlink" href="#mejores-resultados-por-modelo" title="Permalink to this heading">#</a></h3>
 <table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p><strong>Modelo</strong></p></th>
-<th class="head"><p><strong>T</strong></p></th>
-<th class="head"><p><strong>MAPE</strong></p></th>
-<th class="head"><p><strong>MAE</strong></p></th>
-<th class="head"><p><strong>RMSE</strong></p></th>
-<th class="head"><p><strong>MSE</strong></p></th>
-<th class="head"><p><strong>R²</strong></p></th>
-<th class="head"><p><strong>LB_p</strong></p></th>
-<th class="head"><p><strong>Comentarios</strong></p></th>
+<tr class="row-odd"><th class="head"><p>Modelo</p></th>
+<th class="head"><p>T (días)</p></th>
+<th class="head"><p>MAPE</p></th>
+<th class="head"><p>MAE</p></th>
+<th class="head"><p>RMSE</p></th>
+<th class="head"><p>MSE</p></th>
+<th class="head"><p>Ljung‑Box p‑value</p></th>
+<th class="head"><p>Observaciones</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>Random Forest</strong></p></td>
+<tr class="row-even"><td><p>Random Forest</p></td>
 <td><p>28</p></td>
-<td><p>1.514 × 10⁸</p></td>
+<td><p>1.514 × 10<sup>8</sup></p></td>
 <td><p>0.476</p></td>
 <td><p>0.628</p></td>
 <td><p>0.394</p></td>
 <td><p>0.0</p></td>
 <td><p>Mejor en RMSE y MAE.</p></td>
-<td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>XGBoost</strong></p></td>
+<tr class="row-odd"><td><p>XGBoost</p></td>
 <td><p>28</p></td>
-<td><p>1.903 × 10⁸</p></td>
+<td><p>1.903 × 10<sup>8</sup></p></td>
 <td><p>0.483</p></td>
 <td><p>0.636</p></td>
 <td><p>0.404</p></td>
 <td><p>0.0</p></td>
-<td><p>Segundo lugar, muy cerca de RF; 2 × más rápido. Buen compromiso si se desea menos tiempo de cómputo.</p></td>
-<td><p></p></td>
+<td><p>Segundo lugar, muy cerca de RF; 2 × más rápido. Buen compromiso si se desea menos tiempo de cómputo.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Decision Tree</strong></p></td>
+<tr class="row-even"><td><p>Decision Tree</p></td>
 <td><p>28</p></td>
-<td><p>1.489 × 10⁸</p></td>
+<td><p>1.489 × 10<sup>8</sup></p></td>
 <td><p>0.515</p></td>
 <td><p>0.692</p></td>
 <td><p>0.479</p></td>
 <td><p>0.0</p></td>
-<td><p>Sencillo, interpretable. Peor que los RF pero aceptable.</p></td>
-<td><p></p></td>
+<td><p>Sencillo, interpretable. Peor que los RF pero aceptable</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Ridge</strong></p></td>
+<tr class="row-odd"><td><p>Ridge</p></td>
 <td><p>14</p></td>
-<td><p>1.530 × 10⁸</p></td>
+<td><p>1.530 × 10<sup>8</sup></p></td>
 <td><p>0.464</p></td>
 <td><p>0.718</p></td>
 <td><p>0.516</p></td>
 <td><p>0.0</p></td>
-<td><p>Regularización capta la señal con solo 14 días; MAE similar a RF pero RMSE mayor. Bueno como base lineal.</p></td>
-<td><p></p></td>
+<td><p>Regularización capta la señal con solo 14 días; MAE similar a RF pero RMSE mayor. Bueno como base lineal.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>SVM (linear)</strong></p></td>
+<tr class="row-even"><td><p>SVM (lin.)</p></td>
 <td><p>28</p></td>
-<td><p>1.577 × 10⁸</p></td>
+<td><p>1.577 × 10<sup>8</sup></p></td>
 <td><p>0.452</p></td>
 <td><p>0.731</p></td>
 <td><p>0.534</p></td>
 <td><p>0.0</p></td>
-<td><p>Muy buen MAE.</p></td>
-<td><p></p></td>
+<td><p>Muy buen MAE</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>K‑NN</strong></p></td>
+<tr class="row-odd"><td><p>K‑NN</p></td>
 <td><p>28</p></td>
-<td><p>2.166 × 10⁸</p></td>
+<td><p>2.166 × 10<sup>8</sup></p></td>
 <td><p>0.593</p></td>
 <td><p>0.771</p></td>
 <td><p>0.594</p></td>
 <td><p>0.0</p></td>
 <td><p>Gana con ventanas largas; sensible a la escala. Rendimiento medio y fácil de actualizar.</p></td>
-<td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>Lasso</strong></p></td>
+<tr class="row-even"><td><p>Lasso</p></td>
 <td><p>28</p></td>
-<td><p>3.356 × 10⁸</p></td>
+<td><p>3.356 × 10<sup>8</sup></p></td>
 <td><p>0.639</p></td>
 <td><p>0.814</p></td>
 <td><p>0.663</p></td>
 <td><p>0.0</p></td>
 <td><p>Penaliza variables, pero no supera a Ridge ni a árboles.</p></td>
-<td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>LSTM</strong></p></td>
+<tr class="row-odd"><td><p>LSTM</p></td>
 <td><p>21</p></td>
-<td><p>9.455 × 10¹³</p></td>
+<td><p>9.455 × 10<sup>13</sup></p></td>
 <td><p>0.628</p></td>
 <td><p>0.814</p></td>
 <td><p>0.663</p></td>
-<td><p>7.59 × 10⁻¹⁹⁸</p></td>
-<td><p>Mejor de las redes; iguala a Lasso en RMSE pero con MAE similar al lineal. MAPE gigantesco por divisiones entre v≈0 m/s.</p></td>
-<td><p></p></td>
+<td><p>7.59 × 10⁻¹⁹⁸</p></td>
+<td><p>Mejor de las redes; iguala a Lasso en RMSE pero con MAE similar al lineal. MAPE gigantesco por divisiones entre v≈0 m/s.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>RNN</strong></p></td>
+<tr class="row-even"><td><p>RNN</p></td>
 <td><p>7</p></td>
-<td><p>9.012 × 10¹³</p></td>
+<td><p>9.012 × 10<sup>13</sup></p></td>
 <td><p>0.625</p></td>
 <td><p>0.816</p></td>
 <td><p>0.666</p></td>
-<td><p>1.26 × 10⁻¹⁵⁹</p></td>
+<td><p>1.26 × 10⁻¹⁵⁹</p></td>
 <td><p>Ventana corta resultó óptima; rendimiento casi idéntico a LSTM pero peor.</p></td>
-<td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>Linear Reg.</strong></p></td>
+<tr class="row-odd"><td><p>Linear Reg.</p></td>
 <td><p>28</p></td>
-<td><p>1.518 × 10⁸</p></td>
+<td><p>1.518 × 10<sup>8</sup></p></td>
 <td><p>0.458</p></td>
 <td><p>0.800</p></td>
 <td><p>0.640</p></td>
 <td><p>0.0</p></td>
 <td><p>Sorprende con MAE bajo; error cuadrático alto indica sesgo. Buena referencia simple.</p></td>
-<td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>MLP</strong></p></td>
+<tr class="row-even"><td><p>MLP</p></td>
 <td><p>28</p></td>
-<td><p>2.193 × 10⁸</p></td>
-<td><p>0.621</p></td>
-<td><p>0.978</p></td>
+<td><p>2.193 × 10<sup>8</sup></p></td>
+<td><p>0.622</p></td>
+<td><p>0.977</p></td>
 <td><p>0.954</p></td>
-<td><p>0.448</p></td>
-<td><p>Rendimiento intermedio; mejora con ventanas largas.</p></td>
-<td><p></p></td>
+<td><p>0.0</p></td>
+<td><p>Sobre‑ajuste en ventanas cortas; con 28 d se estabiliza pero queda muy atrás y es el más lento.</p></td>
 </tr>
 </tbody>
 </table>
-</section>
-<hr class="docutils" />
-<section id="analisis-por-categoria-de-modelos">
-<h3><strong>Análisis por Categoría de Modelos</strong><a class="headerlink" href="#analisis-por-categoria-de-modelos" title="Permalink to this heading">#</a></h3>
-<section id="modelos-ensemble">
-<h4><strong>1. Modelos Ensemble</strong><a class="headerlink" href="#modelos-ensemble" title="Permalink to this heading">#</a></h4>
-<ul class="simple">
-<li><p><strong>Random Forest</strong>: Es el modelo con mejor desempeño general, liderando en RMSE y MAE.</p></li>
-<li><p><strong>XGBoost</strong>: Ocupa el segundo lugar, muy cerca de Random Forest, pero es dos veces más rápido, lo que lo hace ideal si se busca reducir el tiempo de cómputo.</p></li>
-<li><p><strong>Decision Tree</strong>: Es sencillo e interpretable, pero su rendimiento es inferior al de los modelos ensemble.</p></li>
-</ul>
-</section>
-<section id="modelos-lineales">
-<h4><strong>2. Modelos Lineales</strong><a class="headerlink" href="#modelos-lineales" title="Permalink to this heading">#</a></h4>
-<ul class="simple">
-<li><p><strong>Ridge Regression</strong>: Destaca como un modelo baseline sólido, capturando la señal con una ventana más corta (T=14) y manteniendo un MAE similar a Random Forest, aunque con un RMSE mayor.</p></li>
-<li><p><strong>Regresión Lineal</strong>: Sorprende con el MAE más bajo, aunque su alto error cuadrático sugiere un posible sesgo en las predicciones.</p></li>
-</ul>
-</section>
-<section id="modelos-de-soporte-vectorial">
-<h4><strong>3. Modelos de Soporte Vectorial</strong><a class="headerlink" href="#modelos-de-soporte-vectorial" title="Permalink to this heading">#</a></h4>
-<ul class="simple">
-<li><p><strong>SVM (linear)</strong>: Logra el MAE más bajo de todos los modelos, lo que lo hace particularmente útil si el objetivo es minimizar el error absoluto.</p></li>
-</ul>
-</section>
-<section id="redes-neuronales">
-<h4><strong>4. Redes Neuronales</strong><a class="headerlink" href="#redes-neuronales" title="Permalink to this heading">#</a></h4>
-<ul class="simple">
-<li><p><strong>LSTM</strong> y <strong>RNN</strong>: Muestran rendimiento similar, siendo ligeramente mejores que <strong>MLP</strong>. Sin embargo, ambos sufren de un MAPE extremadamente alto, posiblemente debido a divisiones en velocidades cercanas a cero.</p></li>
-<li><p><strong>MLP</strong>: Muestra un rendimiento intermedio, mejorando con ventanas más largas, pero sin igualar a los modelos tradicionales.</p></li>
-</ul>
-</section>
-<section id="knn">
-<h4><strong>5. K‑NN</strong><a class="headerlink" href="#knn" title="Permalink to this heading">#</a></h4>
-<ul class="simple">
-<li><p><strong>K‑NN</strong>: Tiene un rendimiento medio, siendo más efectivo con ventanas largas, aunque su sensibilidad a la escala puede ser una desventaja.</p></li>
-</ul>
-</section>
-</section>
-<hr class="docutils" />
-<section id="comparacion-de-rendimiento-en-metricas">
-<h3><strong>Comparación de Rendimiento en Métricas</strong><a class="headerlink" href="#comparacion-de-rendimiento-en-metricas" title="Permalink to this heading">#</a></h3>
-<p>A continuación, se detalla el rendimiento de los modelos en cada una de las métricas clave:</p>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Métrica</strong></p></th>
-<th class="head"><p><strong>Mejor Modelo</strong></p></th>
-<th class="head"><p><strong>Peor Modelo</strong></p></th>
-<th class="head"><p><strong>Observaciones</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>MAPE</strong></p></td>
-<td><p>Random Forest (1.514 × 10⁸)</p></td>
-<td><p>LSTM (9.455 × 10¹³)</p></td>
-<td><p>El MAPE es muy alto en todos los modelos, lo que sugiere desafíos con el error porcentual, posiblemente debido a la escala de los datos o a valores cercanos a cero.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>MAE</strong></p></td>
-<td><p>SVM (0.452)</p></td>
-<td><p>K‑NN (0.593)</p></td>
-<td><p>SVM destaca con el MAE más bajo, mientras que K‑NN tiene un desempeño más deficiente en esta métrica.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>RMSE</strong></p></td>
-<td><p>Random Forest (0.628)</p></td>
-<td><p>MLP (0.978)</p></td>
-<td><p>Random Forest lidera, mientras que MLP presenta el error cuadrático más alto, lo que indica un mal ajuste.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>MSE</strong></p></td>
-<td><p>Random Forest (0.394)</p></td>
-<td><p>MLP (0.954)</p></td>
-<td><p>Similar tendencia al RMSE, con Random Forest como el mejor y MLP como el peor.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>R²</strong></p></td>
-<td><p>RNN (0.666)</p></td>
-<td><p>Decision Tree (0.0)</p></td>
-<td><p>La mayoría de los modelos tienen un R² deficiente, excepto RNN, lo que sugiere una capacidad limitada para explicar la varianza en los datos.</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<hr class="docutils" />
-<section id="observaciones">
-<h3><strong>Observaciones</strong><a class="headerlink" href="#observaciones" title="Permalink to this heading">#</a></h3>
-<ol class="arabic simple">
-<li><p><strong>Para Alta Precisión</strong>:</p>
-<ul class="simple">
-<li><p><strong>Random Forest</strong> es la mejor opción debido a su superioridad en RMSE y MAE.</p></li>
-<li><p><strong>XGBoost</strong> es una alternativa sólida si se busca reducir el tiempo de cómputo.</p></li>
-</ul>
-</li>
-<li><p><strong>Para Simplicidad</strong>:</p>
-<ul class="simple">
-<li><p><strong>Decision Tree</strong> ofrece resultados interpretables, aunque con menor precisión.</p></li>
-<li><p><strong>Regresión Lineal</strong> es una buena referencia simple con un MAE bajo.</p></li>
-</ul>
-</li>
-<li><p><strong>Para Necesidades Específicas</strong>:</p>
-<ul class="simple">
-<li><p><strong>SVM (linear)</strong> es ideal si el objetivo es minimizar el error absoluto.</p></li>
-<li><p><strong>Ridge Regression</strong> es una buena opción para ventanas más cortas y como modelo baseline lineal.</p></li>
-</ul>
-</li>
-<li><p><strong>Para Exploración Futura</strong>:</p>
-<ul class="simple">
-<li><p><strong>LSTM</strong> y <strong>RNN</strong> requieren ajustes para manejar valores de MAPE extremadamente altos, posiblemente mediante transformaciones de datos o diferentes métricas de error.</p></li>
-<li><p><strong>MLP</strong> necesita mejoras en su arquitectura para competir con los modelos tradicionales.</p></li>
-</ul>
-</li>
-</ol>
-</section>
-<hr class="docutils" />
-<section id="conclusiones-finales">
-<h3><strong>Conclusiones Finales</strong><a class="headerlink" href="#conclusiones-finales" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p><strong>Random Forest</strong> y <strong>XGBoost</strong> son los modelos más destacados, destacándose en precisión y eficiencia computacional respectivamente.</p></li>
-<li><p>Los altos valores de MAPE en todos los modelos sugieren la necesidad de abordar problemas de escala o de valores cercanos a cero en la velocidad del viento, posiblemente a través de transformaciones de datos.</p></li>
-<li><p>Las redes neuronales, aunque menos precisas en este caso, tienen potencial y podrían mejorar con mejores técnicas de preprocesamiento y ajustes de hiperparámetros.</p></li>
-</ul>
-<p>Este análisis ofrece una visión clara de las fortalezas y debilidades de cada modelo, permitiendo al usuario tomar decisiones informadas basadas en sus necesidades específicas.</p>
 </section>
 </section>
 </section>
@@ -6210,45 +5505,39 @@ $<span class="math notranslate nohighlight">\(Q = n(n+2)\sum_{k=1}^{h}\frac{\hat
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-knn">Codigo de KNN</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-regresion-lineal">Codigo de Regresion Lineal</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-ridge">Codigo de Ridge</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-lasso">Codigo de Lasso</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-arbol-de-decision">Codigo de Arbol de decision</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-random-forest">Codigo de Random Forest</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-xgboost">Codigo de XGBoost</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-svm">Codigo de SVM</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-mlp">Codigo de MLP</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparacion-para-rnn-y-lstm">Preparacion para RNN y LSTM</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-rnn">Codigo de RNN</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-lstm">Codigo de LSTM</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Ejercicio 3. Modelos de Regresión</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#taller-2">Taller 2</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#punto-3">Punto 3</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-knn">Codigo de KNN</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-regresion-lineal">Codigo de Regresion Lineal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-ridge">Codigo de Ridge</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-lasso">Codigo de Lasso</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-arbol-de-decision">Codigo de Arbol de decision</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-random-forest">Codigo de Random Forest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-xgboost">Codigo de XGBoost</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-svm">Codigo de SVM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-mlp">Codigo de MLP</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preparacion-para-rnn-y-lstm">Preparacion para RNN y LSTM</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-rnn">Codigo de RNN</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-lstm">Codigo de LSTM</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metricas-de-evaluacion-para-los-modelos-propuestos">Métricas de evaluación para los modelos propuestos</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-absoluto-medio-mae">1. Error Absoluto Medio (MAE)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raiz-del-error-cuadratico-medio-rmse">2. Raíz del Error Cuadrático Medio (RMSE)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-cuadratico-medio-mse">3. Error Cuadrático Medio (MSE)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-porcentual-absoluto-medio-mape">4. Error Porcentual Absoluto Medio (MAPE)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coeficiente-de-determinacion-r-2">5. Coeficiente de Determinación ((R^2))</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pvalue-del-test-de-ljungbox">6. p‑value del Test de Ljung–Box</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metricas-de-evaluacion">Métricas de evaluación</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#error-absoluto-medio-mae">1. Error Absoluto Medio (MAE)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#raiz-del-error-cuadratico-medio-rmse">2. Raíz del Error Cuadrático Medio (RMSE)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#error-cuadratico-medio-mse">3. Error Cuadrático Medio (MSE)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#error-porcentual-absoluto-medio-mape">4. Error Porcentual Absoluto Medio (MAPE)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#coeficiente-de-determinacion-r-2">5. Coeficiente de Determinación ((R^2))</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pvalue-del-test-de-ljungbox">6. p‑value del Test de Ljung–Box</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-comparativo-de-los-modelos"><strong>Análisis Comparativo de los Modelos</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen-de-modelos-y-metricas"><strong>Resumen de Modelos y Métricas</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-por-categoria-de-modelos"><strong>Análisis por Categoría de Modelos</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-ensemble"><strong>1. Modelos Ensemble</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-lineales"><strong>2. Modelos Lineales</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-de-soporte-vectorial"><strong>3. Modelos de Soporte Vectorial</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#redes-neuronales"><strong>4. Redes Neuronales</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#knn"><strong>5. K‑NN</strong></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-de-rendimiento-en-metricas"><strong>Comparación de Rendimiento en Métricas</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observaciones"><strong>Observaciones</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones-finales"><strong>Conclusiones Finales</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mejores-resultados-por-modelo">Mejores resultados por modelo</a></li>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
