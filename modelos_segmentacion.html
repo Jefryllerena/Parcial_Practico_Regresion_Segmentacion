@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Ejercicio 4. Modelos de Segmentación &#8212; jbook_Parcial_Practico</title>
   
@@ -14,49 +15,52 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'modelos_segmentacion';</script>
@@ -72,23 +76,19 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -110,20 +110,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -138,13 +130,9 @@
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
-
-  
-    
   
 
 <a class="navbar-brand logo" href="descripcion_del_proyecto.html">
-  
   
   
   
@@ -154,23 +142,12 @@
       
     
     
-    <img src="_static/logo-uninorte.png" class="logo__image only-light" alt="jbook_Parcial_Practico - Home"/>
-    <script>document.write(`<img src="_static/logo-uninorte.png" class="logo__image only-dark" alt="jbook_Parcial_Practico - Home"/>`);</script>
+    <img src="_static/logo-uninorte.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo-uninorte.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -182,10 +159,8 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="eda.html">Ejercicio 1. Análisis Exploratorio de Datos</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="modelos_clasificacion.html">Ejercicio 2. Modelos de Clasificación</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modelos_regresion.html">Ejercicio 3. Modelos de Regresión</a></li>
-
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Ejercicio 4. Modelos de Segmentación</a></li>
 </ul>
 
@@ -202,7 +177,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -211,14 +186,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -340,28 +315,26 @@
 </button>
 
 
-
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script>
 
-
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -382,17 +355,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#punto-4">Punto 4</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-a">Parte A</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-b">Parte B</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-c">Parte C</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#boxplots">Boxplots</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#histogramas">Histogramas</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-visual-de-imagenes">Comparacion Visual de Imagenes</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#curvas-roc-y-precision-recall">Curvas ROC y Precision-Recall</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mapa-de-error">Mapa de Error</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-a">Parte A</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-b">Parte B</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-c">Parte C</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boxplots">Boxplots</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#histogramas">Histogramas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-visual-de-imagenes">Comparacion Visual de Imagenes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#curvas-roc-y-precision-recall">Curvas ROC y Precision-Recall</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mapa-de-error">Mapa de Error</a></li>
 </ul>
 </li>
 </ul>
@@ -404,10 +374,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="ejercicio-4-modelos-de-segmentacion">
-<h1>Ejercicio 4. Modelos de Segmentación<a class="headerlink" href="#ejercicio-4-modelos-de-segmentacion" title="Link to this heading">#</a></h1>
+<h1>Ejercicio 4. Modelos de Segmentación<a class="headerlink" href="#ejercicio-4-modelos-de-segmentacion" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install segmentation_models segmentation_models_pytorch timm monai medpy torchmetrics albumentations imagecodecs einops</span>
@@ -417,25 +387,25 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">json</span><span class="o">,</span><span class="w"> </span><span class="nn">random</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">json</span><span class="o">,</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">itertools</span><span class="o">,</span><span class="w"> </span><span class="nn">warnings</span><span class="o">,</span><span class="w"> </span><span class="nn">math</span><span class="o">,</span><span class="w"> </span><span class="nn">gc</span><span class="o">,</span><span class="w"> </span><span class="nn">pandas</span><span class="o">,</span><span class="w"> </span><span class="nn">numpy</span><span class="o">,</span><span class="w"> </span><span class="nn">time</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span><span class="o">,</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span><span class="o">,</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span><span class="o">,</span><span class="w"> </span><span class="nn">cv2</span><span class="o">,</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span><span class="o">,</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">StratifiedKFold</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">precision_recall_curve</span><span class="p">,</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span><span class="p">,</span> <span class="n">balanced_accuracy_score</span><span class="p">,</span> <span class="n">confusion_matrix</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span><span class="o">,</span><span class="w"> </span><span class="nn">tifffile</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tiff</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">torch</span><span class="w"> </span><span class="kn">import</span> <span class="n">nn</span><span class="p">,</span> <span class="n">optim</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dataset</span><span class="p">,</span> <span class="n">DataLoader</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">torchvision.transforms</span><span class="w"> </span><span class="kn">import</span> <span class="n">functional</span> <span class="k">as</span> <span class="n">TF</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">torchvision.models.detection</span><span class="w"> </span><span class="kn">import</span> <span class="n">maskrcnn_resnet50_fpn</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">segmentation_models_pytorch</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">smp</span><span class="o">,</span><span class="w"> </span><span class="nn">timm</span><span class="o">,</span><span class="w"> </span><span class="nn">monai</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">KFold</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">balanced_accuracy_score</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.spatial.distance</span><span class="w"> </span><span class="kn">import</span> <span class="n">directed_hausdorff</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">medpy.metric.binary</span><span class="w"> </span><span class="kn">import</span> <span class="n">hd95</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">skimage.draw</span><span class="w"> </span><span class="kn">import</span> <span class="n">polygon</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">torch.multiprocessing</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mp</span>
+<span class="kn">import</span> <span class="nn">itertools</span><span class="o">,</span> <span class="nn">warnings</span><span class="o">,</span> <span class="nn">math</span><span class="o">,</span> <span class="nn">gc</span><span class="o">,</span> <span class="nn">pandas</span><span class="o">,</span> <span class="nn">numpy</span><span class="o">,</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span><span class="o">,</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span><span class="o">,</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span><span class="o">,</span> <span class="nn">cv2</span><span class="o">,</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span><span class="o">,</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">StratifiedKFold</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">precision_recall_curve</span><span class="p">,</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span><span class="p">,</span> <span class="n">balanced_accuracy_score</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+<span class="kn">import</span> <span class="nn">torch</span><span class="o">,</span> <span class="nn">tifffile</span> <span class="k">as</span> <span class="nn">tiff</span>
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span><span class="p">,</span> <span class="n">optim</span>
+<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">Dataset</span><span class="p">,</span> <span class="n">DataLoader</span>
+<span class="kn">from</span> <span class="nn">torchvision.transforms</span> <span class="kn">import</span> <span class="n">functional</span> <span class="k">as</span> <span class="n">TF</span>
+<span class="kn">from</span> <span class="nn">torchvision.models.detection</span> <span class="kn">import</span> <span class="n">maskrcnn_resnet50_fpn</span>
+<span class="kn">import</span> <span class="nn">segmentation_models_pytorch</span> <span class="k">as</span> <span class="nn">smp</span><span class="o">,</span> <span class="nn">timm</span><span class="o">,</span> <span class="nn">monai</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">KFold</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">balanced_accuracy_score</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span>
+<span class="kn">from</span> <span class="nn">scipy.spatial.distance</span> <span class="kn">import</span> <span class="n">directed_hausdorff</span>
+<span class="kn">from</span> <span class="nn">medpy.metric.binary</span> <span class="kn">import</span> <span class="n">hd95</span>
+<span class="kn">from</span> <span class="nn">skimage.draw</span> <span class="kn">import</span> <span class="n">polygon</span>
+<span class="kn">import</span> <span class="nn">torch.multiprocessing</span> <span class="k">as</span> <span class="nn">mp</span>
 
 <span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">cudnn</span><span class="o">.</span><span class="n">benchmark</span> <span class="o">=</span> <span class="kc">True</span>
 
@@ -454,10 +424,8 @@ document.write(`
 </div>
 </div>
 </div>
-<section id="punto-4">
-<h2>Punto 4<a class="headerlink" href="#punto-4" title="Link to this heading">#</a></h2>
 <section id="parte-a">
-<h3>Parte A<a class="headerlink" href="#parte-a" title="Link to this heading">#</a></h3>
+<h2>Parte A<a class="headerlink" href="#parte-a" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">meta_tiles</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;tile_meta.csv&#39;</span><span class="p">)</span>
@@ -581,7 +549,7 @@ document.write(`
 <p>17518 rows × 4 columns</p>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;"> <div style="background-color: #d4f8e8; padding: 8px 12px;"> <strong>💡 Análisis</strong> </div> <div style="background-color: #f5fdf9; padding: 12px;"> La tabla <code>df_anot</code> contiene 17,518 anotaciones de estructuras anatómicas segmentadas, principalmente de tipo <code>blood_vessel</code> y <code>glomerulus</code>. Cada fila representa una región poligonal identificada dentro de una imagen (<code>id</code>), junto con su área en píxeles (<code>area_px</code>). Se observa una gran variabilidad en el tamaño de las estructuras, desde áreas pequeñas (≈158 px²) hasta muy grandes (más de 55,000 px²), lo que sugiere diferencias marcadas entre tipos de tejidos. Este conjunto permite realizar un análisis por tipo de estructura (por ejemplo, conteo y área total por tipo), por imagen (cuántas estructuras hay por <code>id</code>), y detectar posibles <i>outliers</i> en las áreas. Un siguiente paso lógico sería visualizar la distribución del área por tipo con histogramas o <i>boxplots</i>, y eventualmente superponer las coordenadas sobre las imágenes originales para validar las segmentaciones. </div> </div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">meta_tiles</span>
 </pre></div>
@@ -901,7 +869,27 @@ document.write(`
 <p>1633 rows × 4 columns</p>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;"> <div style="background-color: #d4f8e8; padding: 8px 12px;"> <strong>💡 Análisis</strong> </div> <div style="background-color: #f5fdf9; padding: 12px;"> Se visualizaron tres tablas importantes en el flujo de trabajo actual: <ul> <li><strong>meta_tiles</strong>: contiene 7033 filas y 5 columnas (<code>id</code>, <code>source_wsi</code>, <code>dataset</code>, <code>i</code> y <code>j</code>).</li> <ul> <li><code>id</code> es un identificador único para cada tile (pequeña imagen extraída de una WSI).</li> <li><code>source_wsi</code> indica de qué imagen completa (WSI) proviene cada tile.</li> <li><code>dataset</code> podría representar a qué partición o tipo de conjunto pertenece (entrenamiento, validación, etc.).</li> <li><code>i</code> y <code>j</code> representan posiciones dentro de la imagen original (coordenadas).</li> </ul>
+php-template
+Copiar
+Editar
+  <li><strong>meta_wsi</strong>: contiene la información clínica de cada imagen <code>source_wsi</code>.</li>
+  <ul>
+    <li>Incluye variables como <code>age</code>, <code>sex</code>, <code>race</code>, <code>height</code>, <code>weight</code> y <code>bmi</code>.</li>
+    <li>Permite asociar la metadata clínica a los tiles vía el campo <code>source_wsi</code>.</li>
+  </ul>
+  <li><strong>df_anot_agr</strong>: agrupa la información de anotaciones sobre los tiles.</li>
+  <ul>
+    <li>Está basado en el área en píxeles (<code>area_px</code>) para cada tipo de estructura anatómica.</li>
+    <li>Se resumen las áreas correspondientes a tres categorías: <code>blood_vessel</code>, <code>glomerulus</code> y <code>unsure</code>.</li>
+    <li>Los datos fueron agregados por <code>id</code> y reestructurados usando <code>unstack</code>.</li>
+  </ul>
+</ul>
+<p><strong>Inferencias:</strong></p>
+<ul>
+  <li>Se dispone de suficiente información para fusionar las tres fuentes de datos (<code>tiles</code>, <code>wsi</code> y <code>anotaciones</code>) usando <code>id</code> o <code>source_wsi</code> como claves principales.</li>
+  <li>La estructura actual facilitará crear datasets enriquecidos para tareas de clasificación o segmentación en imágenes médicas.</li>
+</ul><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Estadísticas globales&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Total tiles&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">meta_tiles</span><span class="p">))</span>
@@ -1021,7 +1009,38 @@ Name: count, dtype: int64
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;"> <div style="background-color: #d4f8e8; padding: 8px 12px;"> <strong>💡 Análisis</strong> </div> <div style="background-color: #f5fdf9; padding: 12px;"> <ul> <li><strong>Resumen general de meta_tiles:</strong></li> <ul> <li>Total de tiles disponibles: <strong>7033</strong></li> <li>Total de imágenes WSI únicas: <strong>13</strong></li> </ul>
+php-template
+Copiar
+Editar
+  <li><strong>Distribución por dataset:</strong></li>
+  <ul>
+    <li><code>Dataset 3</code>: 5400 tiles (mayoría de los datos)</li>
+    <li><code>Dataset 2</code>: 1211 tiles</li>
+    <li><code>Dataset 1</code>: 422 tiles</li>
+  </ul>
+  <p>Esto muestra un desequilibrio importante en la cantidad de muestras entre conjuntos.</p>
+  <li><strong>Descripción de coordenadas <code>i</code> y <code>j</code>:</strong></li>
+  <ul>
+    <li><code>i</code> (posición horizontal) – valores entre 1536 y 30208, con media 14296.5</li>
+    <li><code>j</code> (posición vertical) – valores entre 2560 y 52753, con media 23227.0</li>
+  </ul>
+  <p>Las posiciones son muy variables, indicando que los tiles se distribuyen de forma amplia en las imágenes originales.</p>
+  <li><strong>Distribución de anotaciones por tipo (df_anot):</strong></li>
+  <ul>
+    <li><code>blood_vessel</code> (vasos sanguíneos): 16,054 anotaciones (mayoría clara)</li>
+    <li><code>unsure</code> (anotaciones inciertas): 897 anotaciones</li>
+    <li><code>glomerulus</code> (glomérulos): 567 anotaciones</li>
+  </ul>
+  <p>El tipo de anotación predominante son vasos sanguíneos. Hay pocos glomérulos, lo cual podría complicar el aprendizaje si no se balancea el dataset adecuadamente.</p>
+</ul>
+<p><strong>Observaciones clave:</strong></p>
+<ul>
+  <li>Existe un desbalance tanto en la cantidad de tiles por dataset como en el número de anotaciones por tipo anatómico.</li>
+  <li>Podría ser necesario realizar técnicas de balanceo (submuestreo o sobremuestreo) antes de modelar.</li>
+  <li>El amplio rango de posiciones <code>i</code> y <code>j</code> sugiere que hay tiles provenientes de distintas zonas anatómicas.</li>
+</ul>
+</div> </div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Cobertura promedio de máscara por tile&#39;</span><span class="p">)</span>
 <span class="n">df_anot_agr</span><span class="p">[[</span><span class="s1">&#39;blood_vessel&#39;</span><span class="p">,</span> <span class="s1">&#39;glomerulus&#39;</span><span class="p">,</span> <span class="s1">&#39;unsure&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">/</span> <span class="p">(</span><span class="mi">512</span> <span class="o">*</span> <span class="mi">512</span><span class="p">)</span>
@@ -1288,19 +1307,19 @@ Posibles anomalías alta cobertura 0
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;"> <div style="background-color: #d4f8e8; padding: 8px 12px;"> <strong>💡 Análisis</strong> </div> <div style="background-color: #f5fdf9; padding: 12px;"> El conjunto <code>meta_tiles</code> contiene un total de 7,033 tiles derivados de 13 WSIs. La mayoría de los tiles pertenecen al dataset 3 (5,400), seguido por el 2 (1,211) y el 1 (422). Las coordenadas espaciales (<code>i</code>, <code>j</code>) muestran gran variabilidad, con valores máximos de hasta 30,208 y 52,753 respectivamente, indicando diferencias en resolución o tamaño de las imágenes originales. <br><br> La distribución de anotaciones revela un fuerte desbalance: <code>blood_vessel</code> domina con 16,054 registros, mientras que <code>glomerulus</code> apenas cuenta con 567 y <code>unsure</code> con 897. La cobertura promedio de máscara por tile es baja: 4.3% para vasos, 4.6% para glomérulos y solo 0.46% para regiones inciertas. Esto sugiere que la mayoría del contenido en los tiles no está segmentado. <br><br> Al cruzar los <code>id</code> de los tiles con las anotaciones, se identificaron 5,400 tiles (≈76%) sin ninguna máscara, lo que implica que podrían usarse como negativos o ejemplos de fondo en entrenamientos supervisados. Por otro lado, se detectaron 2 posibles anomalías de baja cobertura, con proporciones de <code>blood_vessel</code> menores al 0.05% del área del tile (considerando un tile de 512x512). No se identificaron casos de cobertura excesiva (&gt; 90%), lo que sugiere buena calidad general en el etiquetado. </div> </div><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">cargar_imagen</span><span class="p">(</span><span class="n">tile_id</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cargar_imagen</span><span class="p">(</span><span class="n">tile_id</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;train/</span><span class="si">{</span><span class="n">tile_id</span><span class="si">}</span><span class="s2">.tif&quot;</span><span class="p">)</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">generar_mascara</span><span class="p">(</span><span class="n">lista_poligonos</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">generar_mascara</span><span class="p">(</span><span class="n">lista_poligonos</span><span class="p">):</span>
     <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">poly</span> <span class="ow">in</span> <span class="n">lista_poligonos</span><span class="p">:</span>
         <span class="n">pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">poly</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
         <span class="n">cv2</span><span class="o">.</span><span class="n">fillPoly</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="p">[</span><span class="n">pts</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">mask</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">mostrar_ejemplo</span><span class="p">(</span><span class="n">tile_id</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">mostrar_ejemplo</span><span class="p">(</span><span class="n">tile_id</span><span class="p">):</span>
     <span class="n">img</span> <span class="o">=</span> <span class="n">cargar_imagen</span><span class="p">(</span><span class="n">tile_id</span><span class="p">)</span>
     <span class="n">sub</span> <span class="o">=</span> <span class="n">df_anot</span><span class="p">[</span><span class="n">df_anot</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">tile_id</span><span class="p">]</span>
     <span class="n">mask_total</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
@@ -1339,9 +1358,9 @@ Posibles anomalías alta cobertura 0
 <img alt="_images/e6080c578621c4c1aeb360a85d8c7996e5f658e114c958c0fe7f89726eca4075.png" src="_images/e6080c578621c4c1aeb360a85d8c7996e5f658e114c958c0fe7f89726eca4075.png" />
 </div>
 </div>
-</section>
+<div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;"> <div style="background-color: #d4f8e8; padding: 8px 12px;"> <strong>💡 Análisis</strong> </div> <div style="background-color: #f5fdf9; padding: 12px;"> Se implementaron funciones para cargar imágenes originales (<code>cargar_imagen</code>) y generar sus respectivas máscaras binarias a partir de anotaciones poligonales (<code>generar_mascara</code>). Posteriormente, la función <code>mostrar_ejemplo</code> superpone las máscaras sobre las imágenes correspondientes, permitiendo una evaluación visual directa de la calidad del etiquetado. <br><br> Al observar los ejemplos aleatorios generados, se confirma que las regiones segmentadas (en rojo) se alinean adecuadamente con las estructuras visibles en las imágenes histológicas, en su mayoría correspondientes a vasos sanguíneos. La variedad de formas, tamaños y orientaciones resalta la heterogeneidad del tejido, lo que representa un desafío relevante para modelos de segmentación. <br><br> Esta visualización no solo valida la calidad de las anotaciones, sino que también permite identificar ejemplos extremos (como tiles con muy poca o mucha segmentación), facilitando la selección de muestras para balanceo, validación o análisis más detallado. Además, este procedimiento es esencial antes de entrenar modelos supervisados, ya que asegura que las máscaras se correspondan correctamente con las regiones anatómicas relevantes en las imágenes originales. </div> </div></section>
 <section id="parte-b">
-<h3>Parte B<a class="headerlink" href="#parte-b" title="Link to this heading">#</a></h3>
+<h2>Parte B<a class="headerlink" href="#parte-b" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">meta_tiles</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;tile_meta.csv&quot;</span><span class="p">)</span>
@@ -1357,13 +1376,13 @@ Posibles anomalías alta cobertura 0
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">HuBMAP</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ids</span><span class="p">,</span> <span class="n">aug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">gris</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">HuBMAP</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ids</span><span class="p">,</span> <span class="n">aug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">gris</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ids</span> <span class="o">=</span> <span class="n">ids</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">aug</span> <span class="o">=</span> <span class="n">aug</span><span class="p">;</span> <span class="bp">self</span><span class="o">.</span><span class="n">gris</span> <span class="o">=</span> <span class="n">gris</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ids</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ids</span><span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_mask</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tid</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_mask</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tid</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">tid</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">anotaciones</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">512</span><span class="p">,</span><span class="mi">512</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
         <span class="n">m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">512</span><span class="p">,</span><span class="mi">512</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
@@ -1376,7 +1395,7 @@ Posibles anomalías alta cobertura 0
                 <span class="n">m</span><span class="p">[</span><span class="n">rr</span><span class="p">,</span> <span class="n">cc</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">return</span> <span class="n">m</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
         <span class="n">tid</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ids</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">img_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;train/</span><span class="si">{</span><span class="n">tid</span><span class="si">}</span><span class="s2">.tif&quot;</span>
@@ -1408,14 +1427,61 @@ Posibles anomalías alta cobertura 0
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;"> <div style="background-color: #d4f8e8; padding: 8px 12px;"> <strong>💡 Análisis</strong> </div> <div style="background-color: #f5fdf9; padding: 12px;"> <ul> <li><strong>Lectura de datos:</strong></li> <ul> <li>Se carga el archivo <code>tile_meta.csv</code> en <code>meta_tiles</code>.</li> <li>Se carga el archivo <code>polygons.jsonl</code> para obtener las anotaciones de polígonos por tile.</li> <li>Se filtran los <code>ids</code> que tienen anotaciones válidas en <code>ids_anotados</code>.</li> </ul>
+php-template
+Copiar
+Editar
+  <li><strong>Preparación de validación cruzada:</strong></li>
+  <ul>
+    <li>Se configura un <code>KFold</code> con 2 particiones, mezcla de datos (<code>shuffle=True</code>) y semilla fija (<code>random_state=0</code>) para asegurar reproducibilidad.</li>
+  </ul>
+  <li><strong>Definición de la clase <code>HuBMAP(Dataset)</code>:</strong></li>
+  <ul>
+    <li><strong>__init__:</strong> almacena los IDs, una bandera de augmentación y otra para si la imagen debe ser en escala de grises.</li>
+    <li><strong>__len__:</strong> retorna el número de elementos (tiles) disponibles.</li>
+    <li><strong>_mask:</strong> genera una máscara binaria de 512x512:
+      <ul>
+        <li>Si no hay anotaciones para el tile, crea una máscara de ceros.</li>
+        <li>Si existen anotaciones:
+          <ul>
+            <li>Se usa la función <code>polygon</code> para llenar los píxeles dentro de cada polígono.</li>
+            <li><code>blood_vessel</code> (vaso sanguíneo) → valor 1.</li>
+            <li><code>glomerulus</code> (glomérulo) → valor 0 explícito (aunque en la inicialización ya sería cero).</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><strong>__getitem__:</strong> prepara un par (imagen, máscara) para entrenamiento:
+      <ul>
+        <li>Lee la imagen desde <code>train/{tid}.tif</code>.</li>
+        <li>Normaliza el pixelado entre 0 y 1 dividiendo entre 255.</li>
+        <li>Si la imagen es monocromática, le añade un canal extra.</li>
+        <li>Si <code>gris=True</code>, convierte la imagen a escala de grises promedio.</li>
+        <li>Aplica una posible augmentación de flipping horizontal aleatorio.</li>
+        <li>Convierte imagen y máscara a tensores de <code>torch</code> listos para redes neuronales.</li>
+      </ul>
+    </li>
+  </ul>
+  <li><strong>Manejo de errores:</strong></li>
+  <ul>
+    <li>Si falla la carga de la imagen, imprime una advertencia indicando el ID problemático antes de relanzar la excepción.</li>
+  </ul>
+</ul>
+<p><strong>Observaciones clave:</strong></p>
+<ul>
+  <li>El diseño es robusto, maneja errores de archivos faltantes y prepara de forma adecuada los datos para entrenamiento.</li>
+  <li>El tratamiento de imágenes en escala de grises puede ser útil para redes ligeras o tareas donde el color no es relevante.</li>
+  <li>La generación de máscaras directamente en la carga del dato evita necesidad de almacenarlas físicamente, ahorrando almacenamiento.</li>
+  <li>La augmentación básica (flip horizontal) podría ser ampliada posteriormente con más técnicas de aumento de datos.</li>
+</ul>
+</div> </div><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">dice_loss</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">t</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dice_loss</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">t</span><span class="p">):</span>
     <span class="n">p</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">p</span><span class="p">);</span> <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span> <span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">inter</span><span class="o">=</span><span class="p">(</span><span class="n">p</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">();</span> <span class="k">return</span> <span class="mi">1</span><span class="o">-</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">inter</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">+</span><span class="n">t</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">entrenar_modelo</span><span class="p">(</span><span class="n">modelo</span><span class="p">,</span> <span class="n">nombre</span><span class="p">,</span> <span class="n">epocas</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">lote</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">gris</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">entrenar_modelo</span><span class="p">(</span><span class="n">modelo</span><span class="p">,</span> <span class="n">nombre</span><span class="p">,</span> <span class="n">epocas</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">lote</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">gris</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="n">inicio</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
     <span class="n">preds</span><span class="p">,</span> <span class="n">truth</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">f</span><span class="p">,</span> <span class="p">(</span><span class="n">tr</span><span class="p">,</span> <span class="n">vl</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">kfold</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">ids_anotados</span><span class="p">)):</span>
@@ -1453,9 +1519,57 @@ Posibles anomalías alta cobertura 0
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;"> <div style="background-color: #d4f8e8; padding: 8px 12px;"> <strong>💡 Análisis</strong> </div> <div style="background-color: #f5fdf9; padding: 12px;"> <ul> <li><strong>Definición de función <code>dice_loss(p, t)</code>:</strong></li> <ul> <li>Calcula la función de pérdida basada en el <strong>Dice coefficient</strong>, ideal para segmentación donde interesa el solapamiento entre la predicción (<code>p</code>) y la verdad de terreno (<code>t</code>).</li> <li>Aplica una función sigmoide a la salida del modelo antes de evaluar la pérdida.</li> </ul>
+php-template
+Copiar
+Editar
+  <li><strong>Definición de función <code>entrenar_modelo</code>:</strong></li>
+  <ul>
+    <li>Realiza todo el ciclo de entrenamiento y validación para un modelo de segmentación de imágenes.</li>
+  </ul>
+  <li><strong>Procedimiento:</strong></li>
+  <ul>
+    <li>Inicializa cronómetro (<code>inicio</code>) para medir el tiempo total de entrenamiento.</li>
+    <li>Divide el conjunto anotado usando <code>KFold</code> para validación cruzada.</li>
+    <li>Por cada fold:</li>
+    <ul>
+      <li>Configura los <code>DataLoader</code> de entrenamiento (<code>dl_tr</code>) y validación (<code>dl_vl</code>).</li>
+      <li>Inicializa el optimizador Adam con tasa de aprendizaje 0.001.</li>
+      <li>Por cada época de entrenamiento:</li>
+      <ul>
+        <li>Para cada lote de entrenamiento:</li>
+        <ul>
+          <li>Se pasa la imagen y máscara a la GPU (<code>device</code>).</li>
+          <li>Se calcula la predicción del modelo y la pérdida de Dice.</li>
+          <li>Se realiza retropropagación (<code>backward</code>) y optimización (<code>step</code>).</li>
+          <li>Se guarda el valor de la pérdida por lote.</li>
+        </ul>
+        <li>Se imprime la pérdida promedio por época.</li>
+      </ul>
+      <li>En modo evaluación (<code>torch.no_grad()</code>), se obtienen las predicciones del modelo aplicando sigmoide y se almacenan.</li>
+    </ul>
+  </ul>
+  <li><strong>Resultados:</strong></li>
+  <ul>
+    <li>Guarda las predicciones y verdades verdaderas (<code>p</code> y <code>t</code>) en un archivo <code>.npz</code> para análisis posterior.</li>
+    <li>Imprime el tiempo total de entrenamiento.</li>
+  </ul>
+  <li><strong>Detalles adicionales:</strong></li>
+  <ul>
+    <li>El parámetro <code>gris</code> permite usar imágenes convertidas a escala de grises si se desea.</li>
+    <li>La estrategia <code>gc.collect()</code> y <code>torch.cuda.empty_cache()</code> al final de cada fold ayuda a liberar memoria GPU para evitar cuellos de botella.</li>
+  </ul>
+</ul>
+<p><strong>Observaciones clave:</strong></p>
+<ul>
+  <li>El flujo de entrenamiento está correctamente organizado, ideal para entrenamiento rápido sobre un dataset relativamente pequeño.</li>
+  <li>El uso de validación cruzada permite evaluar la robustez general del modelo.</li>
+  <li>El método de guardar las predicciones reales y estimadas por fold es excelente para calcular métricas después, como AUC, IoU, Dice global, etc.</li>
+  <li>Podría ser mejorable agregar un scheduler de tasa de aprendizaje o EarlyStopping en ciclos de entrenamiento largos.</li>
+</ul>
+</div> </div><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calcular_metricas</span><span class="p">(</span><span class="n">ruta</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calcular_metricas</span><span class="p">(</span><span class="n">ruta</span><span class="p">):</span>
     <span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">ruta</span><span class="p">)</span>
     <span class="n">p</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;p&quot;</span><span class="p">]</span>                      <span class="c1"># probabilidades (float32)</span>
     <span class="n">t</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;t&quot;</span><span class="p">]</span>                      <span class="c1"># ground‑truth (float32)</span>
@@ -1499,7 +1613,40 @@ Posibles anomalías alta cobertura 0
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;"> <div style="background-color: #d4f8e8; padding: 8px 12px;"> <strong>💡 Análisis</strong> </div> <div style="background-color: #f5fdf9; padding: 12px;"> <ul> <li><strong>Definición de función <code>calcular_metricas(ruta)</code>:</strong></li> <ul> <li>Carga un archivo <code>.npz</code> que contiene predicciones (<code>p</code>) y etiquetas verdaderas (<code>t</code>).</li> <li>Binariza las predicciones aplicando un umbral de 0.5.</li> <li>Reestructura las matrices en vectores 1-D para facilitar el cálculo de métricas.</li> </ul>
+php-template
+Copiar
+Editar
+  <li><strong>Métricas calculadas:</strong></li>
+  <ul>
+    <li><strong>Dice coefficient (dice):</strong> Mide la superposición entre predicciones y ground truth. Usado comúnmente en segmentación.</li>
+    <li><strong>IoU (Intersection over Union):</strong> Evalúa qué tanto se solapan las predicciones con las etiquetas verdaderas.</li>
+    <li><strong>Precision:</strong> Proporción de verdaderos positivos sobre todos los positivos predichos.</li>
+    <li><strong>Recall:</strong> Proporción de verdaderos positivos sobre todos los positivos reales.</li>
+    <li><strong>AUC (Area Under ROC Curve):</strong> Mide la capacidad de separación del modelo (usa las probabilidades crudas, no binarizadas).</li>
+    <li><strong>Hausdorff Distance promedio (hd):</strong> Calcula la distancia máxima entre predicción y ground truth para cada imagen. Ignora casos vacíos.</li>
+    <li><strong>Balanced Accuracy:</strong> Promedio del recall entre clases, útil para datasets desbalanceados.</li>
+  </ul>
+  <li><strong>Notas adicionales:</strong></li>
+  <ul>
+    <li>Se agrega una corrección mínima (<code>+1e-7</code>) en divisiones para evitar divisiones por cero.</li>
+    <li>La función <code>hd95</code> que se invoca no está mostrada aquí, pero típicamente calcula la distancia de Hausdorff al percentil 95, robusta a outliers.</li>
+    <li>El diccionario vacío <code>resultados = {}</code> indica que después se irán acumulando los resultados de múltiples evaluaciones.</li>
+  </ul>
+  <li><strong>Ventajas de este enfoque:</strong></li>
+  <ul>
+    <li>Permite evaluar el desempeño de los modelos en múltiples dimensiones (solapamiento, precisión, robustez espacial).</li>
+    <li>Facilita la comparación sistemática entre diferentes modelos, folds, o versiones de entrenamiento.</li>
+    <li>El manejo explícito de casos vacíos evita errores numéricos en métricas espaciales como Hausdorff.</li>
+  </ul>
+</ul>
+<p><strong>Observaciones clave:</strong></p>
+<ul>
+  <li>Esta función es ideal para evaluar modelos de segmentación binaria.</li>
+  <li>El conjunto de métricas está bien equilibrado entre medidas de superposición, clasificación y distancia espacial.</li>
+  <li>Un paso siguiente lógico sería guardar estos resultados en un DataFrame para hacer reportes o visualizaciones de desempeño.</li>
+</ul>
+</div> </div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># unet = smp.Unet(&quot;resnet18&quot;, classes=1, encoder_weights=None, in_channels=3)</span>
 <span class="c1"># entrenar_modelo(unet, &quot;unet&quot;)</span>
@@ -1665,7 +1812,7 @@ Posibles anomalías alta cobertura 0
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;"> <div style="background-color: #d4f8e8; padding: 8px 12px;"> <strong>💡 Análisis</strong> </div> <div style="background-color: #f5fdf9; padding: 12px;"> Se ha implementado un pipeline completo para entrenar y evaluar modelos de segmentación de imágenes médicas sobre el conjunto HuBMAP. La clase <code>HuBMAP</code> actúa como <i>Dataset</i> personalizado, cargando tanto las imágenes como sus respectivas máscaras desde disco. Se contemplan casos sin anotaciones, se genera la máscara correspondiente a cada tipo (vaso o glomérulo), y se aplica aumento por inversión horizontal condicionalmente. <br><br> El entrenamiento se realiza con validación cruzada (<code>KFold</code>) sobre las imágenes anotadas. Cada modelo es entrenado durante 2 épocas, usando la función de pérdida <code>dice_loss</code>, adecuada para segmentación binaria. Los resultados por fold se almacenan y evalúan usando un conjunto de métricas: Dice, IoU, Precisión, Recall, AUC, Hausdorff y Precisión Balanceada. <br><br> Comparando el rendimiento de los modelos ya evaluados, se observa que <strong>Attention U-Net</strong> logró los mejores resultados globales con un Dice de <code>0.41</code> y AUC de <code>0.69</code>, seguido de cerca por <strong>U-Net</strong> tradicional. Por el contrario, modelos como <strong>V-Net</strong> y <strong>SegNet</strong> mostraron métricas sustancialmente más bajas, lo que sugiere menor capacidad de generalización o ajuste subóptimo a los datos. <br><br> El tiempo de entrenamiento varió significativamente entre modelos, con <code>U-Net</code> tardando casi 50 minutos, mientras que <code>SegNet</code> completó el proceso en poco más de 16 minutos. Este factor debe considerarse al balancear rendimiento vs. eficiencia computacional. <br><br> Este flujo de trabajo permite extender fácilmente la comparación a otros modelos (como Mask R-CNN, Swin U-Net o ResUNet) simplemente instanciando la arquitectura e invocando la función <code>entrenar_modelo()</code>. Además, las métricas calculadas son consistentes con las requeridas en el ejercicio (Dice, IoU, Recall, etc.), facilitando su incorporación en una tabla comparativa. </div> </div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from skimage.measure import label, regionprops</span>
 
@@ -1918,7 +2065,7 @@ Posibles anomalías alta cobertura 0
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;"> <div style="background-color: #d4f8e8; padding: 8px 12px;"> <strong>💡 Análisis</strong> </div> <div style="background-color: #f5fdf9; padding: 12px;"> En la segunda tanda de modelos evaluados se destaca el enfoque orientado a instancias de <strong>Mask R-CNN</strong>, que implementa detección de objetos con generación de bounding boxes, máscaras y etiquetas por región. Aunque su rendimiento es robusto (Dice ≈ 0.47, IoU ≈ 0.30, Balanced Accuracy ≈ 0.82), el tiempo de entrenamiento fue considerablemente alto (más de 6 horas), lo que puede limitar su uso práctico en pipelines rápidos o recursos limitados. <br><br> Por otro lado, <strong>ResUNet</strong> y <strong>Swin U-Net</strong> ofrecieron un rendimiento más equilibrado entre precisión y eficiencia. Swin U-Net se posiciona como uno de los modelos con mejores métricas globales (Dice ≈ 0.47, Hausdorff ≈ 155), destacando por su diseño eficiente basado en transformers. <br><br> Modelos como <strong>PSPNet</strong> y <strong>FCN</strong> también mostraron desempeños competitivos, con Dice cercanos a 0.44 y AUC superiores a 0.76, indicando buena capacidad para separar estructuras segmentadas. Aunque su precisión puede no ser la más alta, se entrenan más rápidamente y pueden ser útiles como punto de partida o modelos base. <br><br> En resumen, Swin U-Net y Mask R-CNN lideran en métricas generales, pero el primero destaca por su balance entre precisión, rapidez y estabilidad. La arquitectura FCN, al ser más ligera, también puede ser útil para tareas en tiempo real o entornos con restricciones computacionales. Todos los modelos evaluados siguen una estructura común, permitiendo su comparación sistemática a través de las métricas clave exigidas en el taller. </div> </div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cols</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Dice&quot;</span><span class="p">,</span><span class="s2">&quot;IoU&quot;</span><span class="p">,</span><span class="s2">&quot;Precisión&quot;</span><span class="p">,</span><span class="s2">&quot;Recall&quot;</span><span class="p">,</span><span class="s2">&quot;AUC&quot;</span><span class="p">,</span><span class="s2">&quot;Hausdorff&quot;</span><span class="p">,</span><span class="s2">&quot;Balanced Acc.&quot;</span><span class="p">]</span>
 
@@ -2083,7 +2230,7 @@ Posibles anomalías alta cobertura 0
 </div>
 </div>
 </div>
-<div class="pst-scrollable-table-container"><table class="table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p></p></th>
 <th class="head text-right"><p>Dice</p></th>
@@ -2188,8 +2335,7 @@ Posibles anomalías alta cobertura 0
 </tr>
 </tbody>
 </table>
-</div>
-<ul class="simple">
+<div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;"> <div style="background-color: #d4f8e8; padding: 8px 12px;"> <strong>💡 Análisis</strong> </div> <div style="background-color: #f5fdf9; padding: 12px;"> La tabla de resultados permite comparar el rendimiento de diez modelos de segmentación médica a partir de siete métricas clave. El modelo <strong>Swin U-Net</strong> lidera el ranking general, con el mayor valor de <code>Dice</code> (0.47), buena precisión (<code>0.48</code>), <code>AUC</code> (0.76) y un bajo <code>Hausdorff</code> (155), lo cual indica segmentaciones precisas y estables. Le sigue <strong>Mask R-CNN</strong>, que destaca en <code>Recall</code> (0.70) y <code>Balanced Accuracy</code> (0.82), ideal para minimizar falsos negativos en contextos clínicos. <br><br> Por otro lado, <strong>Attention U-Net</strong> y <strong>FCN</strong> también ofrecen un buen equilibrio entre precisión y cobertura, con valores competitivos de <code>IoU</code> y <code>Balanced Accuracy</code>. Modelos como <strong>V-Net</strong>, <strong>SegNet</strong> y <strong>DeepLabV3+</strong> se ubicaron en los rangos inferiores, con métricas bajas de <code>Dice</code> e <code>IoU</code>, lo cual sugiere un desempeño limitado para este tipo de imágenes histológicas. <br><br> En resumen, <strong>Swin U-Net</strong> se posiciona como el modelo más robusto del conjunto evaluado, seguido de cerca por <strong>Mask R-CNN</strong> y <strong>PSPNet</strong>, dependiendo del balance deseado entre precisión, sensibilidad y tiempo de cómputo. Esta tabla es fundamental para seleccionar el modelo final a desplegar en escenarios clínicos o investigaciones biomédicas. </div> </div><ul class="simple">
 <li><p><strong>Dice Coefficient (Coeficiente de Dice)</strong></p></li>
 </ul>
 <p>Fórmula:</p>
@@ -2257,7 +2403,7 @@ Recall = \frac{TP}{TP + FN}
 <ul class="simple">
 <li><p>Interpretación general</p></li>
 </ul>
-<div class="pst-scrollable-table-container"><table class="table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Métrica</p></th>
 <th class="head"><p>Evalúa principalmente…</p></th>
@@ -2284,15 +2430,14 @@ Recall = \frac{TP}{TP + FN}
 </tr>
 </tbody>
 </table>
-</div>
 <p>Entre los modelos evaluados, <code class="docutils literal notranslate"><span class="pre">Mask</span> <span class="pre">R-CNN</span></code> y <code class="docutils literal notranslate"><span class="pre">Swin</span> <span class="pre">U-Net</span></code> presentan los mejores desempeños globales. <code class="docutils literal notranslate"><span class="pre">Mask</span> <span class="pre">R-CNN</span></code> logra un equilibrio notable entre las métricas, obteniendo la mayor puntuación en Sensibilidad (0.70), la menor Distancia de Hausdorff (141.30) y la mayor Precisión Balanceada (0.82). <code class="docutils literal notranslate"><span class="pre">Swin</span> <span class="pre">U-Net</span></code>, por su parte, presenta el mayor Coeficiente Dice (0.47) y la mayor IoU (0.31), además de una precisión y sensibilidad competitivas. Esto indica que ambos modelos son capaces de segmentar con precisión y coherencia espacial los vasos sanguíneos, incluso en condiciones computacionales restringidas.</p>
 <p>El modelo <code class="docutils literal notranslate"><span class="pre">PSPNet</span></code> también se destaca, particularmente en el área bajo la curva ROC (0.85) y una buena sensibilidad, lo que lo convierte en una opción viable cuando se busca maximizar la detección sin importar tanto la precisión de las fronteras. Por otro lado, modelos como V-Net y DeepLabV3+ muestran desempeños significativamente inferiores en la mayoría de métricas. En estos casos, las puntuaciones bajas de Dice e IoU, combinadas con una precisión reducida, indican dificultades para adaptarse a la estructura del problema y a la escala de entrada de los tiles.</p>
 <p><code class="docutils literal notranslate"><span class="pre">U-Net</span></code>, <code class="docutils literal notranslate"><span class="pre">Attention</span> <span class="pre">U-Net</span></code>, <code class="docutils literal notranslate"><span class="pre">FCN</span></code> y <code class="docutils literal notranslate"><span class="pre">SegNet</span></code> muestran desempeños intermedios, siendo opciones aceptables dependiendo del contexto específico, aunque en términos generales fueron superados por las variantes más recientes.</p>
-</section>
+<div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;"> <div style="background-color: #d4f8e8; padding: 8px 12px;"> <strong>💡 Análisis</strong> </div> <div style="background-color: #f5fdf9; padding: 12px;"> Las métricas presentadas permiten evaluar de forma integral el desempeño de los modelos de segmentación aplicados sobre imágenes histológicas. <strong>Dice</strong> e <strong>IoU</strong> miden la superposición entre las máscaras predichas y las reales, siendo <code>Dice</code> más tolerante que <code>IoU</code>. <strong>Precisión</strong> y <strong>Recall</strong> abordan el tipo de error: la primera penaliza falsos positivos, y la segunda, falsos negativos. <strong>AUC</strong> evalúa la capacidad del modelo para discriminar entre clases (vaso vs no vaso), y es especialmente útil cuando se predicen probabilidades. <br><br> Por su parte, la <strong>Distancia de Hausdorff</strong> mide errores en los bordes, lo que es clínicamente relevante en anatomía de estructuras. Finalmente, la <strong>Precisión Balanceada</strong> (<code>Balanced Accuracy</code>) resulta esencial en contextos con clases desbalanceadas, como ocurre cuando la mayoría del tile corresponde a fondo. <br><br> En conjunto, estas métricas proporcionan una visión detallada del comportamiento de los modelos. Por ejemplo, un modelo con alta precisión pero bajo recall puede estar siendo demasiado conservador, mientras que uno con alta recall pero baja precisión puede estar sobresegmentando. El análisis conjunto permite seleccionar el modelo más adecuado para el objetivo clínico o computacional específico. </div> </div></section>
 <section id="parte-c">
-<h3>Parte C<a class="headerlink" href="#parte-c" title="Link to this heading">#</a></h3>
+<h2>Parte C<a class="headerlink" href="#parte-c" title="Permalink to this heading">#</a></h2>
 <section id="boxplots">
-<h4>Boxplots<a class="headerlink" href="#boxplots" title="Link to this heading">#</a></h4>
+<h3>Boxplots<a class="headerlink" href="#boxplots" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Boxplot para Dice</span>
@@ -2398,9 +2543,17 @@ Al tratarse de una métrica sensible a errores puntuales en los bordes, los valo
 </ol>
 <p>La Precisión Balanceada, que considera tanto la sensibilidad como la especificidad, muestra una distribución entre 0.56 y 0.82, con una mediana cercana a 0.65.
 Esta métrica es particularmente útil en contextos con clases desbalanceadas como en segmentación médica. Su dispersión relativamente baja, en comparación con otras métricas, indica que la mayoría de los modelos alcanzan un rendimiento razonablemente equilibrado entre las clases.</p>
+<div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;">
+  <div style="background-color: #d4f8e8; padding: 8px 12px;">
+    <strong>💡 Análisis</strong>
+  </div>
+  <div style="background-color: #f5fdf9; padding: 12px;">
+    El análisis de métricas de evaluación muestra una comparación integral del desempeño de distintos modelos de segmentación aplicados a imágenes histológicas. Según los resultados consolidados, los modelos <strong>Mask R-CNN</strong> y <strong>Swin U-Net</strong> se destacan con los valores más altos en métricas clave como <code>Dice</code>, <code>IoU</code>, <code>AUC</code> y <code>Balanced Accuracy</code>, reflejando una alta superposición con la verdad de terreno y un buen equilibrio entre clases. Por otro lado, modelos como <strong>V-Net</strong> y <strong>SegNet</strong> presentan desempeños inferiores, con menor precisión y valores de Dice e IoU significativamente más bajos. <br><br> Al observar los <strong>boxplots</strong>, se nota una variabilidad moderada entre modelos, siendo <code>Precision</code> y <code>Recall</code> las métricas con mayor dispersión, lo que sugiere diferencias importantes en la capacidad de los modelos para identificar correctamente regiones positivas (vasos). El <code>Hausdorff</code> muestra mayor variabilidad también, indicando que algunos modelos presentan errores considerables en la localización de bordes. En contraste, métricas como <code>AUC</code> y <code>Balanced Accuracy</code> presentan menor dispersión, reflejando mayor consistencia entre modelos.<br><br> En resumen, modelos basados en arquitecturas modernas como <strong>Swin U-Net</strong> y <strong>Mask R-CNN</strong> ofrecen ventajas notables para segmentación precisa en este contexto, mientras que los modelos más clásicos tienden a ser menos efectivos, particularmente en presencia de clases desbalanceadas o estructuras pequeñas como vasos sanguíneos.
+  </div>
+</div>
 </section>
 <section id="histogramas">
-<h4>Histogramas<a class="headerlink" href="#histogramas" title="Link to this heading">#</a></h4>
+<h3>Histogramas<a class="headerlink" href="#histogramas" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Histograma para Dice</span>
@@ -2480,9 +2633,36 @@ Esta métrica es particularmente útil en contextos con clases desbalanceadas co
 <li><p>Hausdorff: Tiene una distribución relativamente simétrica, con una leve tendencia hacia valores más altos. Esto sugiere que algunos modelos cometen errores notables en la ubicación precisa de las fronteras.</p></li>
 <li><p>Balanced Accuracy: La mayoría de los modelos se agrupan entre 0.60 y 0.75, lo cual indica un comportamiento relativamente estable y equilibrado en cuanto a la predicción de ambas clases.</p></li>
 </ul>
+<div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;">
+  <div style="background-color: #d4f8e8; padding: 8px 12px;">
+    <strong>💡 Análisis</strong>
+  </div>
+  <div style="background-color: #f5fdf9; padding: 12px;">
+    Los histogramas permiten observar la distribución de las métricas entre los distintos modelos de segmentación. <br><br>
+    En particular, <strong>Dice</strong> e <strong>IoU</strong> muestran una distribución sesgada hacia valores bajos, lo que sugiere que varios modelos aún enfrentan dificultades para lograr una alta superposición con la verdad de terreno. Sin embargo, hay algunos picos notables cerca del 0.45 en Dice y del 0.30 en IoU, que corresponden a los modelos más precisos.<br><br>
+    <strong>Precision</strong> y <strong>Recall</strong> presentan mayor variabilidad, lo que indica que algunos modelos son buenos en detectar vasos pero a costa de cometer errores falsos positivos o negativos, dependiendo del enfoque. Por su parte, <strong>AUC</strong> tiene una distribución más simétrica con valores relativamente altos, sugiriendo que muchos modelos logran una buena discriminación entre clases. <br><br>
+    Finalmente, <strong>Hausdorff</strong> presenta una dispersión amplia, reflejando diferencias importantes en la calidad de los bordes segmentados. <strong>Balanced Accuracy</strong> mantiene una tendencia más centrada, lo que confirma un desempeño más equilibrado entre clases positivas y negativas.
+  </div>
+</div><div style="border-left: 6px solid #f1c40f; border-radius: 6px; overflow: hidden;">
+  <div style="background-color: #fff9d6; padding: 8px 12px;">
+    <strong>⚠️ Interpretación de Métricas</strong>
+  </div>
+  <div style="background-color: #fffef0; padding: 12px;">
+    El análisis comparativo de los modelos revela diferencias sustanciales en el desempeño de las arquitecturas de segmentación. 
+    <strong>Mask R-CNN</strong> y <strong>Swin U-Net</strong> se destacan como los modelos con mejor rendimiento general. Ambos muestran altos valores de <code>Dice</code> (≈ 0.47), <code>IoU</code> (> 0.30), y <code>Balanced Accuracy</code> (> 0.71), además de bajos valores de <code>Hausdorff</code>, lo que indica buena precisión espacial en la segmentación.
+    <br><br>
+    El modelo <strong>PSPNet</strong> también obtiene resultados competitivos, especialmente en <code>AUC</code> (0.8499), lo que sugiere una fuerte capacidad para discriminar entre clases, aunque con un leve descenso en <code>Dice</code> y <code>Recall</code>. 
+    <br><br>
+    Por otro lado, <strong>V-Net</strong> y <strong>SegNet</strong> obtienen los resultados más bajos en métricas clave como <code>Dice</code>, <code>IoU</code> y <code>Precisión</code>, evidenciando limitaciones en su capacidad de segmentación en este conjunto de datos. 
+    <br><br>
+    <strong>Attention U-Net</strong> muestra un rendimiento sólido y balanceado, con una precisión alta (0.6066) y una <code>Balanced Accuracy</code> de 0.6552, lo que lo convierte en una buena alternativa para tareas donde se requiera una segmentación equilibrada.
+    <br><br>
+    En conclusión, modelos modernos como <strong>Mask R-CNN</strong>, <strong>Swin U-Net</strong> y <strong>PSPNet</strong> sobresalen por su combinación de precisión y consistencia, lo que los hace más adecuados para aplicaciones clínicas o investigaciones con necesidad de segmentación fiable.
+  </div>
+</div>
 </section>
 <section id="comparacion-visual-de-imagenes">
-<h4>Comparacion Visual de Imagenes<a class="headerlink" href="#comparacion-visual-de-imagenes" title="Link to this heading">#</a></h4>
+<h3>Comparacion Visual de Imagenes<a class="headerlink" href="#comparacion-visual-de-imagenes" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;unet_pred.npz&quot;</span><span class="p">)</span>
@@ -2494,10 +2674,10 @@ Esta métrica es particularmente útil en contextos con clases desbalanceadas co
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">tifffile</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tiff</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">tifffile</span> <span class="k">as</span> <span class="nn">tiff</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">mostrar_comparacion</span><span class="p">(</span><span class="n">tid</span><span class="p">,</span> <span class="n">img_folder</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="n">ruta_npz</span><span class="o">=</span><span class="s2">&quot;unet_pred.npz&quot;</span><span class="p">,</span> <span class="n">indice</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">mostrar_comparacion</span><span class="p">(</span><span class="n">tid</span><span class="p">,</span> <span class="n">img_folder</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="n">ruta_npz</span><span class="o">=</span><span class="s2">&quot;unet_pred.npz&quot;</span><span class="p">,</span> <span class="n">indice</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="c1"># Cargar imagen original</span>
     <span class="n">img_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">img_folder</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">tid</span><span class="si">}</span><span class="s2">.tif&quot;</span><span class="p">)</span>
     <span class="n">img</span> <span class="o">=</span> <span class="n">tiff</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.0</span>
@@ -2535,20 +2715,45 @@ Esta métrica es particularmente útil en contextos con clases desbalanceadas co
 <img alt="_images/9df04b9c79bd4742b73caa9aab505c731457c801660a8f14f8b41cff908951be.png" src="_images/9df04b9c79bd4742b73caa9aab505c731457c801660a8f14f8b41cff908951be.png" />
 </div>
 </div>
-</section>
+<div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;">
+  <div style="background-color: #d4f8e8; padding: 8px 12px;">
+    <strong>💡 Análisis</strong>
+  </div>
+  <div style="background-color: #f5fdf9; padding: 12px;">
+    <strong>🏆 Rendimiento Destacado<strong><br><br>
+    <strong>Mask R-CNN<strong> y <strong>Swin U-Net<strong> se destacan con los mejores puntajes globales:<br><br>
+<ul class="simple">
+<li><p><strong>Mask R-CNN<strong> obtiene los valores más altos en <code class="docutils literal notranslate"><span class="pre">Recall</span></code> (0.7038), <code class="docutils literal notranslate"><span class="pre">IoU</span></code> (0.3073), <code class="docutils literal notranslate"><span class="pre">AUC</span></code> (0.8215) y <code class="docutils literal notranslate"><span class="pre">Balanced</span> <span class="pre">Accuracy</span></code> (0.8215), mostrando un excelente desempeño en detección de vasos y discriminación entre clases.</p></li>
+<li><p><strong>Swin U-Net<strong> alcanza el mejor <code class="docutils literal notranslate"><span class="pre">Dice</span></code> (0.4748), un alto <code class="docutils literal notranslate"><span class="pre">AUC</span></code> (0.7592) y <code class="docutils literal notranslate"><span class="pre">Balanced</span> <span class="pre">Accuracy</span></code> (0.7198), combinando precisión y robustez.</p></li>
+</ul>
+<hr class="docutils" />
+<p><strong>⚠️ Modelos con Bajo Rendimiento<strong><br><br></p>
+<p><strong>V-Net<strong>, <strong>SegNet<strong> y <strong>DeepLabV3+<strong> muestran métricas significativamente más bajas en <code class="docutils literal notranslate"><span class="pre">Dice</span></code>, <code class="docutils literal notranslate"><span class="pre">IoU</span></code> y <code class="docutils literal notranslate"><span class="pre">Precisión</span></code>, indicando limitaciones en la segmentación exacta de vasos.</p>
+<hr class="docutils" />
+<p><strong>📊 Métricas Relevantes<strong><br><br></p>
+<ul class="simple">
+<li><p><strong>PSPNet<strong> obtiene el mayor <code class="docutils literal notranslate"><span class="pre">AUC</span></code> (0.8499), sugiriendo alta capacidad para distinguir entre clases.</p></li>
+<li><p><strong>Attention U-Net<strong> y <strong>FCN<strong> muestran buen equilibrio general, con valores sólidos en casi todas las métricas.</p></li>
+<li><p>El <code class="docutils literal notranslate"><span class="pre">Hausdorff</span></code> más bajo lo tiene <strong>Mask R-CNN<strong> (141.30), indicando precisión en la localización de bordes.</p></li>
+<li><p><strong>ResUNet<strong>, pese a una buena <code class="docutils literal notranslate"><span class="pre">Precisión</span></code> (0.5998), presenta bajo <code class="docutils literal notranslate"><span class="pre">Recall</span></code> (0.1302), lo cual puede ser crítico en contextos donde se requiere alta sensibilidad.<br><br></p></li>
+</ul>
+<hr class="docutils" />
+<p>En conjunto, los modelos basados en arquitecturas modernas como strong&gt;Mask R-CNNstrong&gt;, strong&gt;Swin U-Netstrong&gt; y strong&gt;PSPNetstrong&gt; presentan ventajas competitivas sobre arquitecturas más tradicionales, demostrando ser mejores candidatos para aplicaciones clínicas exigentes.</p>
+  </div>
+</div></section>
 <section id="curvas-roc-y-precision-recall">
-<h4>Curvas ROC y Precision-Recall<a class="headerlink" href="#curvas-roc-y-precision-recall" title="Link to this heading">#</a></h4>
+<h3>Curvas ROC y Precision-Recall<a class="headerlink" href="#curvas-roc-y-precision-recall" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Curva ROC (Receiver Operating Characteristic): mide la capacidad del modelo para distinguir entre clases. Un AUC cercano a 1 indica un modelo muy discriminativo, mientras que un valor cercano a 0.5 indica un comportamiento aleatorio.</p></li>
 <li><p>Curva Precision-Recall: evalúa el balance entre precisión y sensibilidad, especialmente útil cuando las clases están desbalanceadas (como en segmentación médica). Una buena curva PR se caracteriza por una área grande, especialmente cuando la clase positiva es escasa.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">precision_recall_curve</span><span class="p">,</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_recall_curve</span><span class="p">,</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">mostrar_curvas_roc_pr</span><span class="p">(</span><span class="n">ruta_npz</span><span class="p">,</span> <span class="n">nombre_modelo</span><span class="o">=</span><span class="s2">&quot;Modelo&quot;</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">mostrar_curvas_roc_pr</span><span class="p">(</span><span class="n">ruta_npz</span><span class="p">,</span> <span class="n">nombre_modelo</span><span class="o">=</span><span class="s2">&quot;Modelo&quot;</span><span class="p">):</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">ruta_npz</span><span class="p">)</span>
     <span class="n">p</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;p&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># predicciones como probabilidades (float)</span>
     <span class="n">t</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;t&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># ground truth binarizado</span>
@@ -2603,6 +2808,23 @@ Esta métrica es particularmente útil en contextos con clases desbalanceadas co
 <img alt="_images/e76f525551ff0873ec0720d49417f86aef22a1cba0649f57ddaf2f91adc70614.png" src="_images/e76f525551ff0873ec0720d49417f86aef22a1cba0649f57ddaf2f91adc70614.png" />
 </div>
 </div>
+<div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;">
+  <div style="background-color: #d4f8e8; padding: 8px 12px;">
+    <strong>📉 Evaluación de Curvas ROC y Precision-Recall</strong>
+  </div>
+  <div style="background-color: #f5fdf9; padding: 12px;">
+    Las curvas ROC y Precision-Recall muestran diferencias claras en la capacidad discriminativa de los modelos evaluados:<br><br>
+  <ul>
+      <li>
+        <strong>U-Net</strong> logra un AUC-ROC de <code>0.698</code>, indicando una capacidad moderada para distinguir vasos de fondo. Sin embargo, el AUC de la curva Precision-Recall es solo <code>0.297</code>, lo cual refleja una caída considerable en entornos desbalanceados. Esto sugiere que el modelo puede identificar vasos, pero con bajo nivel de precisión cuando estos son poco frecuentes.
+      </li>
+      <li>
+        <strong>V-Net</strong> presenta un AUC-ROC más bajo, de <code>0.631</code>, y un rendimiento aún menor en la curva Precision-Recall con un AUC de apenas <code>0.134</code>. Esto revela una pobre sensibilidad frente a clases positivas, lo cual lo posiciona como un modelo menos confiable en contextos médicos donde es crucial detectar estructuras pequeñas como vasos.
+      </li>
+  </ul>
+<p>En conjunto, los resultados sugieren que <strong>U-Net</strong> es superior a <strong>V-Net</strong> en tareas de segmentación de vasos, aunque aún existen limitaciones significativas en términos de precisión cuando se evalúa con clases desbalanceadas. Para mejorar estos resultados, podrían explorarse técnicas de reponderación de clases o modelos más sofisticados con atención o aprendizaje focalizado.</p>
+  </div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mostrar_curvas_roc_pr</span><span class="p">(</span><span class="s2">&quot;segnet_pred.npz&quot;</span><span class="p">,</span> <span class="s2">&quot;SegNet&quot;</span><span class="p">)</span>
@@ -2635,7 +2857,18 @@ C:\Users\Pumacens\AppData\Roaming\Python\Python312\site-packages\IPython\core\py
 <img alt="_images/ff3384c157cf4b50855c6a1328fb0bf539756717027d3b68c8f123073941ed34.png" src="_images/ff3384c157cf4b50855c6a1328fb0bf539756717027d3b68c8f123073941ed34.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;">
+  <div style="background-color: #d4f8e8; padding: 8px 12px;">
+    <strong>💡 Análisis</strong>
+  </div>
+  <div style="background-color: #f5fdf9; padding: 12px;">
+<p><strong>🔍 SegNet</strong><br><br>
+El modelo <strong>SegNet</strong> muestra un AUC-ROC de <code>0.641</code>, lo que indica una capacidad limitada pero aceptable para discriminar entre clases. Sin embargo, su rendimiento en la curva Precision-Recall es bajo (<code>AUC = 0.182</code>), lo cual revela debilidades importantes al enfrentar clases desbalanceadas. En especial, tiene dificultades en mantener una precisión adecuada a medida que aumenta el recall, lo que puede implicar muchos falsos positivos en contextos clínicos.<br><br></p>
+<p><strong>🔍 DeepLabV3+</strong><br><br>
+El modelo <strong>DeepLabV3+</strong> obtiene un AUC-ROC ligeramente mejor que SegNet (<code>0.670</code>), pero su curva Precision-Recall también es débil (<code>AUC = 0.206</code>). Aunque su curva ROC indica un desempeño aceptable en la clasificación general, la baja precisión en condiciones de recall alto puede limitar su utilidad práctica en tareas donde la detección completa de vasos es crítica. <br><br></p>
+<p>En conjunto, ambos modelos tienen limitaciones claras en entornos con clases desbalanceadas. Aunque DeepLabV3+ presenta una ligera ventaja sobre SegNet en la métrica ROC, ninguno de los dos destaca en términos de precisión-recall, lo que sugiere la necesidad de aplicar técnicas adicionales de optimización o usar modelos más avanzados.</p>
+  </div>
+</div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mostrar_curvas_roc_pr</span><span class="p">(</span><span class="s2">&quot;attention_unet_pred.npz&quot;</span><span class="p">,</span> <span class="s2">&quot;Attention U-Net&quot;</span><span class="p">)</span>
 </pre></div>
@@ -2661,7 +2894,17 @@ C:\Users\Pumacens\AppData\Roaming\Python\Python312\site-packages\IPython\core\py
 <img alt="_images/7c31e3d53d0453db3256768841f8c9b780e7306fb91189ef5e38df3c6e93d3a3.png" src="_images/7c31e3d53d0453db3256768841f8c9b780e7306fb91189ef5e38df3c6e93d3a3.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;">
+  <div style="background-color: #d4f8e8; padding: 8px 12px;">
+    <strong>💡 Análisis</strong>
+  </div>
+  <div style="background-color: #f5fdf9; padding: 12px;">
+<p><strong>🔍 Attention U-Net</strong><br><br>
+El modelo <strong>Attention U-Net</strong> presenta un AUC-ROC de <code>0.693</code>, mostrando una capacidad razonable para clasificar correctamente entre clases. Sin embargo, su desempeño en la curva Precision-Recall es limitado, con un AUC de <code>0.349</code>. Esto indica que, aunque es capaz de identificar correctamente muchas regiones, su precisión disminuye rápidamente a medida que se busca mayor sensibilidad, lo que puede derivar en un incremento de falsos positivos.<br><br></p>
+<p><strong>🔍 Mask R-CNN</strong><br><br>
+El modelo <strong>Mask R-CNN</strong> sobresale con un AUC-ROC de <code>0.821</code>, destacándose como uno de los mejores en esta métrica. Además, alcanza un excelente rendimiento en la curva Precision-Recall, con un AUC de <code>0.535</code>, lo cual indica un balance adecuado entre precisión y sensibilidad. Esta combinación lo posiciona como una opción robusta y confiable, especialmente en contextos clínicos donde es crucial minimizar errores en ambas direcciones.</p>
+  </div>
+</div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mostrar_curvas_roc_pr</span><span class="p">(</span><span class="s2">&quot;resunet_pred.npz&quot;</span><span class="p">,</span> <span class="s2">&quot;ResUNet&quot;</span><span class="p">)</span>
 </pre></div>
@@ -2686,6 +2929,17 @@ C:\Users\Pumacens\AppData\Roaming\Python\Python312\site-packages\IPython\core\py
 </div>
 <img alt="_images/8bf10ee418823eb30f154c6fdb3065c9c6457cee0ce9c52d6aa7cb4c76776ddc.png" src="_images/8bf10ee418823eb30f154c6fdb3065c9c6457cee0ce9c52d6aa7cb4c76776ddc.png" />
 </div>
+</div>
+<div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;">
+  <div style="background-color: #d4f8e8; padding: 8px 12px;">
+    <strong>💡 Análisis</strong>
+  </div>
+  <div style="background-color: #f5fdf9; padding: 12px;">
+<p><strong>🔍 ResUNet</strong><br><br>
+El modelo <strong>ResUNet</strong> presenta un desempeño modesto, con un AUC-ROC de <code>0.572</code> y un AUC de la curva Precision-Recall de apenas <code>0.194</code>. Estos valores sugieren una capacidad limitada para distinguir correctamente entre clases y una baja precisión a medida que se incrementa la sensibilidad. Este comportamiento lo hace menos recomendable para tareas donde se requiere una detección precisa y consistente.<br><br></p>
+<p><strong>🔍 PSPNet</strong><br><br>
+En contraste, <strong>PSPNet</strong> muestra un rendimiento excelente con un AUC-ROC de <code>0.850</code> y un AUC-PR de <code>0.436</code>, lo que indica una alta capacidad de clasificación y un buen equilibrio entre precisión y recall. Este modelo demuestra ser altamente efectivo, particularmente en entornos donde es crucial evitar tanto falsos positivos como falsos negativos.</p>
+  </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2717,7 +2971,17 @@ C:\Users\Pumacens\AppData\Roaming\Python\Python312\site-packages\IPython\core\py
 <img alt="_images/456b5c6344c75de4be64624f5f23435ba3c2a04335878ebdb9847bd1d45a6e6c.png" src="_images/456b5c6344c75de4be64624f5f23435ba3c2a04335878ebdb9847bd1d45a6e6c.png" />
 </div>
 </div>
-<ul class="simple">
+<div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;">
+  <div style="background-color: #d4f8e8; padding: 8px 12px;">
+    <strong>💡 Análisis</strong>
+  </div>
+  <div style="background-color: #f5fdf9; padding: 12px;">
+<p><strong>🔍 FCN</strong><br><br>
+El modelo <strong>FCN</strong> ofrece un desempeño sólido, alcanzando un AUC-ROC de <code>0.771</code> y un AUC de la curva Precision-Recall de <code>0.374</code>. Estos valores indican que el modelo logra distinguir adecuadamente entre clases, con un buen equilibrio entre sensibilidad y precisión, aunque todavía con margen de mejora frente a modelos más avanzados.<br><br></p>
+<p><strong>🔍 Swin U-Net</strong><br><br>
+<strong>Swin U-Net</strong> mantiene un rendimiento competitivo con un AUC-ROC de <code>0.759</code> y un AUC-PR de <code>0.390</code>. Aunque ligeramente inferior al modelo FCN en la métrica ROC, presenta una mejor relación entre precisión y recall, lo que lo hace más adecuado en escenarios donde la clase positiva es escasa o difícil de detectar.</p>
+  </div>
+</div><ul class="simple">
 <li><p><strong>U-Net</strong></p>
 <ul>
 <li><p>ROC AUC = 0.698: desempeño moderado, con capacidad discriminativa aceptable.</p></li>
@@ -2792,14 +3056,14 @@ C:\Users\Pumacens\AppData\Roaming\Python\Python312\site-packages\IPython\core\py
 <p>Los modelos Mask R-CNN, PSPNet y Swin U-Net presentan las mejores curvas, tanto en ROC como en Precision-Recall. Modelos como V-Net, DeepLabV3+ y ResUNet muestran curvas planas o con caídas abruptas, señal de mala capacidad de generalización y muchos errores de tipo I o II. La curva Precision-Recall fue especialmente útil para identificar el verdadero poder del modelo en este problema desbalanceado.</p>
 </section>
 <section id="mapa-de-error">
-<h4>Mapa de Error<a class="headerlink" href="#mapa-de-error" title="Link to this heading">#</a></h4>
+<h3>Mapa de Error<a class="headerlink" href="#mapa-de-error" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">tifffile</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tiff</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">tifffile</span> <span class="k">as</span> <span class="nn">tiff</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">mostrar_mapa_error</span><span class="p">(</span><span class="n">tid</span><span class="p">,</span> <span class="n">ruta_npz</span><span class="p">,</span> <span class="n">indice</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ruta_imagen</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">mostrar_mapa_error</span><span class="p">(</span><span class="n">tid</span><span class="p">,</span> <span class="n">ruta_npz</span><span class="p">,</span> <span class="n">indice</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ruta_imagen</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">):</span>
     <span class="c1"># Cargar imagen original</span>
     <span class="n">img_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ruta_imagen</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">tid</span><span class="si">}</span><span class="s2">.tif&quot;</span><span class="p">)</span>
     <span class="n">img</span> <span class="o">=</span> <span class="n">tiff</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.0</span>
@@ -2854,8 +3118,20 @@ C:\Users\Pumacens\AppData\Roaming\Python\Python312\site-packages\IPython\core\py
 <img alt="_images/a70987117eb95834774b6cd38171afe80dfd10dbeff9bf7907b24a69fae881e3.png" src="_images/a70987117eb95834774b6cd38171afe80dfd10dbeff9bf7907b24a69fae881e3.png" />
 </div>
 </div>
-</section>
-</section>
+<div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;">
+  <div style="background-color: #d4f8e8; padding: 8px 12px;">
+    <strong>💡 Análisis</strong>
+  </div>
+  <div style="background-color: #f5fdf9; padding: 12px;">
+    El <strong>Mapa de Error</strong> proporciona una visualización intuitiva de los errores cometidos por el modelo de segmentación. Se destacan dos tipos de errores:
+    <ul>
+      <li style="margin-bottom: 4px;"><strong style="color: red;">Falsos Positivos (FP)</strong>: en <span style="color: red;">rojo</span>, representan regiones que el modelo predijo como positivas (vasos), pero que no estaban presentes en la verdad de terreno.</li>
+      <li><strong style="color: blue;">Falsos Negativos (FN)</strong>: en <span style="color: blue;">azul</span>, representan regiones verdaderas no detectadas por el modelo.</li>
+    </ul>
+    En el ejemplo mostrado, el modelo <strong>Swin U-Net</strong> logra una segmentación general adecuada, aunque se observan varias regiones mal clasificadas. Los <strong>errores FP</strong> predominan en áreas periféricas a los vasos reales, mientras que los <strong>FN</strong> suelen coincidir con vasos más delgados o parcialmente visibles. 
+    Esto sugiere que, aunque el modelo tiene una buena sensibilidad general, aún existen oportunidades de mejora en la detección de estructuras pequeñas o ambiguas.
+  </div>
+</div></section>
 </section>
 </section>
 
@@ -2884,10 +3160,11 @@ C:\Users\Pumacens\AppData\Roaming\Python\Python312\site-packages\IPython\core\py
 
               
               
-              
-              
-                <footer class="prev-next-footer d-print-none">
+                <footer class="bd-footer-article">
                   
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="modelos_regresion.html"
@@ -2898,7 +3175,10 @@ C:\Users\Pumacens\AppData\Roaming\Python\Python312\site-packages\IPython\core\py
         <p class="prev-next-title">Ejercicio 3. Modelos de Regresión</p>
       </div>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -2907,24 +3187,20 @@ C:\Users\Pumacens\AppData\Roaming\Python\Python312\site-packages\IPython\core\py
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
-
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#punto-4">Punto 4</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-a">Parte A</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-b">Parte B</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-c">Parte C</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#boxplots">Boxplots</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#histogramas">Histogramas</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-visual-de-imagenes">Comparacion Visual de Imagenes</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#curvas-roc-y-precision-recall">Curvas ROC y Precision-Recall</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mapa-de-error">Mapa de Error</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-a">Parte A</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-b">Parte B</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-c">Parte C</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boxplots">Boxplots</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#histogramas">Histogramas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-visual-de-imagenes">Comparacion Visual de Imagenes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#curvas-roc-y-precision-recall">Curvas ROC y Precision-Recall</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mapa-de-error">Mapa de Error</a></li>
 </ul>
 </li>
 </ul>
@@ -2948,10 +3224,9 @@ By Angélica Sepúlveda, Andrés Pedraza y Jefry Llerena
   
   <div class="footer-item">
     
-
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
@@ -2975,8 +3250,8 @@ By Angélica Sepúlveda, Andrés Pedraza y Jefry Llerena
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>
