@@ -183,6 +183,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Ejercicio 4. Modelos de Segmentación</a></li>
+
+
+
+
 </ul>
 
     </div>
@@ -376,17 +380,30 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-a">Parte A</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-b">Parte B</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-c">Parte C</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boxplots">Boxplots</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#histogramas">Histogramas</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-visual-de-imagenes">Comparacion Visual de Imagenes</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#curvas-roc-y-precision-recall">Curvas ROC y Precision-Recall</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mapa-de-error">Mapa de Error</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Ejercicio 4. Modelos de Segmentación</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#a-analisis-exploratorio"><strong>a) Análisis Exploratorio</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#b-implemetacion-y-entrenamiento-de-modelos"><strong>b) Implemetación y Entrenamiento de Modelos</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#c-metricas"><strong>c) Métricas</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boxplots"><strong>Boxplots</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coeficiente-dice"><strong>Coeficiente <em>Dice</em></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iou-interseccion-sobre-la-union"><strong>IoU (Intersección sobre la Unión)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#precision"><strong>Precisión</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recall-sensibilidad"><strong>Recall (Sensibilidad)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#auc-area-bajo-la-curva-roc"><strong>AUC (Área bajo la curva ROC)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distancia-de-hausdorff"><strong>Distancia de Hausdorff</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#precision-balanceada"><strong>Precisión Balanceada</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histogramas"><strong>Histogramas</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-distribucion"><strong>Análisis de Distribución</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#d-visualizaciones"><strong>d) Visualizaciones</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-visual-de-imagenes"><strong>Comparación Visual de Imágenes</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#curvas-roc-y-precision-recall"><strong>Curvas ROC y Precision-Recall</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mapa-de-error"><strong>Mapa de Error</strong></a></li>
 </ul>
 </li>
 </ul>
+
             </nav>
         </div>
     </div>
@@ -398,7 +415,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="ejercicio-4-modelos-de-segmentacion">
-<h1><strong>Ejercicio 4. Modelos de Segmentación</strong><a class="headerlink" href="#ejercicio-4-modelos-de-segmentacion" title="Permalink to this heading">#</a></h1>
+<h1>Ejercicio 4. Modelos de Segmentación<a class="headerlink" href="#ejercicio-4-modelos-de-segmentacion" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install segmentation_models segmentation_models_pytorch timm monai medpy torchmetrics albumentations imagecodecs einops</span>
@@ -445,8 +462,9 @@ document.write(`
 </div>
 </div>
 </div>
-<section id="parte-a">
-<h2>Parte A<a class="headerlink" href="#parte-a" title="Permalink to this heading">#</a></h2>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="a-analisis-exploratorio">
+<h1><strong>a) Análisis Exploratorio</strong><a class="headerlink" href="#a-analisis-exploratorio" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">meta_tiles</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;tile_meta.csv&#39;</span><span class="p">)</span>
@@ -1380,8 +1398,8 @@ Posibles anomalías alta cobertura 0
 </div>
 </div>
 <div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;"> <div style="background-color: #d4f8e8; padding: 8px 12px;"> <strong>💡 Análisis</strong> </div> <div style="background-color: #f5fdf9; padding: 12px;"> Se implementaron funciones para cargar imágenes originales (<code>cargar_imagen</code>) y generar sus respectivas máscaras binarias a partir de anotaciones poligonales (<code>generar_mascara</code>). Posteriormente, la función <code>mostrar_ejemplo</code> superpone las máscaras sobre las imágenes correspondientes, permitiendo una evaluación visual directa de la calidad del etiquetado. <br><br> Al observar los ejemplos aleatorios generados, se confirma que las regiones segmentadas (en rojo) se alinean adecuadamente con las estructuras visibles en las imágenes histológicas, en su mayoría correspondientes a vasos sanguíneos. La variedad de formas, tamaños y orientaciones resalta la heterogeneidad del tejido, lo que representa un desafío relevante para modelos de segmentación. <br><br> Esta visualización no solo valida la calidad de las anotaciones, sino que también permite identificar ejemplos extremos (como tiles con muy poca o mucha segmentación), facilitando la selección de muestras para balanceo, validación o análisis más detallado. Además, este procedimiento es esencial antes de entrenar modelos supervisados, ya que asegura que las máscaras se correspondan correctamente con las regiones anatómicas relevantes en las imágenes originales. </div> </div></section>
-<section id="parte-b">
-<h2>Parte B<a class="headerlink" href="#parte-b" title="Permalink to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="b-implemetacion-y-entrenamiento-de-modelos">
+<h1><strong>b) Implemetación y Entrenamiento de Modelos</strong><a class="headerlink" href="#b-implemetacion-y-entrenamiento-de-modelos" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">meta_tiles</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;tile_meta.csv&quot;</span><span class="p">)</span>
@@ -2455,10 +2473,10 @@ Recall = \frac{TP}{TP + FN}
 <p>El modelo <code class="docutils literal notranslate"><span class="pre">PSPNet</span></code> también se destaca, particularmente en el área bajo la curva ROC (0.85) y una buena sensibilidad, lo que lo convierte en una opción viable cuando se busca maximizar la detección sin importar tanto la precisión de las fronteras. Por otro lado, modelos como V-Net y DeepLabV3+ muestran desempeños significativamente inferiores en la mayoría de métricas. En estos casos, las puntuaciones bajas de Dice e IoU, combinadas con una precisión reducida, indican dificultades para adaptarse a la estructura del problema y a la escala de entrada de los tiles.</p>
 <p><code class="docutils literal notranslate"><span class="pre">U-Net</span></code>, <code class="docutils literal notranslate"><span class="pre">Attention</span> <span class="pre">U-Net</span></code>, <code class="docutils literal notranslate"><span class="pre">FCN</span></code> y <code class="docutils literal notranslate"><span class="pre">SegNet</span></code> muestran desempeños intermedios, siendo opciones aceptables dependiendo del contexto específico, aunque en términos generales fueron superados por las variantes más recientes.</p>
 <div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;"> <div style="background-color: #d4f8e8; padding: 8px 12px;"> <strong>💡 Análisis</strong> </div> <div style="background-color: #f5fdf9; padding: 12px;"> Las métricas presentadas permiten evaluar de forma integral el desempeño de los modelos de segmentación aplicados sobre imágenes histológicas. <strong>Dice</strong> e <strong>IoU</strong> miden la superposición entre las máscaras predichas y las reales, siendo <code>Dice</code> más tolerante que <code>IoU</code>. <strong>Precisión</strong> y <strong>Recall</strong> abordan el tipo de error: la primera penaliza falsos positivos, y la segunda, falsos negativos. <strong>AUC</strong> evalúa la capacidad del modelo para discriminar entre clases (vaso vs no vaso), y es especialmente útil cuando se predicen probabilidades. <br><br> Por su parte, la <strong>Distancia de Hausdorff</strong> mide errores en los bordes, lo que es clínicamente relevante en anatomía de estructuras. Finalmente, la <strong>Precisión Balanceada</strong> (<code>Balanced Accuracy</code>) resulta esencial en contextos con clases desbalanceadas, como ocurre cuando la mayoría del tile corresponde a fondo. <br><br> En conjunto, estas métricas proporcionan una visión detallada del comportamiento de los modelos. Por ejemplo, un modelo con alta precisión pero bajo recall puede estar siendo demasiado conservador, mientras que uno con alta recall pero baja precisión puede estar sobresegmentando. El análisis conjunto permite seleccionar el modelo más adecuado para el objetivo clínico o computacional específico. </div> </div></section>
-<section id="parte-c">
-<h2>Parte C<a class="headerlink" href="#parte-c" title="Permalink to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="c-metricas">
+<h1><strong>c) Métricas</strong><a class="headerlink" href="#c-metricas" title="Permalink to this heading">#</a></h1>
 <section id="boxplots">
-<h3>Boxplots<a class="headerlink" href="#boxplots" title="Permalink to this heading">#</a></h3>
+<h2><strong>Boxplots</strong><a class="headerlink" href="#boxplots" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Boxplot para Dice</span>
@@ -2528,40 +2546,40 @@ Recall = \frac{TP}{TP + FN}
 <img alt="_images/7a22f4f33b90b4e67b9bc72f8b3b44d5cbdff1170545685a9f8546e8e14bd2ea.png" src="_images/7a22f4f33b90b4e67b9bc72f8b3b44d5cbdff1170545685a9f8546e8e14bd2ea.png" />
 </div>
 </div>
-<ol class="arabic simple">
-<li><p>Coeficiente Dice</p></li>
-</ol>
+</section>
+<section id="coeficiente-dice">
+<h2><strong>Coeficiente <em>Dice</em></strong><a class="headerlink" href="#coeficiente-dice" title="Permalink to this heading">#</a></h2>
 <p>El boxplot de Dice muestra una distribución relativamente amplia con valores entre aproximadamente 0.12 y 0.47, y una mediana cercana a 0.39.
 Esto indica que aunque algunos modelos logran segmentaciones relativamente precisas (por encima de 0.45), hay otros cuya capacidad de superposición entre predicción y verdad de terreno es bastante limitada. La dispersión sugiere diferencias marcadas en el rendimiento de los modelos.</p>
-<ol class="arabic simple" start="2">
-<li><p>IoU (Intersección sobre la Unión)</p></li>
-</ol>
+</section>
+<section id="iou-interseccion-sobre-la-union">
+<h2><strong>IoU (Intersección sobre la Unión)</strong><a class="headerlink" href="#iou-interseccion-sobre-la-union" title="Permalink to this heading">#</a></h2>
 <p>La distribución de IoU sigue una tendencia similar a la del Dice, aunque con valores naturalmente más bajos (dado que IoU es una métrica más estricta).
 El rango va desde aproximadamente 0.07 hasta 0.31, con una mediana cercana a 0.24.
 El hecho de que existan valores tan bajos sugiere que algunos modelos están teniendo dificultades para cubrir adecuadamente las regiones de interés.</p>
-<ol class="arabic simple" start="3">
-<li><p>Precisión</p></li>
-</ol>
+</section>
+<section id="precision">
+<h2><strong>Precisión</strong><a class="headerlink" href="#precision" title="Permalink to this heading">#</a></h2>
 <p>El boxplot de Precisión muestra una dispersión considerable, con valores que oscilan entre 0.07 y 0.61, y una mediana cercana a 0.45.
 Esto indica que si bien algunos modelos son muy conservadores y predicen pocas regiones (generando alta precisión), otros pueden tener un mayor número de falsos positivos. La variabilidad también puede deberse a diferencias en las estrategias de regularización o umbral de predicción.</p>
-<ol class="arabic simple" start="4">
-<li><p>Recall (Sensibilidad)</p></li>
-</ol>
+</section>
+<section id="recall-sensibilidad">
+<h2><strong>Recall (Sensibilidad)</strong><a class="headerlink" href="#recall-sensibilidad" title="Permalink to this heading">#</a></h2>
 <p>El Recall presenta un comportamiento opuesto al de la Precisión, con un rango de 0.13 a 0.70 y una mediana de aproximadamente 0.41.
 Esto sugiere que mientras algunos modelos tienden a cubrir la mayoría de las regiones relevantes (con mayor recall), lo hacen a expensas de una menor precisión. La dispersión alta también indica un posible desbalance en el aprendizaje de los modelos frente a clases poco representadas.</p>
-<ol class="arabic simple" start="5">
-<li><p>AUC (Área bajo la curva ROC)</p></li>
-</ol>
+</section>
+<section id="auc-area-bajo-la-curva-roc">
+<h2><strong>AUC (Área bajo la curva ROC)</strong><a class="headerlink" href="#auc-area-bajo-la-curva-roc" title="Permalink to this heading">#</a></h2>
 <p>La AUC muestra valores más concentrados entre 0.57 y 0.85, con una mediana cercana a 0.70.
 Esto indica un desempeño general aceptable en términos de discriminación entre clases, aunque también refleja que no todos los modelos manejan bien el trade-off entre sensibilidad y especificidad. Es una métrica más global, menos influenciada por umbrales individuales.</p>
-<ol class="arabic simple" start="6">
-<li><p>Distancia de Hausdorff</p></li>
-</ol>
+</section>
+<section id="distancia-de-hausdorff">
+<h2><strong>Distancia de Hausdorff</strong><a class="headerlink" href="#distancia-de-hausdorff" title="Permalink to this heading">#</a></h2>
 <p>La métrica Hausdorff presenta una dispersión muy marcada, con valores entre 140 y 230 aproximadamente.
 Al tratarse de una métrica sensible a errores puntuales en los bordes, los valores altos indican modelos que cometen errores más severos en la localización o en la forma de las regiones segmentadas. La mediana parece rondar los 180, lo cual es alto en contextos médicos, y sugiere margen importante de mejora en la fidelidad geométrica.</p>
-<ol class="arabic simple" start="7">
-<li><p>Precisión Balanceada</p></li>
-</ol>
+</section>
+<section id="precision-balanceada">
+<h2><strong>Precisión Balanceada</strong><a class="headerlink" href="#precision-balanceada" title="Permalink to this heading">#</a></h2>
 <p>La Precisión Balanceada, que considera tanto la sensibilidad como la especificidad, muestra una distribución entre 0.56 y 0.82, con una mediana cercana a 0.65.
 Esta métrica es particularmente útil en contextos con clases desbalanceadas como en segmentación médica. Su dispersión relativamente baja, en comparación con otras métricas, indica que la mayoría de los modelos alcanzan un rendimiento razonablemente equilibrado entre las clases.</p>
 <div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;">
@@ -2574,7 +2592,7 @@ Esta métrica es particularmente útil en contextos con clases desbalanceadas co
 </div>
 </section>
 <section id="histogramas">
-<h3>Histogramas<a class="headerlink" href="#histogramas" title="Permalink to this heading">#</a></h3>
+<h2><strong>Histogramas</strong><a class="headerlink" href="#histogramas" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Histograma para Dice</span>
@@ -2645,7 +2663,9 @@ Esta métrica es particularmente útil en contextos con clases desbalanceadas co
 <img alt="_images/8e4c6ba469ad9240daf6c4d0d9f0d94ff6e14d620157539cc39ad42c354e0074.png" src="_images/8e4c6ba469ad9240daf6c4d0d9f0d94ff6e14d620157539cc39ad42c354e0074.png" />
 </div>
 </div>
-<p><strong>Análisis de Distribución</strong></p>
+</section>
+<section id="analisis-de-distribucion">
+<h2><strong>Análisis de Distribución</strong><a class="headerlink" href="#analisis-de-distribucion" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Dice e IoU: Presentan distribuciones bimodales con acumulaciones en los rangos más bajos (por debajo de 0.25) y en valores altos (superiores a 0.40). Esto refuerza la idea de que algunos modelos tienen dificultades significativas, mientras otros alcanzan buenos desempeños.</p></li>
 <li><p>Precisión: Muestra una distribución sesgada a la derecha, con valores agrupados cerca de 0.6. Esto sugiere que varios modelos son conservadores al momento de predecir regiones, favoreciendo precisión sobre recall.</p></li>
@@ -2682,8 +2702,11 @@ Esta métrica es particularmente útil en contextos con clases desbalanceadas co
   </div>
 </div>
 </section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="d-visualizaciones">
+<h1><strong>d) Visualizaciones</strong><a class="headerlink" href="#d-visualizaciones" title="Permalink to this heading">#</a></h1>
 <section id="comparacion-visual-de-imagenes">
-<h3>Comparacion Visual de Imagenes<a class="headerlink" href="#comparacion-visual-de-imagenes" title="Permalink to this heading">#</a></h3>
+<h2><strong>Comparación Visual de Imágenes</strong><a class="headerlink" href="#comparacion-visual-de-imagenes" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;unet_pred.npz&quot;</span><span class="p">)</span>
@@ -2763,7 +2786,7 @@ Esta métrica es particularmente útil en contextos con clases desbalanceadas co
   </div>
 </div></section>
 <section id="curvas-roc-y-precision-recall">
-<h3>Curvas ROC y Precision-Recall<a class="headerlink" href="#curvas-roc-y-precision-recall" title="Permalink to this heading">#</a></h3>
+<h2><strong>Curvas ROC y Precision-Recall</strong><a class="headerlink" href="#curvas-roc-y-precision-recall" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Curva ROC (Receiver Operating Characteristic): mide la capacidad del modelo para distinguir entre clases. Un AUC cercano a 1 indica un modelo muy discriminativo, mientras que un valor cercano a 0.5 indica un comportamiento aleatorio.</p></li>
 <li><p>Curva Precision-Recall: evalúa el balance entre precisión y sensibilidad, especialmente útil cuando las clases están desbalanceadas (como en segmentación médica). Una buena curva PR se caracteriza por una área grande, especialmente cuando la clase positiva es escasa.</p></li>
@@ -3077,7 +3100,7 @@ El modelo <strong>FCN</strong> ofrece un desempeño sólido, alcanzando un AUC-R
 <p>Los modelos Mask R-CNN, PSPNet y Swin U-Net presentan las mejores curvas, tanto en ROC como en Precision-Recall. Modelos como V-Net, DeepLabV3+ y ResUNet muestran curvas planas o con caídas abruptas, señal de mala capacidad de generalización y muchos errores de tipo I o II. La curva Precision-Recall fue especialmente útil para identificar el verdadero poder del modelo en este problema desbalanceado.</p>
 </section>
 <section id="mapa-de-error">
-<h3>Mapa de Error<a class="headerlink" href="#mapa-de-error" title="Permalink to this heading">#</a></h3>
+<h2><strong>Mapa de Error</strong><a class="headerlink" href="#mapa-de-error" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -3154,7 +3177,6 @@ El modelo <strong>FCN</strong> ofrece un desempeño sólido, alcanzando un AUC-R
   </div>
 </div></section>
 </section>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -3214,17 +3236,30 @@ El modelo <strong>FCN</strong> ofrece un desempeño sólido, alcanzando un AUC-R
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-a">Parte A</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-b">Parte B</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parte-c">Parte C</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boxplots">Boxplots</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#histogramas">Histogramas</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-visual-de-imagenes">Comparacion Visual de Imagenes</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#curvas-roc-y-precision-recall">Curvas ROC y Precision-Recall</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mapa-de-error">Mapa de Error</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Ejercicio 4. Modelos de Segmentación</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#a-analisis-exploratorio"><strong>a) Análisis Exploratorio</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#b-implemetacion-y-entrenamiento-de-modelos"><strong>b) Implemetación y Entrenamiento de Modelos</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#c-metricas"><strong>c) Métricas</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boxplots"><strong>Boxplots</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coeficiente-dice"><strong>Coeficiente <em>Dice</em></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iou-interseccion-sobre-la-union"><strong>IoU (Intersección sobre la Unión)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#precision"><strong>Precisión</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recall-sensibilidad"><strong>Recall (Sensibilidad)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#auc-area-bajo-la-curva-roc"><strong>AUC (Área bajo la curva ROC)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distancia-de-hausdorff"><strong>Distancia de Hausdorff</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#precision-balanceada"><strong>Precisión Balanceada</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histogramas"><strong>Histogramas</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-distribucion"><strong>Análisis de Distribución</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#d-visualizaciones"><strong>d) Visualizaciones</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-visual-de-imagenes"><strong>Comparación Visual de Imágenes</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#curvas-roc-y-precision-recall"><strong>Curvas ROC y Precision-Recall</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mapa-de-error"><strong>Mapa de Error</strong></a></li>
 </ul>
 </li>
 </ul>
+
   </nav></div>
 
 </div></div>
