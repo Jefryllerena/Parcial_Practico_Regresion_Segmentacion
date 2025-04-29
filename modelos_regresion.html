@@ -166,6 +166,14 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+
+
+
+
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="modelos_segmentacion.html">Ejercicio 4. Modelos de Segmentación</a></li>
 </ul>
 
@@ -368,37 +376,59 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lineal"><strong>2. Regresion Lineal</strong></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entremaniemto"><strong>2.1 Entremaniemto</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>2.2 Métricas</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>2.1 Entrenamiento</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>2.2 Métricas</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-del-modelo-de-regresion-lineal"><strong>2.3 Análisis del Modelo de Regresión Lineal</strong></a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ridge"><strong>3. Ridge</strong></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>3.1 Entremaniemto</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><strong>3.2 Métricas</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><strong>3.1 Entrenamiento</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><strong>3.2 Métricas</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-del-modelo-de-ridge"><strong>3.3 Análisis del Modelo de Ridge</strong></a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lasso"><strong>4. Lasso</strong></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-arbol-de-decision">Codigo de Arbol de decision</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-random-forest">Codigo de Random Forest</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-xgboost">Codigo de XGBoost</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-svm">Codigo de SVM</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-mlp">Codigo de MLP</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparacion-para-rnn-y-lstm">Preparacion para RNN y LSTM</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-rnn">Codigo de RNN</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-lstm">Codigo de LSTM</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><strong>4.1 Entrenamiento</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><strong>4.2 Métricas</strong></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metricas-de-evaluacion-para-los-modelos-propuestos">Métricas de evaluación para los modelos propuestos</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-absoluto-medio-mae">1. Error Absoluto Medio (MAE)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raiz-del-error-cuadratico-medio-rmse">2. Raíz del Error Cuadrático Medio (RMSE)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-cuadratico-medio-mse">3. Error Cuadrático Medio (MSE)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-porcentual-absoluto-medio-mape">4. Error Porcentual Absoluto Medio (MAPE)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coeficiente-de-determinacion-r-2">5. Coeficiente de Determinación ((R^2))</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pvalue-del-test-de-ljungbox">6. p‑value del Test de Ljung–Box</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#arbol-de-decision"><strong>5. Árbol de Decisión</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7"><strong>5.1 Entrenamiento</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8"><strong>5.2 Métricas</strong></a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bosques-aleatorios"><strong>6. Bosques Aleatorios</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9"><strong>6.1 Entrenamiento</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10"><strong>6.2 Métricas</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#xgboost"><strong>7. XGBoost</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11"><strong>7.1 Entrenamiento</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12"><strong>7.2 Métricas</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#svm"><strong>8. SVM</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13"><strong>8.1 Entrenamiento</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14"><strong>8.2 Métricas</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mlp"><strong>9. MLP</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15"><strong>9.1 Entrenamiento</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16"><strong>9.2 Métricas</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preparacion-para-rnn-y-lstm">Preparacion para RNN y LSTM</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rnn"><strong>10. RNN</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lstm"><strong>11. LSTM</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#metricas-de-evaluacion-para-los-modelos-propuestos"><strong>Métricas de evaluación para los modelos propuestos</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-absoluto-medio-mae">1. Error Absoluto Medio (MAE)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#raiz-del-error-cuadratico-medio-rmse">2. Raíz del Error Cuadrático Medio (RMSE)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-cuadratico-medio-mse">3. Error Cuadrático Medio (MSE)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-porcentual-absoluto-medio-mape">4. Error Porcentual Absoluto Medio (MAPE)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coeficiente-de-determinacion-r-2">5. Coeficiente de Determinación ((R^2))</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pvalue-del-test-de-ljungbox">6. p‑value del Test de Ljung–Box</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-comparativo-de-los-modelos"><strong>Análisis Comparativo de los Modelos</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen-de-modelos-y-metricas"><strong>Resumen de Modelos y Métricas</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-por-categoria-de-modelos"><strong>Análisis por Categoría de Modelos</strong></a><ul class="nav section-nav flex-column">
@@ -406,7 +436,7 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-lineales"><strong>2. Modelos Lineales</strong></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-de-soporte-vectorial"><strong>3. Modelos de Soporte Vectorial</strong></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#redes-neuronales"><strong>4. Redes Neuronales</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><strong>5. K‑NN</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id17"><strong>5. K‑NN</strong></a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-de-rendimiento-en-metricas"><strong>Comparación de Rendimiento en Métricas</strong></a></li>
@@ -1211,8 +1241,8 @@ Mejor ventana KNN 28
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="regresion-lineal">
 <h1><strong>2. Regresion Lineal</strong><a class="headerlink" href="#regresion-lineal" title="Permalink to this heading">#</a></h1>
-<section id="entremaniemto">
-<h2><strong>2.1 Entremaniemto</strong><a class="headerlink" href="#entremaniemto" title="Permalink to this heading">#</a></h2>
+<section id="id1">
+<h2><strong>2.1 Entrenamiento</strong><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modelo_lr</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
@@ -1235,8 +1265,8 @@ LR ventana 28 días 4.11s
 </div>
 </div>
 </section>
-<section id="id1">
-<h2><strong>2.2 Métricas</strong><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<section id="id2">
+<h2><strong>2.2 Métricas</strong><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res_lr</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="n">metricas</span><span class="p">(</span><span class="n">y_true_lr</span><span class="p">[</span><span class="n">v</span><span class="p">],</span> <span class="n">y_pred_lr</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ventanas</span><span class="p">}</span>
@@ -1683,8 +1713,8 @@ Mejor ventana LR 28
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="ridge">
 <h1><strong>3. Ridge</strong><a class="headerlink" href="#ridge" title="Permalink to this heading">#</a></h1>
-<section id="id2">
-<h2><strong>3.1 Entremaniemto</strong><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<section id="id3">
+<h2><strong>3.1 Entrenamiento</strong><a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modelo_ridge</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">()</span>
@@ -1707,8 +1737,8 @@ Ridge ventana 28 días 4.32s
 </div>
 </div>
 </section>
-<section id="id3">
-<h2><strong>3.2 Métricas</strong><a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<section id="id4">
+<h2><strong>3.2 Métricas</strong><a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res_ridge</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="n">metricas</span><span class="p">(</span><span class="n">y_true_ridge</span><span class="p">[</span><span class="n">v</span><span class="p">],</span> <span class="n">y_pred_ridge</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ventanas</span><span class="p">}</span>
@@ -2153,10 +2183,11 @@ El modelo Ridge muestra un mejor desempeño en términos de MAE, RMSE y MSE en c
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="lasso">
 <h1><strong>4. Lasso</strong><a class="headerlink" href="#lasso" title="Permalink to this heading">#</a></h1>
+<section id="id5">
+<h2><strong>4.1 Entrenamiento</strong><a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SECCIÓN 7 ─ LASSO ENTRENAMIENTO</span>
-<span class="n">modelo_lasso</span> <span class="o">=</span> <span class="n">Lasso</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modelo_lasso</span> <span class="o">=</span> <span class="n">Lasso</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
 <span class="n">y_true_lasso</span><span class="p">,</span> <span class="n">y_pred_lasso</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ventanas</span><span class="p">:</span>
     <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
@@ -2175,10 +2206,12 @@ Lasso ventana 28 días 4.49s
 </div>
 </div>
 </div>
+</section>
+<section id="id6">
+<h2><strong>4.2 Métricas</strong><a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SECCIÓN 8 ─ LASSO MÉTRICAS</span>
-<span class="n">res_lasso</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="n">metricas</span><span class="p">(</span><span class="n">y_true_lasso</span><span class="p">[</span><span class="n">v</span><span class="p">],</span> <span class="n">y_pred_lasso</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ventanas</span><span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res_lasso</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="n">metricas</span><span class="p">(</span><span class="n">y_true_lasso</span><span class="p">[</span><span class="n">v</span><span class="p">],</span> <span class="n">y_pred_lasso</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ventanas</span><span class="p">}</span>
 <span class="n">df_lasso</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">res_lasso</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;MAPE&quot;</span><span class="p">,</span><span class="s2">&quot;MAE&quot;</span><span class="p">,</span><span class="s2">&quot;RMSE&quot;</span><span class="p">,</span><span class="s2">&quot;MSE&quot;</span><span class="p">,</span><span class="s2">&quot;R2&quot;</span><span class="p">,</span><span class="s2">&quot;LB_p&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_lasso</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mejor ventana Lasso&quot;</span><span class="p">,</span> <span class="n">df_lasso</span><span class="o">.</span><span class="n">RMSE</span><span class="o">.</span><span class="n">idxmin</span><span class="p">())</span>
@@ -2529,12 +2562,15 @@ Mejor ventana Lasso 28
   </div>
 </div></div>
 </div>
-<div style="background-color: #f5fdf9; padding: 12px;"> <h3><strong>💡Análisis del Modelo Lasso</strong></h3> <p>A continuación, se presenta el análisis de los resultados obtenidos con el modelo Lasso para diferentes tamaños de ventana (T = 7, 28).</p> <hr> <h3><strong>1. Mejora en las Métricas con el Tamaño de la Ventana</strong></h3> <h4><strong>1.1. Reducción del Error</strong></h4> <ul> <li><strong>MAPE (Mean Absolute Percentage Error):</strong> El MAPE disminuye ligeramente con el aumento del tamaño de la ventana: <ul> <li>T=7: <code>3.530e+08</code></li> <li>T=28: <code>3.356e+08</code> (reducción del 4.9%)</li> </ul> </li> <li><strong>MAE (Mean Absolute Error):</strong> El error absoluto también disminuye: <ul> <li>T=7: <code>7.098e-01</code></li> <li>T=28: <code>6.392e-01</code> (reducción del 9.9%)</li> </ul> </li> <li><strong>RMSE (Root Mean Squared Error):</strong> El error cuadrático medio muestra una mejora: <ul> <li>T=7: <code>9.081e-01</code></li> <li>T=28: <code>8.142e-01</code> (reducción del 10.3%)</li> </ul> </li> <li><strong>MSE (Mean Squared Error):</strong> El error cuadrático medio sigue una tendencia similar: <ul> <li>T=7: <code>8.247e-01</code></li> <li>T=28: <code>6.629e-01</code> (reducción del 19.8%)</li> </ul> </li> </ul> <h4><strong>1.2. Mejora en el Coeficiente de Determinación (R2)</strong></h4> <ul> <li><strong>R2:</strong> El coeficiente de determinación aumenta con el tamaño de la ventana: <ul> <li>T=7: <code>5.225e-01</code> (R2=0.522)</li> <li>T=28: <code>6.165e-01</code> (R2=0.616)</li> </ul> </li> </ul> <hr> <h3><strong>2. Ventana Óptima</strong></h3> <p>La ventana de tamaño <strong>T=28</strong> muestra los mejores resultados:</p> <ul> <li><strong>MAPE más bajo:</strong> <code>3.356e+08</code></li> <li><strong>RMSE más bajo:</strong> <code>8.142e-01</code></li> <li><strong>MSE más bajo:</strong> <code>6.629e-01</code></li> <li><strong>R2 más alto:</strong> <code>6.165e-01</code></li> </ul> <hr> <h3><strong>3. Observaciones</strong></h3> <ul> <li><strong>MAPE Elevado:</strong> Los valores de MAPE siguen siendo muy altos, lo que podría deberse a: <ul> <li>Escala de las variables.</li> </li> <li>Limitaciones del modelo Lasso para capturar relaciones no lineales.</li> </ul> </li> <li><strong>Autocorrelación en los residuos:</strong> El valor LB_p es 0.e+00 en todas las ventanas, indicando que el modelo no captura adecuadamente la dinámica temporal.</li> </ul> <hr> <h3> <h3><strong>Conclusión</strong></h3> <p>El modelo Lasso mejora sus métricas con ventanas mayores, alcanzando su mejor desempeño en T=28. Sin embargo, presenta limitaciones importantes, especialmente en el MAPE y la autocorrelación de los residuos, lo que sugiere la necesidad de ajustes adicionales o el uso de modelos más complejos para capturar la dinámica de los datos.</p> </div><section id="codigo-de-arbol-de-decision">
-<h2>Codigo de Arbol de decision<a class="headerlink" href="#codigo-de-arbol-de-decision" title="Permalink to this heading">#</a></h2>
+<div style="background-color: #f5fdf9; padding: 12px;"> <h3><strong>💡Análisis del Modelo Lasso</strong></h3> <p>A continuación, se presenta el análisis de los resultados obtenidos con el modelo Lasso para diferentes tamaños de ventana (T = 7, 28).</p> <hr> <h3><strong>1. Mejora en las Métricas con el Tamaño de la Ventana</strong></h3> <h4><strong>1.1. Reducción del Error</strong></h4> <ul> <li><strong>MAPE (Mean Absolute Percentage Error):</strong> El MAPE disminuye ligeramente con el aumento del tamaño de la ventana: <ul> <li>T=7: <code>3.530e+08</code></li> <li>T=28: <code>3.356e+08</code> (reducción del 4.9%)</li> </ul> </li> <li><strong>MAE (Mean Absolute Error):</strong> El error absoluto también disminuye: <ul> <li>T=7: <code>7.098e-01</code></li> <li>T=28: <code>6.392e-01</code> (reducción del 9.9%)</li> </ul> </li> <li><strong>RMSE (Root Mean Squared Error):</strong> El error cuadrático medio muestra una mejora: <ul> <li>T=7: <code>9.081e-01</code></li> <li>T=28: <code>8.142e-01</code> (reducción del 10.3%)</li> </ul> </li> <li><strong>MSE (Mean Squared Error):</strong> El error cuadrático medio sigue una tendencia similar: <ul> <li>T=7: <code>8.247e-01</code></li> <li>T=28: <code>6.629e-01</code> (reducción del 19.8%)</li> </ul> </li> </ul> <h4><strong>1.2. Mejora en el Coeficiente de Determinación (R2)</strong></h4> <ul> <li><strong>R2:</strong> El coeficiente de determinación aumenta con el tamaño de la ventana: <ul> <li>T=7: <code>5.225e-01</code> (R2=0.522)</li> <li>T=28: <code>6.165e-01</code> (R2=0.616)</li> </ul> </li> </ul> <hr> <h3><strong>2. Ventana Óptima</strong></h3> <p>La ventana de tamaño <strong>T=28</strong> muestra los mejores resultados:</p> <ul> <li><strong>MAPE más bajo:</strong> <code>3.356e+08</code></li> <li><strong>RMSE más bajo:</strong> <code>8.142e-01</code></li> <li><strong>MSE más bajo:</strong> <code>6.629e-01</code></li> <li><strong>R2 más alto:</strong> <code>6.165e-01</code></li> </ul> <hr> <h3><strong>3. Observaciones</strong></h3> <ul> <li><strong>MAPE Elevado:</strong> Los valores de MAPE siguen siendo muy altos, lo que podría deberse a: <ul> <li>Escala de las variables.</li> </li> <li>Limitaciones del modelo Lasso para capturar relaciones no lineales.</li> </ul> </li> <li><strong>Autocorrelación en los residuos:</strong> El valor LB_p es 0.e+00 en todas las ventanas, indicando que el modelo no captura adecuadamente la dinámica temporal.</li> </ul> <hr> <h3> <h3><strong>Conclusión</strong></h3> <p>El modelo Lasso mejora sus métricas con ventanas mayores, alcanzando su mejor desempeño en T=28. Sin embargo, presenta limitaciones importantes, especialmente en el MAPE y la autocorrelación de los residuos, lo que sugiere la necesidad de ajustes adicionales o el uso de modelos más complejos para capturar la dinámica de los datos.</p> </div></section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="arbol-de-decision">
+<h1><strong>5. Árbol de Decisión</strong><a class="headerlink" href="#arbol-de-decision" title="Permalink to this heading">#</a></h1>
+<section id="id7">
+<h2><strong>5.1 Entrenamiento</strong><a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SECCIÓN 9 ─ ÁRBOL DE DECISIÓN ENTRENAMIENTO</span>
-<span class="n">modelo_dt</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modelo_dt</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">y_true_dt</span><span class="p">,</span> <span class="n">y_pred_dt</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ventanas</span><span class="p">:</span>
     <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
@@ -2553,14 +2589,12 @@ DT ventana 28 días 11.12s
 </div>
 </div>
 </div>
-<p>DT ventana 7 días 5.83s</p>
-<p>DT ventana 14 días 7.71s</p>
-<p>DT ventana 21 días 9.49s</p>
-<p>DT ventana 28 días 11.12s</p>
+</section>
+<section id="id8">
+<h2><strong>5.2 Métricas</strong><a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SECCIÓN 10 ─ ÁRBOL DE DECISIÓN MÉTRICAS</span>
-<span class="n">res_dt</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="n">metricas</span><span class="p">(</span><span class="n">y_true_dt</span><span class="p">[</span><span class="n">v</span><span class="p">],</span> <span class="n">y_pred_dt</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ventanas</span><span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res_dt</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="n">metricas</span><span class="p">(</span><span class="n">y_true_dt</span><span class="p">[</span><span class="n">v</span><span class="p">],</span> <span class="n">y_pred_dt</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ventanas</span><span class="p">}</span>
 <span class="n">df_dt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">res_dt</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;MAPE&quot;</span><span class="p">,</span><span class="s2">&quot;MAE&quot;</span><span class="p">,</span><span class="s2">&quot;RMSE&quot;</span><span class="p">,</span><span class="s2">&quot;MSE&quot;</span><span class="p">,</span><span class="s2">&quot;R2&quot;</span><span class="p">,</span><span class="s2">&quot;LB_p&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_dt</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mejor ventana DT&quot;</span><span class="p">,</span> <span class="n">df_dt</span><span class="o">.</span><span class="n">RMSE</span><span class="o">.</span><span class="n">idxmin</span><span class="p">())</span>
@@ -2912,12 +2946,14 @@ Mejor ventana DT 28
 </div></div>
 </div>
 <div style="background-color: #f5fdf9; padding: 12px;"> <h3><strong>💡Análisis del Modelo de Árbol de Decisión</strong></h3> <p>A continuación, se presenta el análisis de los resultados obtenidos con el modelo de Árbol de Decisión para diferentes tamaños de ventana (T = 7, 28).</p> <hr> <h3><strong>1. Mejora en las Métricas con el Tamaño de la Ventana</strong></h3> <h4><strong>1.1. Reducción del Error</strong></h4> <ul> <li><strong>MAPE (Mean Absolute Percentage Error):</strong> El MAPE disminuye con el aumento del tamaño de la ventana: <ul> <li>T=7: <code>1.740e+08</code></li> <li>T=28: <code>1.489e+08</code> (reducción del 14.5%)</li> </ul> </li> <li><strong>MAE (Mean Absolute Error):</strong> El error absoluto también disminuye: <ul> <li>T=7: <code>6.015e-01</code></li> <li>T=28: <code>5.145e-01</code> (reducción del 14.5%)</li> </ul> </li> <li><strong>RMSE (Root Mean Squared Error):</strong> El error cuadrático medio muestra una mejora: <ul> <li>T=7: <code>8.064e-01</code></li> <li>T=28: <code>6.918e-01</code> (reducción del 14.2%)</li> </ul> </li> <li><strong>MSE (Mean Squared Error):</strong> El error cuadrático medio sigue una tendencia similar: <ul> <li>T=7: <code>6.503e-01</code></li> <li>T=28: <code>4.786e-01</code> (reducción del 26.4%)</li> </ul> </li> </ul> <h4><strong>1.2. Mejora en el Coeficiente de Determinación (R2)</strong></h4> <ul> <li><strong>R2:</strong> El coeficiente de determinación mejora con el tamaño de la ventana: <ul> <li>T=7: <code>6.235e-01</code> (R2=0.623)</li> <li>T=28: <code>7.231e-01</code> (R2=0.723)</li> </ul> </li> </ul> <hr> <h3><strong>2. Mejor Ventana</strong></h3> <p>La ventana de tamaño <strong>T=28</strong> muestra los mejores resultados:</p> <ul> <li><strong>MAPE más bajo:</strong> <code>1.489e+08</code></li> <li><strong>MAE más bajo:</strong> <code>5.145e-01</code></li> <li><strong>RMSE más bajo:</strong> <code>6.918e-01</code></li> <li><strong>MSE más bajo:</strong> <code>4.786e-01</code></li> <li><strong>R2 más alto:</strong> <code>7.231e-01</code></li> </ul> <hr> <h3><strong>3. Observaciones</strong></h3> <ul> <li><strong>MAPE Elevado:</strong> Aunque mejora con ventanas más grandes, sigue siendo alto debido posiblemente a: <ul> <li>Relaciones no lineales no capturadas completamente.</li></li> </ul> </li> <li><strong>Autocorrelación en Residuos:</strong> El valor <code>LB_p=0.e+00</code> en todas las ventanas indica fuerte autocorrelación, reflejando que el modelo no captura bien la dinámica temporal.</li> <li><strong>Sobreajuste Potencial:</strong> La mejora al aumentar el tamaño de la ventana puede estar asociada a una mejor generalización del modelo ante más datos.</li> </ul> <hr> <h3><strong>4. Comparación con los anteriores Modelos</strong></h3> <ul> <li><strong>Modelo Lasso:</strong> El Árbol de Decisión supera ampliamente al Lasso, especialmente en R2.</li> <li><strong>Modelo Ridge:</strong> Mejor R2 en ventanas grandes comparado con Ridge.</li> <li><strong>Modelo KNN:</strong> Mejor R2 y menores errores en todas las ventanas.</li> <li><strong>Regresión Lineal:</strong> Supera ampliamente en R2 y errores a la Regresión Lineal.</li> </ul> <hr> <h3><strong>Conclusión</strong></h3> <p>El modelo de Árbol de Decisión muestra mejoras claras con ventanas más grandes, siendo <strong>T=28</strong> el mejor escenario. No obstante, los altos valores de MAPE y la autocorrelación en los residuos indican la necesidad de explorar métodos más robustos y complejos para mejorar el desempeño predictivo.</p> </div></section>
-<section id="codigo-de-random-forest">
-<h2>Codigo de Random Forest<a class="headerlink" href="#codigo-de-random-forest" title="Permalink to this heading">#</a></h2>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="bosques-aleatorios">
+<h1><strong>6. Bosques Aleatorios</strong><a class="headerlink" href="#bosques-aleatorios" title="Permalink to this heading">#</a></h1>
+<section id="id9">
+<h2><strong>6.1 Entrenamiento</strong><a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SECCIÓN 11 ─ RANDOM FOREST ENTRENAMIENTO</span>
-<span class="n">modelo_rf</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modelo_rf</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">y_true_rf</span><span class="p">,</span> <span class="n">y_pred_rf</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ventanas</span><span class="p">:</span>
     <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
@@ -2936,10 +2972,12 @@ RF ventana 28 días 206.32s
 </div>
 </div>
 </div>
+</section>
+<section id="id10">
+<h2><strong>6.2 Métricas</strong><a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SECCIÓN 12 ─ RANDOM FOREST MÉTRICAS</span>
-<span class="n">res_rf</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="n">metricas</span><span class="p">(</span><span class="n">y_true_rf</span><span class="p">[</span><span class="n">v</span><span class="p">],</span> <span class="n">y_pred_rf</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ventanas</span><span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res_rf</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="n">metricas</span><span class="p">(</span><span class="n">y_true_rf</span><span class="p">[</span><span class="n">v</span><span class="p">],</span> <span class="n">y_pred_rf</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ventanas</span><span class="p">}</span>
 <span class="n">df_rf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">res_rf</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;MAPE&quot;</span><span class="p">,</span><span class="s2">&quot;MAE&quot;</span><span class="p">,</span><span class="s2">&quot;RMSE&quot;</span><span class="p">,</span><span class="s2">&quot;MSE&quot;</span><span class="p">,</span><span class="s2">&quot;R2&quot;</span><span class="p">,</span><span class="s2">&quot;LB_p&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_rf</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mejor ventana RF&quot;</span><span class="p">,</span> <span class="n">df_rf</span><span class="o">.</span><span class="n">RMSE</span><span class="o">.</span><span class="n">idxmin</span><span class="p">())</span>
@@ -3291,12 +3329,14 @@ Mejor ventana RF 28
 </div></div>
 </div>
 <div style="background-color: #f5fdf9; padding: 12px;"> <h3><strong>💡Análisis de los Resultados del Modelo Random Forest</strong></h3> <p>A continuación, se realiza el análisis de los resultados obtenidos con el modelo Random Forest, utilizando diferentes tamaños de ventana (T = 7, 14, 21, 28).</p> <hr> <h3><strong>1. Mejora en las Métricas con el Tamaño de la Ventana</strong></h3> <h4><strong>1.1. Reducción del Error</strong></h4> <ul> <li><strong>MAPE (Mean Absolute Percentage Error):</strong> El MAPE disminuye gradualmente con el aumento del tamaño de la ventana: <ul> <li>T=7: <code>1.816e+08</code></li> <li>T=28: <code>1.514e+08</code> (reducción del 16.6%)</li> </ul> </li> <li><strong>MAE (Mean Absolute Error):</strong> El error absoluto también disminuye con el aumento del tamaño de la ventana: <ul> <li>T=7: <code>5.088e-01</code></li> <li>T=28: <code>4.763e-01</code> (reducción del 6.3%)</li> </ul> </li> <li><strong>RMSE (Root Mean Squared Error):</strong> El error cuadrático medio muestra una mejora constante: <ul> <li>T=7: <code>6.694e-01</code></li> <li>T=28: <code>6.280e-01</code> (reducción del 6.1%)</li> </ul> </li> <li><strong>MSE (Mean Squared Error):</strong> El error cuadrático medio sigue una tendencia similar al RMSE: <ul> <li>T=7: <code>4.481e-01</code></li> <li>T=28: <code>3.944e-01</code> (reducción del 12.0%)</li> </ul> </li> </ul> <h4><strong>1.2. Mejora en el Coeficiente de Determinación (R2)</strong></h4> <ul> <li><strong>R2:</strong> El coeficiente de determinación mejora con el tamaño de la ventana: <ul> <li>T=7: <code>7.405e-01</code> (R2=0.740)</li> <li>T=28: <code>7.718e-01</code> (R2=0.772)</li> </ul> </li> </ul> <hr> <h3><strong>2. Mejor Ventana</strong></h3> <p>La mejor ventana para el modelo Random Forest es <strong>T=28</strong>, ya que presenta:</p> <ul> <li><strong>MAPE más bajo:</strong> <code>1.514e+08</code></li> <li><strong>MAE más bajo:</strong> <code>4.763e-01</code></li> <li><strong>RMSE más bajo:</strong> <code>6.280e-01</code></li> <li><strong>MSE más bajo:</strong> <code>3.944e-01</code></li> <li><strong>R2 más alto:</strong> <code>7.718e-01</code></li> </ul> <hr> <h3><strong>3. Observaciones</strong></h3> <ul> <li><strong>MAPE Elevado:</strong> Aunque mejora con ventanas más grandes, los valores siguen siendo muy altos debido a: <ul> <li>Escala de las variables o de la variable objetivo.</li> </li> </ul> </li> <li><strong>Autocorrelación en Residuos:</strong> El valor <code>LB_p=0.e+00</code> en todas las ventanas indica autocorrelación significativa, reflejando que el modelo no captura adecuadamente la dinámica temporal.</li> </li> </ul> <hr> <h3><strong>4. Comparación con los Otros Modelos</strong></h3> <ul> <li><strong>Modelo de Árbol de Decisión:</strong> Random Forest supera al Árbol de Decisión en todas las métricas, especialmente en R2.</li> <li><strong>Modelo Lasso:</strong> Random Forest ofrece un mejor rendimiento en MAPE, MAE, RMSE, MSE y R2.</li> <li><strong>Modelo KNN:</strong> Random Forest muestra un mejor R2 y menores errores (MAE, RMSE) en todas las ventanas.</li> <li><strong>Modelo Ridge:</strong> En ventanas pequeñas (T=7 y T=14), Random Forest tiene un mejor R2 y menores errores que Ridge.</li> </ul> <hr> <h3><strong>Conclusión</strong></h3> <p>El modelo Random Forest muestra un rendimiento mejorado con ventanas más grandes, alcanzando su mejor desempeño en <strong>T=28</strong>. Sin embargo, los valores elevados de MAPE y la autocorrelación en los residuos sugieren que se necesita un enfoque más robusto para manejar la complejidad de los datos. Se recomienda explorar modelos más complejos, ajustar hiperparámetros y añadir características temporales para mejorar las predicciones.</p> </div></section>
-<section id="codigo-de-xgboost">
-<h2>Codigo de XGBoost<a class="headerlink" href="#codigo-de-xgboost" title="Permalink to this heading">#</a></h2>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="xgboost">
+<h1><strong>7. XGBoost</strong><a class="headerlink" href="#xgboost" title="Permalink to this heading">#</a></h1>
+<section id="id11">
+<h2><strong>7.1 Entrenamiento</strong><a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SECCIÓN 13 ─ XGBOOST ENTRENAMIENTO</span>
-<span class="n">modelo_xgb</span> <span class="o">=</span> <span class="n">XGBRegressor</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modelo_xgb</span> <span class="o">=</span> <span class="n">XGBRegressor</span><span class="p">(</span>
     <span class="n">n_estimators</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
     <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
     <span class="n">max_depth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
@@ -3324,10 +3364,12 @@ XGB ventana 28 días 88.77s
 </div>
 </div>
 </div>
+</section>
+<section id="id12">
+<h2><strong>7.2 Métricas</strong><a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SECCIÓN 14 ─ XGBOOST MÉTRICAS</span>
-<span class="n">res_xgb</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="n">metricas</span><span class="p">(</span><span class="n">y_true_xgb</span><span class="p">[</span><span class="n">v</span><span class="p">],</span> <span class="n">y_pred_xgb</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ventanas</span><span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res_xgb</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="n">metricas</span><span class="p">(</span><span class="n">y_true_xgb</span><span class="p">[</span><span class="n">v</span><span class="p">],</span> <span class="n">y_pred_xgb</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ventanas</span><span class="p">}</span>
 <span class="n">df_xgb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">res_xgb</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;MAPE&quot;</span><span class="p">,</span><span class="s2">&quot;MAE&quot;</span><span class="p">,</span><span class="s2">&quot;RMSE&quot;</span><span class="p">,</span><span class="s2">&quot;MSE&quot;</span><span class="p">,</span><span class="s2">&quot;R2&quot;</span><span class="p">,</span><span class="s2">&quot;LB_p&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_xgb</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mejor ventana XGB&quot;</span><span class="p">,</span> <span class="n">df_xgb</span><span class="o">.</span><span class="n">RMSE</span><span class="o">.</span><span class="n">idxmin</span><span class="p">())</span>
@@ -3751,12 +3793,14 @@ Mejor ventana XGB 28
   <h3><strong>Conclusión</strong></h3>
   <p>El modelo XGBoost muestra un rendimiento superior en comparación con otros modelos evaluados, alcanzando su mejor desempeño en <strong>T=28</strong>. Sin embargo, los altos valores de MAPE y la autocorrelación en los residuos sugieren que se necesita un enfoque más robusto para manejar la complejidad de los datos. </p>
 </div></section>
-<section id="codigo-de-svm">
-<h2>Codigo de SVM<a class="headerlink" href="#codigo-de-svm" title="Permalink to this heading">#</a></h2>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="svm">
+<h1><strong>8. SVM</strong><a class="headerlink" href="#svm" title="Permalink to this heading">#</a></h1>
+<section id="id13">
+<h2><strong>8.1 Entrenamiento</strong><a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SECCIÓN 15 ─ SVM ENTRENAMIENTO</span>
-<span class="n">modelo_svm</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s2">&quot;esc&quot;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span> <span class="p">(</span><span class="s2">&quot;svm&quot;</span><span class="p">,</span> <span class="n">SVR</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">))])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modelo_svm</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s2">&quot;esc&quot;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span> <span class="p">(</span><span class="s2">&quot;svm&quot;</span><span class="p">,</span> <span class="n">SVR</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">))])</span>
 <span class="n">y_true_svm</span><span class="p">,</span> <span class="n">y_pred_svm</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ventanas</span><span class="p">:</span>
     <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
@@ -3775,10 +3819,12 @@ SVM ventana 28 días 234.86s
 </div>
 </div>
 </div>
+</section>
+<section id="id14">
+<h2><strong>8.2 Métricas</strong><a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SECCIÓN 16 ─ SVM MÉTRICAS</span>
-<span class="n">res_svm</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="n">metricas</span><span class="p">(</span><span class="n">y_true_svm</span><span class="p">[</span><span class="n">v</span><span class="p">],</span> <span class="n">y_pred_svm</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ventanas</span><span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res_svm</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="n">metricas</span><span class="p">(</span><span class="n">y_true_svm</span><span class="p">[</span><span class="n">v</span><span class="p">],</span> <span class="n">y_pred_svm</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ventanas</span><span class="p">}</span>
 <span class="n">df_svm</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">res_svm</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;MAPE&quot;</span><span class="p">,</span><span class="s2">&quot;MAE&quot;</span><span class="p">,</span><span class="s2">&quot;RMSE&quot;</span><span class="p">,</span><span class="s2">&quot;MSE&quot;</span><span class="p">,</span><span class="s2">&quot;R2&quot;</span><span class="p">,</span><span class="s2">&quot;LB_p&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_svm</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mejor ventana SVM&quot;</span><span class="p">,</span> <span class="n">df_svm</span><span class="o">.</span><span class="n">RMSE</span><span class="o">.</span><span class="n">idxmin</span><span class="p">())</span>
@@ -4203,12 +4249,14 @@ Mejor ventana SVM 28
   <h3><strong>Conclusión</strong></h3>
   <p>El modelo SVM muestra una mejora en las métricas con ventanas más grandes, alcanzando su mejor desempeño en <strong>T=28</strong>. Sin embargo, su rendimiento sigue siendo inferior al de modelos como Random Forest y XGBoost. Los altos valores de MAPE y la autocorrelación en los residuos sugieren que se necesita un enfoque más robusto para manejar la complejidad de los datos.</p>
 </div></section>
-<section id="codigo-de-mlp">
-<h2>Codigo de MLP<a class="headerlink" href="#codigo-de-mlp" title="Permalink to this heading">#</a></h2>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="mlp">
+<h1><strong>9. MLP</strong><a class="headerlink" href="#mlp" title="Permalink to this heading">#</a></h1>
+<section id="id15">
+<h2><strong>9.1 Entrenamiento</strong><a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SECCIÓN 17 ─ MLP ENTRENAMIENTO</span>
-<span class="n">modelo_mlp</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modelo_mlp</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
     <span class="p">(</span><span class="s2">&quot;esc&quot;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
     <span class="p">(</span><span class="s2">&quot;mlp&quot;</span><span class="p">,</span> <span class="n">MLPRegressor</span><span class="p">(</span><span class="n">hidden_layer_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">32</span><span class="p">,),</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
 <span class="p">])</span>
@@ -4230,10 +4278,12 @@ MLP ventana 28 días 730.27s
 </div>
 </div>
 </div>
+</section>
+<section id="id16">
+<h2><strong>9.2 Métricas</strong><a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SECCIÓN 18 ─ MLP MÉTRICAS</span>
-<span class="n">res_mlp</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="n">metricas</span><span class="p">(</span><span class="n">y_true_mlp</span><span class="p">[</span><span class="n">v</span><span class="p">],</span> <span class="n">y_pred_mlp</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ventanas</span><span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res_mlp</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="n">metricas</span><span class="p">(</span><span class="n">y_true_mlp</span><span class="p">[</span><span class="n">v</span><span class="p">],</span> <span class="n">y_pred_mlp</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ventanas</span><span class="p">}</span>
 <span class="n">df_mlp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">res_mlp</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;MAPE&quot;</span><span class="p">,</span><span class="s2">&quot;MAE&quot;</span><span class="p">,</span><span class="s2">&quot;RMSE&quot;</span><span class="p">,</span><span class="s2">&quot;MSE&quot;</span><span class="p">,</span><span class="s2">&quot;R2&quot;</span><span class="p">,</span><span class="s2">&quot;LB_p&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_mlp</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mejor ventana MLP&quot;</span><span class="p">,</span> <span class="n">df_mlp</span><span class="o">.</span><span class="n">RMSE</span><span class="o">.</span><span class="n">idxmin</span><span class="p">())</span>
@@ -4659,9 +4709,8 @@ Mejor ventana MLP 28
   <h3><strong>Conclusión</strong></h3>
   <p>El modelo MLP muestra una mejora significativa en las métricas con ventanas más grandes, alcanzando su mejor desempeño en <strong>T=28</strong>. Sin embargo, los altos valores de MAPE y la autocorrelación en los residuos sugieren que se necesita un enfoque más robusto para manejar la complejidad de los datos. </p>
 </div>
-</section>
 <section id="preparacion-para-rnn-y-lstm">
-<h2>Preparacion para RNN y LSTM<a class="headerlink" href="#preparacion-para-rnn-y-lstm" title="Permalink to this heading">#</a></h2>
+<h3>Preparacion para RNN y LSTM<a class="headerlink" href="#preparacion-para-rnn-y-lstm" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">escX</span><span class="o">=</span><span class="n">MinMaxScaler</span><span class="p">()</span>
@@ -4686,8 +4735,11 @@ Mejor ventana MLP 28
 </div>
 </div>
 </div>
-<section id="codigo-de-rnn">
-<h3>Codigo de RNN<a class="headerlink" href="#codigo-de-rnn" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="rnn">
+<h1><strong>10. RNN</strong><a class="headerlink" href="#rnn" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">resultados_RNN</span><span class="o">=</span><span class="p">[]</span>
@@ -5155,8 +5207,8 @@ T 28 MAPE 81532773739784.02 MAE 0.6360790882518187 RMSE 0.8323317840577478 MSE 0
   <h3><strong>Conclusión</strong></h3>
   <p>El modelo RNN muestra una mejora en las métricas con ventanas más grandes, alcanzando su mejor desempeño en <strong>T=28</strong>. Sin embargo, los altos valores de MAPE y la autocorrelación en los residuos sugieren que se necesita un enfoque más robusto para manejar la complejidad de los datos.</p>
 </div></section>
-<section id="codigo-de-lstm">
-<h3>Codigo de LSTM<a class="headerlink" href="#codigo-de-lstm" title="Permalink to this heading">#</a></h3>
+<section class="tex2jax_ignore mathjax_ignore" id="lstm">
+<h1><strong>11. LSTM</strong><a class="headerlink" href="#lstm" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">resultados_LSTM</span><span class="o">=</span><span class="p">[]</span>
@@ -5622,11 +5674,10 @@ T 28 MAPE 92244943409364.36 MAE 0.6300531539634896 RMSE 0.819763590963819 MSE 0.
     </ul>
   <hr>
 </div></section>
-</section>
-<section id="metricas-de-evaluacion-para-los-modelos-propuestos">
-<h2>Métricas de evaluación para los modelos propuestos<a class="headerlink" href="#metricas-de-evaluacion-para-los-modelos-propuestos" title="Permalink to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="metricas-de-evaluacion-para-los-modelos-propuestos">
+<h1><strong>Métricas de evaluación para los modelos propuestos</strong><a class="headerlink" href="#metricas-de-evaluacion-para-los-modelos-propuestos" title="Permalink to this heading">#</a></h1>
 <section id="error-absoluto-medio-mae">
-<h3>1. Error Absoluto Medio (MAE)<a class="headerlink" href="#error-absoluto-medio-mae" title="Permalink to this heading">#</a></h3>
+<h2>1. Error Absoluto Medio (MAE)<a class="headerlink" href="#error-absoluto-medio-mae" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>Qué mide:</strong> el promedio de la magnitud de los errores sin considerar su signo.</p></li>
 <li><p><strong>Interpretación:</strong> “En promedio nos equivocamos ± MAE unidades”. Sensible a la escala de la variable.</p></li>
@@ -5635,7 +5686,7 @@ $<span class="math notranslate nohighlight">\(\text{MAE} = \frac{1}{n}\sum_{i=1}
 </ul>
 </section>
 <section id="raiz-del-error-cuadratico-medio-rmse">
-<h3>2. Raíz del Error Cuadrático Medio (RMSE)<a class="headerlink" href="#raiz-del-error-cuadratico-medio-rmse" title="Permalink to this heading">#</a></h3>
+<h2>2. Raíz del Error Cuadrático Medio (RMSE)<a class="headerlink" href="#raiz-del-error-cuadratico-medio-rmse" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>Qué mide:</strong> penaliza los errores grandes al elevarlos al cuadrado y luego hace la raíz cuadrada para volver a la escala original.</p></li>
 <li><p><strong>Interpretación:</strong> error típico; cuanto menor, mejor. Al cuadrar, magnifica outliers.</p></li>
@@ -5644,7 +5695,7 @@ $<span class="math notranslate nohighlight">\(\text{RMSE} = \sqrt{\frac{1}{n}\su
 </ul>
 </section>
 <section id="error-cuadratico-medio-mse">
-<h3>3. Error Cuadrático Medio (MSE)<a class="headerlink" href="#error-cuadratico-medio-mse" title="Permalink to this heading">#</a></h3>
+<h2>3. Error Cuadrático Medio (MSE)<a class="headerlink" href="#error-cuadratico-medio-mse" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>Qué mide:</strong> el promedio de los errores al cuadrado.</p></li>
 <li><p><strong>Interpretación:</strong> igual que RMSE pero manteniéndose en unidades al cuadrado; útil para optimización matemática.</p></li>
@@ -5653,7 +5704,7 @@ $<span class="math notranslate nohighlight">\(\text{MSE} = \frac{1}{n}\sum_{i=1}
 </ul>
 </section>
 <section id="error-porcentual-absoluto-medio-mape">
-<h3>4. Error Porcentual Absoluto Medio (MAPE)<a class="headerlink" href="#error-porcentual-absoluto-medio-mape" title="Permalink to this heading">#</a></h3>
+<h2>4. Error Porcentual Absoluto Medio (MAPE)<a class="headerlink" href="#error-porcentual-absoluto-medio-mape" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>Qué mide:</strong> error absoluto relativo al valor real, expresado en porcentaje.</p></li>
 <li><p><strong>Interpretación:</strong> “En promedio erramos X %”. Se distorsiona cuando (y_i) se acerca a 0.</p></li>
@@ -5662,7 +5713,7 @@ $<span class="math notranslate nohighlight">\(\text{MAPE} = \frac{100}{n}\sum_{i
 </ul>
 </section>
 <section id="coeficiente-de-determinacion-r-2">
-<h3>5. Coeficiente de Determinación ((R^2))<a class="headerlink" href="#coeficiente-de-determinacion-r-2" title="Permalink to this heading">#</a></h3>
+<h2>5. Coeficiente de Determinación ((R^2))<a class="headerlink" href="#coeficiente-de-determinacion-r-2" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>Qué mide:</strong> proporción de la varianza explicada por el modelo respecto a la varianza total.</p></li>
 <li><p><strong>Interpretación:</strong> (R^2=1) perfecto; (R^2=0) no explica nada; puede ser negativo si el modelo es peor que usar la media.</p></li>
@@ -5671,7 +5722,7 @@ $<span class="math notranslate nohighlight">\(R^2 = 1 - \frac{\sum_{i=1}^{n}(y_i
 </ul>
 </section>
 <section id="pvalue-del-test-de-ljungbox">
-<h3>6. p‑value del Test de Ljung–Box<a class="headerlink" href="#pvalue-del-test-de-ljungbox" title="Permalink to this heading">#</a></h3>
+<h2>6. p‑value del Test de Ljung–Box<a class="headerlink" href="#pvalue-del-test-de-ljungbox" title="Permalink to this heading">#</a></h2>
 <ul>
 <li><p><strong>Qué mide:</strong> contraste de hipótesis sobre si <strong>los residuos</strong> presentan autocorrelación grupal hasta un rezago (h).</p></li>
 <li><p><strong>Interpretación:</strong></p>
@@ -5686,7 +5737,6 @@ $<span class="math notranslate nohighlight">\(Q = n(n+2)\sum_{k=1}^{h}\frac{\hat
 \[p = 1 - F_{\chi^2_{\,h}}(Q)\]</div>
 </li>
 </ul>
-</section>
 </section>
 <hr class="docutils" />
 <section id="analisis-comparativo-de-los-modelos">
@@ -5854,8 +5904,8 @@ $<span class="math notranslate nohighlight">\(Q = n(n+2)\sum_{k=1}^{h}\frac{\hat
 <li><p><strong>MLP</strong>: Muestra un rendimiento intermedio, mejorando con ventanas más largas, pero sin igualar a los modelos tradicionales.</p></li>
 </ul>
 </section>
-<section id="id4">
-<h4><strong>5. K‑NN</strong><a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h4>
+<section id="id17">
+<h4><strong>5. K‑NN</strong><a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p><strong>K‑NN</strong>: Tiene un rendimiento medio, siendo más efectivo con ventanas largas, aunque su sensibilidad a la escala puede ser una desventaja.</p></li>
 </ul>
@@ -6020,37 +6070,59 @@ $<span class="math notranslate nohighlight">\(Q = n(n+2)\sum_{k=1}^{h}\frac{\hat
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lineal"><strong>2. Regresion Lineal</strong></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entremaniemto"><strong>2.1 Entremaniemto</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>2.2 Métricas</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>2.1 Entrenamiento</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>2.2 Métricas</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-del-modelo-de-regresion-lineal"><strong>2.3 Análisis del Modelo de Regresión Lineal</strong></a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ridge"><strong>3. Ridge</strong></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>3.1 Entremaniemto</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><strong>3.2 Métricas</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><strong>3.1 Entrenamiento</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><strong>3.2 Métricas</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-del-modelo-de-ridge"><strong>3.3 Análisis del Modelo de Ridge</strong></a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lasso"><strong>4. Lasso</strong></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-arbol-de-decision">Codigo de Arbol de decision</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-random-forest">Codigo de Random Forest</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-xgboost">Codigo de XGBoost</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-svm">Codigo de SVM</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-mlp">Codigo de MLP</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparacion-para-rnn-y-lstm">Preparacion para RNN y LSTM</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-rnn">Codigo de RNN</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-lstm">Codigo de LSTM</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><strong>4.1 Entrenamiento</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><strong>4.2 Métricas</strong></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metricas-de-evaluacion-para-los-modelos-propuestos">Métricas de evaluación para los modelos propuestos</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-absoluto-medio-mae">1. Error Absoluto Medio (MAE)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raiz-del-error-cuadratico-medio-rmse">2. Raíz del Error Cuadrático Medio (RMSE)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-cuadratico-medio-mse">3. Error Cuadrático Medio (MSE)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-porcentual-absoluto-medio-mape">4. Error Porcentual Absoluto Medio (MAPE)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coeficiente-de-determinacion-r-2">5. Coeficiente de Determinación ((R^2))</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pvalue-del-test-de-ljungbox">6. p‑value del Test de Ljung–Box</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#arbol-de-decision"><strong>5. Árbol de Decisión</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7"><strong>5.1 Entrenamiento</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8"><strong>5.2 Métricas</strong></a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bosques-aleatorios"><strong>6. Bosques Aleatorios</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9"><strong>6.1 Entrenamiento</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10"><strong>6.2 Métricas</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#xgboost"><strong>7. XGBoost</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11"><strong>7.1 Entrenamiento</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12"><strong>7.2 Métricas</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#svm"><strong>8. SVM</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13"><strong>8.1 Entrenamiento</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14"><strong>8.2 Métricas</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mlp"><strong>9. MLP</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15"><strong>9.1 Entrenamiento</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16"><strong>9.2 Métricas</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preparacion-para-rnn-y-lstm">Preparacion para RNN y LSTM</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rnn"><strong>10. RNN</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lstm"><strong>11. LSTM</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#metricas-de-evaluacion-para-los-modelos-propuestos"><strong>Métricas de evaluación para los modelos propuestos</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-absoluto-medio-mae">1. Error Absoluto Medio (MAE)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#raiz-del-error-cuadratico-medio-rmse">2. Raíz del Error Cuadrático Medio (RMSE)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-cuadratico-medio-mse">3. Error Cuadrático Medio (MSE)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-porcentual-absoluto-medio-mape">4. Error Porcentual Absoluto Medio (MAPE)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coeficiente-de-determinacion-r-2">5. Coeficiente de Determinación ((R^2))</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pvalue-del-test-de-ljungbox">6. p‑value del Test de Ljung–Box</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-comparativo-de-los-modelos"><strong>Análisis Comparativo de los Modelos</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen-de-modelos-y-metricas"><strong>Resumen de Modelos y Métricas</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-por-categoria-de-modelos"><strong>Análisis por Categoría de Modelos</strong></a><ul class="nav section-nav flex-column">
@@ -6058,7 +6130,7 @@ $<span class="math notranslate nohighlight">\(Q = n(n+2)\sum_{k=1}^{h}\frac{\hat
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-lineales"><strong>2. Modelos Lineales</strong></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-de-soporte-vectorial"><strong>3. Modelos de Soporte Vectorial</strong></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#redes-neuronales"><strong>4. Redes Neuronales</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><strong>5. K‑NN</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id17"><strong>5. K‑NN</strong></a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-de-rendimiento-en-metricas"><strong>Comparación de Rendimiento en Métricas</strong></a></li>
