@@ -343,7 +343,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -359,6 +361,21 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#knn">KNN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-reg">Log-Reg</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes">Bayes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree">Decision Tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest">Random Forest</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xgboost">XGBoost</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mlp">MLP</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis">Analisis</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -376,9 +393,13 @@ document.write(`
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">joblib</span><span class="o">,</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span><span class="p">,</span> <span class="n">StratifiedKFold</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span><span class="p">,</span> <span class="n">StratifiedKFold</span><span class="p">,</span> <span class="n">GridSearchCV</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
-<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="c1"># from sklearn.pipeline import Pipeline</span>
+
+<span class="kn">from</span> <span class="nn">imblearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span> <span class="k">as</span> <span class="n">ImbPipeline</span>
+<span class="kn">from</span> <span class="nn">imblearn.over_sampling</span> <span class="kn">import</span> <span class="n">SMOTE</span>
+
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span><span class="p">,</span> <span class="n">f1_score</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">,</span> <span class="n">RocCurveDisplay</span><span class="p">,</span> <span class="n">classification_report</span>
 <span class="kn">from</span> <span class="nn">skopt</span> <span class="kn">import</span> <span class="n">BayesSearchCV</span>
 <span class="kn">from</span> <span class="nn">skopt.space</span> <span class="kn">import</span> <span class="n">Real</span><span class="p">,</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">Categorical</span>
@@ -397,7 +418,7 @@ document.write(`
 
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_val</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 
-<span class="n">cv</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 <span class="n">pos</span><span class="p">,</span> <span class="n">neg</span> <span class="o">=</span> <span class="n">y_train</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span> <span class="o">-</span> <span class="n">y_train</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="n">escala</span> <span class="o">=</span> <span class="n">neg</span> <span class="o">/</span> <span class="n">pos</span>
 </pre></div>
@@ -411,30 +432,62 @@ document.write(`
 </div>
 </div>
 </div>
+<section id="knn">
+<h2>KNN<a class="headerlink" href="#knn" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # knn_entrenamiento</span>
-<span class="c1"># inicio = time.time()</span>
-<span class="c1"># pipe_knn = Pipeline([(&#39;scaler&#39;, StandardScaler()), (&#39;modelo&#39;, KNeighborsClassifier())])</span>
-<span class="c1"># esp_knn = {&#39;modelo__n_neighbors&#39;: Integer(3, 15), &#39;modelo__weights&#39;: Categorical([&#39;uniform&#39;, &#39;distance&#39;])}</span>
-<span class="c1"># bay_knn = BayesSearchCV(pipe_knn, esp_knn, scoring=&#39;roc_auc&#39;, n_jobs=-1, cv=cv, n_iter=5, random_state=42)</span>
-<span class="c1"># print(&#39;Entrenando KNN&#39;)</span>
-<span class="c1"># bay_knn.fit(X_train, y_train)</span>
-<span class="c1"># print(&#39;Mejor AUC validación:&#39;, bay_knn.best_score_)</span>
-<span class="c1"># print(&#39;Tiempo:&#39;, time.time() - inicio)</span>
-<span class="c1"># joblib.dump(bay_knn.best_estimator_, &#39;drive/MyDrive/knn.pkl&#39;)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># knn_entrenamiento</span>
+<span class="n">inicio</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">pipe_knn</span> <span class="o">=</span> <span class="n">ImbPipeline</span><span class="p">([(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span> <span class="p">(</span><span class="s1">&#39;smote&#39;</span><span class="p">,</span> <span class="n">SMOTE</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)),</span> <span class="p">(</span><span class="s1">&#39;modelo&#39;</span><span class="p">,</span> <span class="n">KNeighborsClassifier</span><span class="p">())])</span>
+
+<span class="c1"># Espacio de hiperparámetros reducido</span>
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;modelo__n_neighbors&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span>
+    <span class="s1">&#39;modelo__weights&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;uniform&#39;</span><span class="p">,</span> <span class="s1">&#39;distance&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">grid_knn</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipe_knn</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;roc_auc&#39;</span><span class="p">,</span>
+                       <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Entrenando KNN&#39;</span><span class="p">)</span>
+<span class="n">grid_knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Mejores parámetros encontrados:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">grid_knn</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mejor AUC validación:&#39;</span><span class="p">,</span> <span class="n">grid_knn</span><span class="o">.</span><span class="n">best_score_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tiempo:&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">inicio</span><span class="p">)</span>
+
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">grid_knn</span><span class="o">.</span><span class="n">best_estimator_</span><span class="p">,</span> <span class="s1">&#39;drive/MyDrive/punto_2_knn.pkl&#39;</span><span class="p">)</span>
+<span class="c1"># joblib.dump(grid_knn.best_estimator_, &#39;./knn.pkl&#39;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Entrenando KNN
+Fitting 3 folds for each of 10 candidates, totalling 30 fits
+
+Mejores parámetros encontrados:
+{&#39;modelo__n_neighbors&#39;: 11, &#39;modelo__weights&#39;: &#39;distance&#39;}
+Mejor AUC validación: 0.8598671802341672
+Tiempo: 7882.271107435226
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;drive/MyDrive/punto_2_knn.pkl&#39;]
 </pre></div>
 </div>
 </div>
 </div>
 <p>Entrenando KNN</p>
-<p>Mejor AUC validación: 0.8352891784145362</p>
-<p>Tiempo: 2691.609223842621</p>
-<p>[‘knn.pkl’]</p>
+<p>Fitting 3 folds for each of 10 candidates, totalling 30 fits</p>
+<p>Mejores parámetros encontrados:</p>
+<p>{‘modelo__n_neighbors’: 11, ‘modelo__weights’: ‘distance’}</p>
+<p>Mejor AUC validación: 0.8598671802341672</p>
+<p>Tiempo: 7882.271107435226</p>
+<p>[‘drive/MyDrive/punto_2_knn.pkl’]</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># knn_metricas</span>
-<span class="n">modelo_knn</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;drive/MyDrive/knn.pkl&#39;</span><span class="p">)</span>
+<span class="n">modelo_knn</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;drive/MyDrive/punto_2_knn.pkl&#39;</span><span class="p">)</span>
 <span class="n">pro_knn</span> <span class="o">=</span> <span class="n">modelo_knn</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="n">pr_knn</span> <span class="o">=</span> <span class="p">(</span><span class="n">pro_knn</span> <span class="o">&gt;=</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 <span class="n">cm_knn</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_knn</span><span class="p">)</span>
@@ -448,15 +501,27 @@ document.write(`
 <span class="n">res</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;KNN&#39;</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_knn</span><span class="p">),</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_knn</span><span class="p">),</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_knn</span><span class="p">),</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pro_knn</span><span class="p">)]</span>
 <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">resultados</span><span class="p">)]</span> <span class="o">=</span> <span class="n">res</span><span class="p">;</span>
 
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_knn</span><span class="p">))</span>
+
 <span class="n">resultados</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d3c5c736296e722d953763d47c77a74e0e57e8592a7b6f983fd1759a69976512.png" src="_images/d3c5c736296e722d953763d47c77a74e0e57e8592a7b6f983fd1759a69976512.png" />
-<img alt="_images/52d8f6d2a55bd886fd8444a5a907e3ec464c21c7d794e8fc838d2a0169fe65f8.png" src="_images/52d8f6d2a55bd886fd8444a5a907e3ec464c21c7d794e8fc838d2a0169fe65f8.png" />
+<img alt="_images/736a7e0c4fb44c62342b3d046b1969421ec06371a1bf047ef1d2dce1a991ccdd.png" src="_images/736a7e0c4fb44c62342b3d046b1969421ec06371a1bf047ef1d2dce1a991ccdd.png" />
+<img alt="_images/600dcfefc42c6ffcd862cf88450907530bf2362c4975a8425ae54fe46e2e7d5e.png" src="_images/600dcfefc42c6ffcd862cf88450907530bf2362c4975a8425ae54fe46e2e7d5e.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+           0       0.99      0.90      0.94    113975
+           1       0.22      0.74      0.33      4133
+
+    accuracy                           0.90    118108
+   macro avg       0.60      0.82      0.64    118108
+weighted avg       0.96      0.90      0.92    118108
+</pre></div>
+</div>
 <div class="output text_html">
-  <div id="df-f92183de-4305-40b1-bd41-329a9bd0ed5e" class="colab-df-container">
+  <div id="df-ddcbe8c8-9507-40b7-aacb-c397ab323663" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -486,10 +551,10 @@ document.write(`
     <tr>
       <th>0</th>
       <td>KNN</td>
-      <td>0.847169</td>
-      <td>0.372853</td>
-      <td>0.517809</td>
-      <td>0.865627</td>
+      <td>0.215107</td>
+      <td>0.742076</td>
+      <td>0.333533</td>
+      <td>0.877271</td>
     </tr>
   </tbody>
 </table>
@@ -497,7 +562,7 @@ document.write(`
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-f92183de-4305-40b1-bd41-329a9bd0ed5e')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-ddcbe8c8-9507-40b7-aacb-c397ab323663')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
 
@@ -549,12 +614,12 @@ document.write(`
 
     <script>
       const buttonEl =
-        document.querySelector('#df-f92183de-4305-40b1-bd41-329a9bd0ed5e button.colab-df-convert');
+        document.querySelector('#df-ddcbe8c8-9507-40b7-aacb-c397ab323663 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-f92183de-4305-40b1-bd41-329a9bd0ed5e');
+        const element = document.querySelector('#df-ddcbe8c8-9507-40b7-aacb-c397ab323663');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -574,7 +639,7 @@ document.write(`
   </div>
 
 
-  <div id="id_b106f4c8-1a79-4331-ba1b-02835b35b34a">
+  <div id="id_98621537-44d9-4191-bee1-5b95d32d1c57">
     <style>
       .colab-df-generate {
         background-color: #E8F0FE;
@@ -618,7 +683,7 @@ document.write(`
     <script>
       (() => {
       const buttonEl =
-        document.querySelector('#id_b106f4c8-1a79-4331-ba1b-02835b35b34a button.colab-df-generate');
+        document.querySelector('#id_98621537-44d9-4191-bee1-5b95d32d1c57 button.colab-df-generate');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
@@ -633,53 +698,97 @@ document.write(`
   </div>
 </div></div>
 </div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>              <span class="n">precision</span>    <span class="n">recall</span>  <span class="n">f1</span><span class="o">-</span><span class="n">score</span>   <span class="n">support</span>
+
+           <span class="mi">0</span>       <span class="mf">0.99</span>      <span class="mf">0.90</span>      <span class="mf">0.94</span>    <span class="mi">113975</span>
+           <span class="mi">1</span>       <span class="mf">0.22</span>      <span class="mf">0.74</span>      <span class="mf">0.33</span>      <span class="mi">4133</span>
+
+    <span class="n">accuracy</span>                           <span class="mf">0.90</span>    <span class="mi">118108</span>
+   <span class="n">macro</span> <span class="n">avg</span>       <span class="mf">0.60</span>      <span class="mf">0.82</span>      <span class="mf">0.64</span>    <span class="mi">118108</span>
+<span class="n">weighted</span> <span class="n">avg</span>       <span class="mf">0.96</span>      <span class="mf">0.90</span>      <span class="mf">0.92</span>    <span class="mi">118108</span>
+</pre></div>
+</div>
+<div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;"> <div style="background-color: #d4f8e8; padding: 8px 12px;"> <strong>💡 Análisis:</strong> </div> <div style="background-color: #f5fdf9; padding: 12px;">  <ul> <li>La **clase 0** tiene un rendimiento muy alto en todas las métricas (precisión, recall, f1-score), con valores cercanos a 1.0. Esto indica que el modelo es muy bueno prediciendo la clase 0.</il> <li>La **clase 1** tiene un recall relativamente alto (0.74), lo que significa que el modelo identifica una buena proporción de los casos reales de la clase 1. Sin embargo, la precisión es baja (0.22), lo que sugiere que cuando el modelo predice la clase 1, a menudo se equivoca. El f1-score para la clase 1 es significativamente más bajo que para la clase 0, lo que refleja el compromiso entre precisión y recall.</li> <li>La **precisión general** es alta (0.90), lo cual es de esperar dado el alto rendimiento en la clase 0 y el gran soporte de esta clase (113975 instancias) en comparación con la clase 1 (4133 instancias).</li> <li>El *macro avg* (promedio no ponderado) muestra un rendimiento más equilibrado en cuanto a recall (0.82), pero la precisión y el f1-score son más bajos (0.60 y 0.64 respectivamente), lo que destaca el menor rendimiento en la clase minoritaria (clase 1).</li> <li>El **weighted avg** (promedio ponderado) se parece más a las métricas de la clase 0 debido al desequilibrio en el soporte de las clases.</li> </ul> <br>
+<p><strong> Conclusiones: </strong></p>
+  </div>
+  <div style="background-color: #f5fdf9; padding: 12px;"> <ul> <li>El modelo funciona muy bien para la clase mayoritaria (clase 0), pero tiene dificultades con la precisión en la predicción de la clase minoritaria (clase 1), a pesar de tener un recall decente para esta última. Esto es una observación común en conjuntos de datos desequilibrados. </li> </ul> <br></section>
+<section id="log-reg">
+<h2>Log-Reg<a class="headerlink" href="#log-reg" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_knn</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># logreg_entrenamiento</span>
+<span class="n">inicio</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">pipe_log</span> <span class="o">=</span> <span class="n">ImbPipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
+    <span class="p">(</span><span class="s1">&#39;smote&#39;</span><span class="p">,</span> <span class="n">SMOTE</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s1">&#39;modelo&#39;</span><span class="p">,</span> <span class="n">LogisticRegression</span><span class="p">(</span>
+        <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+        <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">class_weight</span><span class="o">=</span><span class="s1">&#39;balanced&#39;</span><span class="p">,</span>
+        <span class="n">solver</span><span class="o">=</span><span class="s1">&#39;saga&#39;</span><span class="p">,</span>
+        <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
+    <span class="p">))</span>
+<span class="p">])</span>
+
+<span class="c1"># Espacio de búsqueda reducido y discreto</span>
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;modelo__C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+    <span class="s1">&#39;modelo__penalty&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;l1&#39;</span><span class="p">,</span> <span class="s1">&#39;l2&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">grid_log</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span>
+    <span class="n">pipe_log</span><span class="p">,</span>
+    <span class="n">param_grid</span><span class="p">,</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;roc_auc&#39;</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Entrenando LogisticRegression&#39;</span><span class="p">)</span>
+<span class="n">grid_log</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Mejores parámetros encontrados:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">grid_log</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mejor AUC validación:&#39;</span><span class="p">,</span> <span class="n">grid_log</span><span class="o">.</span><span class="n">best_score_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tiempo:&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">inicio</span><span class="p">)</span>
+
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">grid_log</span><span class="o">.</span><span class="n">best_estimator_</span><span class="p">,</span> <span class="s1">&#39;drive/MyDrive/punto_2_logreg.pkl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Entrenando LogisticRegression
+Fitting 3 folds for each of 8 candidates, totalling 24 fits
 
-           0       0.98      1.00      0.99    113975
-           1       0.85      0.37      0.52      4133
-
-    accuracy                           0.98    118108
-   macro avg       0.91      0.69      0.75    118108
-weighted avg       0.97      0.98      0.97    118108
+Mejores parámetros encontrados:
+{&#39;modelo__C&#39;: 1, &#39;modelo__penalty&#39;: &#39;l2&#39;}
+Mejor AUC validación: 0.8134225032662549
+Tiempo: 649.0233550071716
 </pre></div>
 </div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.11/dist-packages/sklearn/linear_model/_sag.py:348: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+</pre></div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # logreg_entrenamiento</span>
-<span class="c1"># inicio = time.time()</span>
-<span class="c1"># pipe_log = Pipeline([(&#39;scaler&#39;, StandardScaler()), (&#39;modelo&#39;, LogisticRegression(max_iter=50, n_jobs=-1, class_weight=&#39;balanced&#39;, solver=&#39;saga&#39;))])</span>
-<span class="c1"># esp_log = {&#39;modelo__C&#39;: Real(1e-4, 10, prior=&#39;log-uniform&#39;), &#39;modelo__penalty&#39;: Categorical([&#39;l1&#39;, &#39;l2&#39;])}</span>
-<span class="c1"># bay_log = BayesSearchCV(pipe_log, esp_log, scoring=&#39;roc_auc&#39;, n_jobs=-1, cv=cv, n_iter=5, random_state=42)</span>
-<span class="c1"># print(&#39;Entrenando LogisticRegression&#39;)</span>
-<span class="c1"># bay_log.fit(X_train, y_train)</span>
-<span class="c1"># print(&#39;Mejor AUC validación:&#39;, bay_log.best_score_)</span>
-<span class="c1"># print(&#39;Tiempo:&#39;, time.time() - inicio)</span>
-<span class="c1"># joblib.dump(bay_log.best_estimator_, &#39;drive/MyDrive/logreg.pkl&#39;)</span>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;drive/MyDrive/punto_2_logreg.pkl&#39;]
 </pre></div>
 </div>
 </div>
 </div>
 <p>Entrenando LogisticRegression</p>
-<p>Mejor AUC validación: 0.813247300207955</p>
-<p>Tiempo: 200.45954012870789</p>
-<p>/usr/local/lib/python3.11/dist-packages/sklearn/linear_model/_sag.py:348:</p>
-<p>ConvergenceWarning: The max_iter was reached which means the coef_ did not</p>
-<p>converge
-warnings.warn(
-[‘logreg.pkl’]</p>
+<p>Fitting 3 folds for each of 8 candidates, totalling 24 fits</p>
+<p>Mejores parámetros encontrados:</p>
+<p>{‘modelo__C’: 1, ‘modelo__penalty’: ‘l2’}</p>
+<p>Mejor AUC validación: 0.8134225032662549</p>
+<p>Tiempo: 649.0233550071716</p>
+<p>/usr/local/lib/python3.11/dist-packages/sklearn/linear_model/<em><a class="reference external" href="http://sag.py:348">sag.py:348</a>: ConvergenceWarning: The max_iter was reached which means the coef</em> did not converge
+warnings.warn(</p>
+<p>[‘drive/MyDrive/punto_2_logreg.pkl’]</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># logreg_metricas</span>
-<span class="n">modelo_log</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;drive/MyDrive/logreg.pkl&#39;</span><span class="p">)</span>
+<span class="n">modelo_log</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;drive/MyDrive/punto_2_logreg.pkl&#39;</span><span class="p">)</span>
 <span class="n">pro_log</span> <span class="o">=</span> <span class="n">modelo_log</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="n">pr_log</span> <span class="o">=</span> <span class="p">(</span><span class="n">pro_log</span> <span class="o">&gt;=</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 <span class="n">cm_log</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_log</span><span class="p">)</span>
@@ -692,16 +801,27 @@ warnings.warn(
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <span class="n">res</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Logistic Regression&#39;</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_log</span><span class="p">),</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_log</span><span class="p">),</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_log</span><span class="p">),</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pro_log</span><span class="p">)]</span>
 <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">resultados</span><span class="p">)]</span> <span class="o">=</span> <span class="n">res</span><span class="p">;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_log</span><span class="p">))</span>
 
 <span class="n">resultados</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6f81fe46485fbf5033de9d3ceeb2a45c04d81d1158fb1eba1cf8c2f619d69601.png" src="_images/6f81fe46485fbf5033de9d3ceeb2a45c04d81d1158fb1eba1cf8c2f619d69601.png" />
-<img alt="_images/16913cdf6a89a689152ef50b36870cd33a6fb1333cd9060c11738bb25e871a09.png" src="_images/16913cdf6a89a689152ef50b36870cd33a6fb1333cd9060c11738bb25e871a09.png" />
+<img alt="_images/517b5f5756ef54cf747ccb81963045671feafa7597992ec85ff7b468621a1f8a.png" src="_images/517b5f5756ef54cf747ccb81963045671feafa7597992ec85ff7b468621a1f8a.png" />
+<img alt="_images/3f4732934d75af6c8b53cbcc6283e0d763624efdeb266f839111351d5949b3c4.png" src="_images/3f4732934d75af6c8b53cbcc6283e0d763624efdeb266f839111351d5949b3c4.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+           0       0.99      0.74      0.85    113975
+           1       0.09      0.73      0.16      4133
+
+    accuracy                           0.74    118108
+   macro avg       0.54      0.74      0.51    118108
+weighted avg       0.96      0.74      0.82    118108
+</pre></div>
+</div>
 <div class="output text_html">
-  <div id="df-5f5fd421-4859-4ad1-bf29-7743f6d7fa37" class="colab-df-container">
+  <div id="df-3340859c-8832-41a0-8aac-d6b3a8bf9dc8" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -731,18 +851,18 @@ warnings.warn(
     <tr>
       <th>0</th>
       <td>KNN</td>
-      <td>0.847169</td>
-      <td>0.372853</td>
-      <td>0.517809</td>
-      <td>0.865627</td>
+      <td>0.215107</td>
+      <td>0.742076</td>
+      <td>0.333533</td>
+      <td>0.877271</td>
     </tr>
     <tr>
       <th>1</th>
       <td>Logistic Regression</td>
-      <td>0.095399</td>
-      <td>0.731430</td>
-      <td>0.168784</td>
-      <td>0.815279</td>
+      <td>0.092754</td>
+      <td>0.733366</td>
+      <td>0.164679</td>
+      <td>0.814901</td>
     </tr>
   </tbody>
 </table>
@@ -750,7 +870,7 @@ warnings.warn(
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-5f5fd421-4859-4ad1-bf29-7743f6d7fa37')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-3340859c-8832-41a0-8aac-d6b3a8bf9dc8')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
 
@@ -802,12 +922,12 @@ warnings.warn(
 
     <script>
       const buttonEl =
-        document.querySelector('#df-5f5fd421-4859-4ad1-bf29-7743f6d7fa37 button.colab-df-convert');
+        document.querySelector('#df-3340859c-8832-41a0-8aac-d6b3a8bf9dc8 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-5f5fd421-4859-4ad1-bf29-7743f6d7fa37');
+        const element = document.querySelector('#df-3340859c-8832-41a0-8aac-d6b3a8bf9dc8');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -827,8 +947,8 @@ warnings.warn(
   </div>
 
 
-<div id="df-d4bfdae7-7d72-4746-82ba-d714c8646e39">
-  <button class="colab-df-quickchart" onclick="quickchart('df-d4bfdae7-7d72-4746-82ba-d714c8646e39')"
+<div id="df-436d2030-9cb2-41d0-b020-0c2bd82bb43b">
+  <button class="colab-df-quickchart" onclick="quickchart('df-436d2030-9cb2-41d0-b020-0c2bd82bb43b')"
             title="Suggest charts"
             style="display:none;">
 
@@ -947,14 +1067,14 @@ warnings.warn(
     }
     (() => {
       let quickchartButtonEl =
-        document.querySelector('#df-d4bfdae7-7d72-4746-82ba-d714c8646e39 button');
+        document.querySelector('#df-436d2030-9cb2-41d0-b020-0c2bd82bb43b button');
       quickchartButtonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
     })();
   </script>
 </div>
 
-  <div id="id_e307587c-bd2b-404a-899f-f3c591e7c8e9">
+  <div id="id_f89aade8-67c7-4768-8e7d-18e4d21c3ea2">
     <style>
       .colab-df-generate {
         background-color: #E8F0FE;
@@ -998,7 +1118,7 @@ warnings.warn(
     <script>
       (() => {
       const buttonEl =
-        document.querySelector('#id_e307587c-bd2b-404a-899f-f3c591e7c8e9 button.colab-df-generate');
+        document.querySelector('#id_f89aade8-67c7-4768-8e7d-18e4d21c3ea2 button.colab-df-generate');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
@@ -1013,49 +1133,80 @@ warnings.warn(
   </div>
 </div></div>
 </div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">precision</span>    <span class="n">recall</span>  <span class="n">f1</span><span class="o">-</span><span class="n">score</span>   <span class="n">support</span>
+
+           <span class="mi">0</span>       <span class="mf">0.99</span>      <span class="mf">0.74</span>      <span class="mf">0.85</span>    <span class="mi">113975</span>
+           <span class="mi">1</span>       <span class="mf">0.09</span>      <span class="mf">0.73</span>      <span class="mf">0.16</span>      <span class="mi">4133</span>
+
+    <span class="n">accuracy</span>                           <span class="mf">0.74</span>    <span class="mi">118108</span>
+   <span class="n">macro</span> <span class="n">avg</span>       <span class="mf">0.54</span>      <span class="mf">0.74</span>      <span class="mf">0.51</span>    <span class="mi">118108</span>
+<span class="n">weighted</span> <span class="n">avg</span>       <span class="mf">0.96</span>      <span class="mf">0.74</span>      <span class="mf">0.82</span>    <span class="mi">118108</span>
+</pre></div>
+</div>
+<div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;"> <div style="background-color: #d4f8e8; padding: 8px 12px;"> <strong>💡 Análisis:</strong> </div> <div style="background-color: #f5fdf9; padding: 12px;">  <ul> <li>La **clase 0** muestra un recall considerablemente más bajo (0.74) en comparación con el modelo anterior, aunque su precisión sigue siendo alta (0.99). Esto indica que el modelo no está identificando correctamente una parte significativa de los casos reales de la clase 0.</li> <li>La **clase 1** mantiene un recall alto (0.73), similar al modelo anterior. Sin embargo, su precisión sigue siendo muy baja (0.09). El f1-score para la clase 1 es extremadamente bajo (0.16), reflejando la baja precisión.</li> <li>La **precisión general** ha disminuido a 0.74, lo cual es una consecuencia directa de la menor capacidad del modelo para recordar la clase 0.</li> <li>El **macro avg** refleja la disparidad en el rendimiento entre las clases, con una precisión baja (0.54) y un f1-score bajo (0.51), a pesar de un recall promedio más alto (0.74).</li> <li>El **weighted avg** muestra un rendimiento general más cercano a la precisión de la clase 0 debido a su mayor soporte, pero se ve afectado por la disminución en el recall de esta clase.</li> </ul> <br>
+<p><strong> Conclusiones: </strong></p>
+  </div>
+  <div style="background-color: #f5fdf9; padding: 12px;"> <ul> <li>En comparación con los resultados anteriores, este modelo ha sacrificado significativamente el recall de la clase mayoritaria (clase 0) para mantener un recall alto en la clase minoritaria (clase 1). Sin embargo, la precisión en la clase 1 sigue siendo un problema importante. Esto permite inferir que el modelo tiene dificultades para diferenciar correctamente entre las dos clases, especialmente al predecir la clase 1. </li> </ul> <br></section>
+<section id="bayes">
+<h2>Bayes<a class="headerlink" href="#bayes" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_log</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># bayesiano_entrenamiento</span>
+<span class="n">inicio</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">pipe_nb</span> <span class="o">=</span> <span class="n">ImbPipeline</span><span class="p">([(</span><span class="s1">&#39;smote&#39;</span><span class="p">,</span> <span class="n">SMOTE</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)),</span> <span class="p">(</span><span class="s1">&#39;modelo&#39;</span><span class="p">,</span> <span class="n">GaussianNB</span><span class="p">())])</span>
+
+<span class="c1"># Espacio de búsqueda reducido con valores específicos</span>
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;modelo__var_smoothing&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1e-11</span><span class="p">,</span> <span class="mf">1e-09</span><span class="p">,</span> <span class="mf">1e-07</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">grid_nb</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span>
+    <span class="n">pipe_nb</span><span class="p">,</span>
+    <span class="n">param_grid</span><span class="p">,</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;roc_auc&#39;</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Entrenando GaussianNB&#39;</span><span class="p">)</span>
+<span class="n">grid_nb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Mejores parámetros encontrados:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">grid_nb</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mejor AUC validación:&#39;</span><span class="p">,</span> <span class="n">grid_nb</span><span class="o">.</span><span class="n">best_score_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tiempo:&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">inicio</span><span class="p">)</span>
+
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">grid_nb</span><span class="o">.</span><span class="n">best_estimator_</span><span class="p">,</span> <span class="s1">&#39;drive/MyDrive/punto_2_bayes.pkl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Entrenando GaussianNB
+Fitting 3 folds for each of 3 candidates, totalling 9 fits
 
-           0       0.99      0.75      0.85    113975
-           1       0.10      0.73      0.17      4133
-
-    accuracy                           0.75    118108
-   macro avg       0.54      0.74      0.51    118108
-weighted avg       0.96      0.75      0.83    118108
+Mejores parámetros encontrados:
+{&#39;modelo__var_smoothing&#39;: 1e-11}
+Mejor AUC validación: 0.6818327199112865
+Tiempo: 28.220012426376343
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # bayesiano_entrenamiento</span>
-<span class="c1"># inicio = time.time()</span>
-<span class="c1"># pipe_nb = Pipeline([(&#39;modelo&#39;, GaussianNB())])</span>
-<span class="c1"># esp_nb = {&#39;modelo__var_smoothing&#39;: Real(1e-11, 1e-7, prior=&#39;log-uniform&#39;)}</span>
-<span class="c1"># bay_nb = BayesSearchCV(pipe_nb, esp_nb, scoring=&#39;roc_auc&#39;, n_jobs=-1, cv=cv, n_iter=5, random_state=42)</span>
-<span class="c1"># print(&#39;Entrenando GaussianNB&#39;)</span>
-<span class="c1"># bay_nb.fit(X_train, y_train)</span>
-<span class="c1"># print(&#39;Mejor AUC validación:&#39;, bay_nb.best_score_)</span>
-<span class="c1"># print(&#39;Tiempo:&#39;, time.time() - inicio)</span>
-<span class="c1"># joblib.dump(bay_nb.best_estimator_, &#39;drive/MyDrive/bayes.pkl&#39;)</span>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;drive/MyDrive/punto_2_bayes.pkl&#39;]
 </pre></div>
 </div>
 </div>
 </div>
 <p>Entrenando GaussianNB</p>
-<p>Mejor AUC validación: 0.6643348881431288</p>
-<p>Tiempo: 7.417926073074341</p>
-<p>[‘bayes.pkl’]</p>
+<p>Fitting 3 folds for each of 3 candidates, totalling 9 fits</p>
+<p>Mejores parámetros encontrados:</p>
+<p>{‘modelo__var_smoothing’: 1e-11}</p>
+<p>Mejor AUC validación: 0.6818327199112865</p>
+<p>Tiempo: 28.220012426376343</p>
+<p>[‘drive/MyDrive/punto_2_bayes.pkl’]</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># bayesiano_metricas</span>
-<span class="n">modelo_nb</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;drive/MyDrive/bayes.pkl&#39;</span><span class="p">)</span>
+<span class="n">modelo_nb</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;drive/MyDrive/punto_2_bayes.pkl&#39;</span><span class="p">)</span>
 <span class="n">pro_nb</span> <span class="o">=</span> <span class="n">modelo_nb</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="n">pr_nb</span> <span class="o">=</span> <span class="p">(</span><span class="n">pro_nb</span> <span class="o">&gt;=</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 <span class="n">cm_nb</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_nb</span><span class="p">)</span>
@@ -1068,16 +1219,27 @@ weighted avg       0.96      0.75      0.83    118108
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <span class="n">res</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Bayesian Classification&#39;</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_nb</span><span class="p">),</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_nb</span><span class="p">),</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_nb</span><span class="p">),</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pro_nb</span><span class="p">)]</span>
 <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">resultados</span><span class="p">)]</span> <span class="o">=</span> <span class="n">res</span><span class="p">;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_nb</span><span class="p">))</span>
 
 <span class="n">resultados</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d4569b2daa3a5066dc33d42362c01ac4eb075cc83296f1c35934bae44bec2318.png" src="_images/d4569b2daa3a5066dc33d42362c01ac4eb075cc83296f1c35934bae44bec2318.png" />
-<img alt="_images/af941b9fb547e07c02bbc26ddf019239b2b021a8a21e406eab849dd908e25b8b.png" src="_images/af941b9fb547e07c02bbc26ddf019239b2b021a8a21e406eab849dd908e25b8b.png" />
+<img alt="_images/37a4fb241a8b61f9c2042a185118afc7ffc677ac7411dc8ad4348b7cbdd74aa0.png" src="_images/37a4fb241a8b61f9c2042a185118afc7ffc677ac7411dc8ad4348b7cbdd74aa0.png" />
+<img alt="_images/81138fe25df07b4c62a5ed9a36435d2eb9a8016bdb6c1df026722353bcaf0f4b.png" src="_images/81138fe25df07b4c62a5ed9a36435d2eb9a8016bdb6c1df026722353bcaf0f4b.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+           0       0.98      0.32      0.48    113975
+           1       0.04      0.86      0.08      4133
+
+    accuracy                           0.33    118108
+   macro avg       0.51      0.59      0.28    118108
+weighted avg       0.95      0.33      0.46    118108
+</pre></div>
+</div>
 <div class="output text_html">
-  <div id="df-50479f70-bb67-4e36-8757-82bded60da2b" class="colab-df-container">
+  <div id="df-ec08e1d4-10cf-4567-9337-8d2ac2d61eb8" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1107,26 +1269,26 @@ weighted avg       0.96      0.75      0.83    118108
     <tr>
       <th>0</th>
       <td>KNN</td>
-      <td>0.847169</td>
-      <td>0.372853</td>
-      <td>0.517809</td>
-      <td>0.865627</td>
+      <td>0.215107</td>
+      <td>0.742076</td>
+      <td>0.333533</td>
+      <td>0.877271</td>
     </tr>
     <tr>
       <th>1</th>
       <td>Logistic Regression</td>
-      <td>0.095399</td>
-      <td>0.731430</td>
-      <td>0.168784</td>
-      <td>0.815279</td>
+      <td>0.092754</td>
+      <td>0.733366</td>
+      <td>0.164679</td>
+      <td>0.814901</td>
     </tr>
     <tr>
       <th>2</th>
       <td>Bayesian Classification</td>
-      <td>0.089574</td>
-      <td>0.088556</td>
-      <td>0.089062</td>
-      <td>0.666605</td>
+      <td>0.043368</td>
+      <td>0.856279</td>
+      <td>0.082555</td>
+      <td>0.686120</td>
     </tr>
   </tbody>
 </table>
@@ -1134,7 +1296,7 @@ weighted avg       0.96      0.75      0.83    118108
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-50479f70-bb67-4e36-8757-82bded60da2b')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-ec08e1d4-10cf-4567-9337-8d2ac2d61eb8')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
 
@@ -1186,12 +1348,12 @@ weighted avg       0.96      0.75      0.83    118108
 
     <script>
       const buttonEl =
-        document.querySelector('#df-50479f70-bb67-4e36-8757-82bded60da2b button.colab-df-convert');
+        document.querySelector('#df-ec08e1d4-10cf-4567-9337-8d2ac2d61eb8 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-50479f70-bb67-4e36-8757-82bded60da2b');
+        const element = document.querySelector('#df-ec08e1d4-10cf-4567-9337-8d2ac2d61eb8');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1211,8 +1373,8 @@ weighted avg       0.96      0.75      0.83    118108
   </div>
 
 
-<div id="df-4cfcf50e-575d-4976-9ade-037d390c6c2b">
-  <button class="colab-df-quickchart" onclick="quickchart('df-4cfcf50e-575d-4976-9ade-037d390c6c2b')"
+<div id="df-c59dc68c-cacf-4c7a-91bd-b2afc190ec6c">
+  <button class="colab-df-quickchart" onclick="quickchart('df-c59dc68c-cacf-4c7a-91bd-b2afc190ec6c')"
             title="Suggest charts"
             style="display:none;">
 
@@ -1331,14 +1493,14 @@ weighted avg       0.96      0.75      0.83    118108
     }
     (() => {
       let quickchartButtonEl =
-        document.querySelector('#df-4cfcf50e-575d-4976-9ade-037d390c6c2b button');
+        document.querySelector('#df-c59dc68c-cacf-4c7a-91bd-b2afc190ec6c button');
       quickchartButtonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
     })();
   </script>
 </div>
 
-  <div id="id_874d9d9b-0aad-4907-b20d-8f31d43fed1e">
+  <div id="id_6da4ec82-3477-4fcb-8379-d40eeb03ba84">
     <style>
       .colab-df-generate {
         background-color: #E8F0FE;
@@ -1382,7 +1544,7 @@ weighted avg       0.96      0.75      0.83    118108
     <script>
       (() => {
       const buttonEl =
-        document.querySelector('#id_874d9d9b-0aad-4907-b20d-8f31d43fed1e button.colab-df-generate');
+        document.querySelector('#id_6da4ec82-3477-4fcb-8379-d40eeb03ba84 button.colab-df-generate');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
@@ -1397,49 +1559,84 @@ weighted avg       0.96      0.75      0.83    118108
   </div>
 </div></div>
 </div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>              <span class="n">precision</span>    <span class="n">recall</span>  <span class="n">f1</span><span class="o">-</span><span class="n">score</span>   <span class="n">support</span>
+
+           <span class="mi">0</span>       <span class="mf">0.98</span>      <span class="mf">0.32</span>      <span class="mf">0.48</span>    <span class="mi">113975</span>
+           <span class="mi">1</span>       <span class="mf">0.04</span>      <span class="mf">0.86</span>      <span class="mf">0.08</span>      <span class="mi">4133</span>
+
+    <span class="n">accuracy</span>                           <span class="mf">0.33</span>    <span class="mi">118108</span>
+   <span class="n">macro</span> <span class="n">avg</span>       <span class="mf">0.51</span>      <span class="mf">0.59</span>      <span class="mf">0.28</span>    <span class="mi">118108</span>
+<span class="n">weighted</span> <span class="n">avg</span>       <span class="mf">0.95</span>      <span class="mf">0.33</span>      <span class="mf">0.46</span>    <span class="mi">118108</span>
+</pre></div>
+</div>
+<div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;"> <div style="background-color: #d4f8e8; padding: 8px 12px;"> <strong>💡 Análisis:</strong> </div> <div style="background-color: #f5fdf9; padding: 12px;">  <ul> <li>La **clase 0** mantiene una precisión muy alta (0.98), pero su recall ha caído drásticamente a 0.32. Esto significa que el modelo es muy preciso cuando predice la clase 0, pero no logra identificar la mayoría de los casos reales de esta clase. El f1-score para la clase 0 es moderado (0.48) debido al bajo recall.</il> <li>La **clase 1** tiene un recall muy alto (0.86), lo que indica que el modelo es muy bueno identificando los casos reales de la clase minoritaria. Sin embargo, su precisión es extremadamente baja (0.04), lo que significa que casi todas las predicciones positivas para la clase 1 son incorrectas. El f1-score para la clase 1 es muy bajo (0.08) debido a la bajísima precisión.</li> <li>La **precisión general** es muy baja (0.33), lo cual es un reflejo del bajo recall en la clase mayoritaria.</li> <li>El **macro avg** muestra valores bajos en todas las métricas (precisión 0.51, recall 0.59, f1-score 0.28), lo que indica un rendimiento general bajo cuando se promedian sin considerar el tamaño de las clases.</li> <li>El **weighted avg** es bajo (0.33 para recall y 0.46 para f1-score), motivado por el bajo recall de la clase mayoritaria.</li> </ul> <br>
+<p><strong> Conclusiones: </strong></p>
+  </div>
+  <div style="background-color: #f5fdf9; padding: 12px;"> <ul> <li>Este modelo ha priorizado de manera significativa el recall de la clase minoritaria (clase 1) a costa del recall de la clase mayoritaria (clase 0). Esto conlleva a una precisión muy baja en la clase 1 y una precisión general muy baja.</li> </ul> <br></section>
+<section id="decision-tree">
+<h2>Decision Tree<a class="headerlink" href="#decision-tree" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_nb</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+
+<span class="c1"># arbol_entrenamiento</span>
+<span class="n">inicio</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">pipe_dt</span> <span class="o">=</span> <span class="n">ImbPipeline</span><span class="p">([(</span><span class="s1">&#39;smote&#39;</span><span class="p">,</span> <span class="n">SMOTE</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)),</span> <span class="p">(</span><span class="s1">&#39;modelo&#39;</span><span class="p">,</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">class_weight</span><span class="o">=</span><span class="s1">&#39;balanced&#39;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">))])</span>
+
+<span class="c1"># Espacio de búsqueda optimizado</span>
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;modelo__max_depth&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span>
+    <span class="s1">&#39;modelo__min_samples_split&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span>
+    <span class="s1">&#39;modelo__criterion&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;gini&#39;</span><span class="p">,</span> <span class="s1">&#39;entropy&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">grid_dt</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span>
+    <span class="n">pipe_dt</span><span class="p">,</span>
+    <span class="n">param_grid</span><span class="p">,</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;roc_auc&#39;</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Entrenando DecisionTree&#39;</span><span class="p">)</span>
+<span class="n">grid_dt</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Mejores parámetros encontrados:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">grid_dt</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mejor AUC validación:&#39;</span><span class="p">,</span> <span class="n">grid_dt</span><span class="o">.</span><span class="n">best_score_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tiempo:&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">inicio</span><span class="p">)</span>
+
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">grid_dt</span><span class="o">.</span><span class="n">best_estimator_</span><span class="p">,</span> <span class="s1">&#39;drive/MyDrive/punto_2_arbol.pkl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Entrenando DecisionTree
+Fitting 3 folds for each of 24 candidates, totalling 72 fits
 
-           0       0.97      0.97      0.97    113975
-           1       0.09      0.09      0.09      4133
-
-    accuracy                           0.94    118108
-   macro avg       0.53      0.53      0.53    118108
-weighted avg       0.94      0.94      0.94    118108
+Mejores parámetros encontrados:
+{&#39;modelo__criterion&#39;: &#39;entropy&#39;, &#39;modelo__max_depth&#39;: 10, &#39;modelo__min_samples_split&#39;: 10}
+Mejor AUC validación: 0.8317573436143583
+Tiempo: 498.2491271495819
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # arbol_entrenamiento</span>
-<span class="c1"># inicio = time.time()</span>
-<span class="c1"># pipe_dt = Pipeline([(&#39;modelo&#39;, DecisionTreeClassifier(class_weight=&#39;balanced&#39;))])</span>
-<span class="c1"># esp_dt = {&#39;modelo__max_depth&#39;: Integer(3, 20), &#39;modelo__min_samples_split&#39;: Integer(2, 20), &#39;modelo__criterion&#39;: Categorical([&#39;gini&#39;, &#39;entropy&#39;])}</span>
-<span class="c1"># bay_dt = BayesSearchCV(pipe_dt, esp_dt, scoring=&#39;roc_auc&#39;, n_jobs=-1, cv=cv, n_iter=5, random_state=42)</span>
-<span class="c1"># print(&#39;Entrenando DecisionTree&#39;)</span>
-<span class="c1"># bay_dt.fit(X_train, y_train)</span>
-<span class="c1"># print(&#39;Mejor AUC validación:&#39;, bay_dt.best_score_)</span>
-<span class="c1"># print(&#39;Tiempo:&#39;, time.time() - inicio)</span>
-<span class="c1"># joblib.dump(bay_dt.best_estimator_, &#39;drive/MyDrive/arbol.pkl&#39;)</span>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;drive/MyDrive/punto_2_arbol.pkl&#39;]
 </pre></div>
 </div>
 </div>
 </div>
 <p>Entrenando DecisionTree</p>
-<p>Mejor AUC validación: 0.8408365717032249</p>
-<p>Tiempo: 36.64292669296265</p>
-<p>[‘arbol.pkl’]</p>
+<p>Fitting 3 folds for each of 24 candidates, totalling 72 fits</p>
+<p>Mejores parámetros encontrados:</p>
+<p>{‘modelo__criterion’: ‘entropy’, ‘modelo__max_depth’: 10, ‘modelo__min_samples_split’: 10}</p>
+<p>Mejor AUC validación: 0.8317573436143583</p>
+<p>Tiempo: 498.2491271495819</p>
+<p>[‘drive/MyDrive/punto_2_arbol.pkl’]</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># arbol_metricas</span>
-<span class="n">modelo_dt</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;drive/MyDrive/arbol.pkl&#39;</span><span class="p">)</span>
+<span class="n">modelo_dt</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;drive/MyDrive/punto_2_arbol.pkl&#39;</span><span class="p">)</span>
 <span class="n">pro_dt</span> <span class="o">=</span> <span class="n">modelo_dt</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="n">pr_dt</span> <span class="o">=</span> <span class="p">(</span><span class="n">pro_dt</span> <span class="o">&gt;=</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 <span class="n">cm_dt</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_dt</span><span class="p">)</span>
@@ -1454,16 +1651,27 @@ weighted avg       0.94      0.94      0.94    118108
 
 <span class="n">res</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Decision Tree&#39;</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_dt</span><span class="p">),</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_dt</span><span class="p">),</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_dt</span><span class="p">),</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pro_dt</span><span class="p">)]</span>
 <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">resultados</span><span class="p">)]</span> <span class="o">=</span> <span class="n">res</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_dt</span><span class="p">))</span>
 
 <span class="n">resultados</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b57271943fe997f1048e905ec19b683ba583a0867aa51c1e257ec54237c8a299.png" src="_images/b57271943fe997f1048e905ec19b683ba583a0867aa51c1e257ec54237c8a299.png" />
-<img alt="_images/1a75f969fd23099933f41b3e87d4a2b165e360703e3dec7e831a6f6367abbf6a.png" src="_images/1a75f969fd23099933f41b3e87d4a2b165e360703e3dec7e831a6f6367abbf6a.png" />
+<img alt="_images/3624fd71f9211ef99e3cc4e070fd5c492aeac3c85d2e04ca16824489485ac693.png" src="_images/3624fd71f9211ef99e3cc4e070fd5c492aeac3c85d2e04ca16824489485ac693.png" />
+<img alt="_images/a8c1ab71626f93100f54f231e96e318856e5006992933580651b9b547fa706c9.png" src="_images/a8c1ab71626f93100f54f231e96e318856e5006992933580651b9b547fa706c9.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+           0       0.98      0.96      0.97    113975
+           1       0.30      0.43      0.35      4133
+
+    accuracy                           0.95    118108
+   macro avg       0.64      0.70      0.66    118108
+weighted avg       0.96      0.95      0.95    118108
+</pre></div>
+</div>
 <div class="output text_html">
-  <div id="df-51b8765e-a8cb-4f67-8bdf-c159709b8083" class="colab-df-container">
+  <div id="df-c3cb243a-cdf9-44fd-a770-44b1c7912c1c" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1493,34 +1701,34 @@ weighted avg       0.94      0.94      0.94    118108
     <tr>
       <th>0</th>
       <td>KNN</td>
-      <td>0.847169</td>
-      <td>0.372853</td>
-      <td>0.517809</td>
-      <td>0.865627</td>
+      <td>0.215107</td>
+      <td>0.742076</td>
+      <td>0.333533</td>
+      <td>0.877271</td>
     </tr>
     <tr>
       <th>1</th>
       <td>Logistic Regression</td>
-      <td>0.095399</td>
-      <td>0.731430</td>
-      <td>0.168784</td>
-      <td>0.815279</td>
+      <td>0.092754</td>
+      <td>0.733366</td>
+      <td>0.164679</td>
+      <td>0.814901</td>
     </tr>
     <tr>
       <th>2</th>
       <td>Bayesian Classification</td>
-      <td>0.089574</td>
-      <td>0.088556</td>
-      <td>0.089062</td>
-      <td>0.666605</td>
+      <td>0.043368</td>
+      <td>0.856279</td>
+      <td>0.082555</td>
+      <td>0.686120</td>
     </tr>
     <tr>
       <th>3</th>
       <td>Decision Tree</td>
-      <td>0.137152</td>
-      <td>0.736995</td>
-      <td>0.231266</td>
-      <td>0.859555</td>
+      <td>0.300034</td>
+      <td>0.428018</td>
+      <td>0.352777</td>
+      <td>0.833576</td>
     </tr>
   </tbody>
 </table>
@@ -1528,7 +1736,7 @@ weighted avg       0.94      0.94      0.94    118108
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-51b8765e-a8cb-4f67-8bdf-c159709b8083')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-c3cb243a-cdf9-44fd-a770-44b1c7912c1c')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
 
@@ -1580,12 +1788,12 @@ weighted avg       0.94      0.94      0.94    118108
 
     <script>
       const buttonEl =
-        document.querySelector('#df-51b8765e-a8cb-4f67-8bdf-c159709b8083 button.colab-df-convert');
+        document.querySelector('#df-c3cb243a-cdf9-44fd-a770-44b1c7912c1c button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-51b8765e-a8cb-4f67-8bdf-c159709b8083');
+        const element = document.querySelector('#df-c3cb243a-cdf9-44fd-a770-44b1c7912c1c');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1605,8 +1813,8 @@ weighted avg       0.94      0.94      0.94    118108
   </div>
 
 
-<div id="df-43ed582d-dd27-468d-bf7d-88a719f28b25">
-  <button class="colab-df-quickchart" onclick="quickchart('df-43ed582d-dd27-468d-bf7d-88a719f28b25')"
+<div id="df-a77e3ba3-a85b-46e4-b2f8-99139bf180d3">
+  <button class="colab-df-quickchart" onclick="quickchart('df-a77e3ba3-a85b-46e4-b2f8-99139bf180d3')"
             title="Suggest charts"
             style="display:none;">
 
@@ -1725,14 +1933,14 @@ weighted avg       0.94      0.94      0.94    118108
     }
     (() => {
       let quickchartButtonEl =
-        document.querySelector('#df-43ed582d-dd27-468d-bf7d-88a719f28b25 button');
+        document.querySelector('#df-a77e3ba3-a85b-46e4-b2f8-99139bf180d3 button');
       quickchartButtonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
     })();
   </script>
 </div>
 
-  <div id="id_ed3d7be9-93fa-472d-b3f3-34b96159480d">
+  <div id="id_2bf8b5eb-be8d-450d-b16e-2b47f7b5884c">
     <style>
       .colab-df-generate {
         background-color: #E8F0FE;
@@ -1776,7 +1984,7 @@ weighted avg       0.94      0.94      0.94    118108
     <script>
       (() => {
       const buttonEl =
-        document.querySelector('#id_ed3d7be9-93fa-472d-b3f3-34b96159480d button.colab-df-generate');
+        document.querySelector('#id_2bf8b5eb-be8d-450d-b16e-2b47f7b5884c button.colab-df-generate');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
@@ -1791,49 +1999,95 @@ weighted avg       0.94      0.94      0.94    118108
   </div>
 </div></div>
 </div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>              <span class="n">precision</span>    <span class="n">recall</span>  <span class="n">f1</span><span class="o">-</span><span class="n">score</span>   <span class="n">support</span>
+
+           <span class="mi">0</span>       <span class="mf">0.98</span>      <span class="mf">0.96</span>      <span class="mf">0.97</span>    <span class="mi">113975</span>
+           <span class="mi">1</span>       <span class="mf">0.30</span>      <span class="mf">0.43</span>      <span class="mf">0.35</span>      <span class="mi">4133</span>
+
+    <span class="n">accuracy</span>                           <span class="mf">0.95</span>    <span class="mi">118108</span>
+   <span class="n">macro</span> <span class="n">avg</span>       <span class="mf">0.64</span>      <span class="mf">0.70</span>      <span class="mf">0.66</span>    <span class="mi">118108</span>
+<span class="n">weighted</span> <span class="n">avg</span>       <span class="mf">0.96</span>      <span class="mf">0.95</span>      <span class="mf">0.95</span>    <span class="mi">118108</span>
+</pre></div>
+</div>
+<div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;"> <div style="background-color: #d4f8e8; padding: 8px 12px;"> <strong>💡 Análisis:</strong> </div> <div style="background-color: #f5fdf9; padding: 12px;"> <ul> <li>La **clase 0** muestra un rendimiento excelente con alta precisión (0.98) y recall (0.96), lo que resulta en un f1-score muy alto (0.97). Esto indica que el modelo es muy efectivo identificando correctamente la mayoría de los casos de la clase mayoritaria.</li> <li>La **clase 1** tiene un recall moderado (0.43), lo que significa que el modelo identifica menos de la mitad de los casos reales de la clase minoritaria. La precisión es baja (0.30), lo que indica que hay un número significativo de falsos positivos al predecir la clase 1. El f1-score para la clase 1 es bajo (0.35), reflejando el compromiso entre recall y precisión en esta clase.</li> <li>La **precisión general** es alta (0.95), lo cual es esperado dado el fuerte rendimiento en la clase mayoritaria.</li> <li>El **macro avg** (promedio no ponderado) muestra un equilibrio entre las métricas (precisión 0.64, recall 0.70, f1-score 0.66), lo que proporciona una visión más equitativa del rendimiento en ambas clases, aunque todavía influenciado por el menor rendimiento en la clase minoritaria.</li> <li>El **weighted avg** (promedio ponderado) es alto (0.95 para recall y f1-score, 0.96 para precisión), reflejando el dominio de la clase mayoritaria en el conjunto de datos.</li> </ul> <br>
+<p><strong> Conclusiones: </strong></p>
+  </div>
+  <div style="background-color: #f5fdf9; padding: 12px;"> <ul> <li>Este modelo parece haber encontrado un mejor equilibrio entre el rendimiento en la clase mayoritaria y minoritaria. Si bien el rendimiento en la clase 1 todavía no es tan alto como en la clase 0, ha mejorado con respecto a los escenarios donde el recall de la clase 0 era muy bajo. Este modelo ofrece un buen rendimiento general. </li> </ul> <br></section>
+<section id="random-forest">
+<h2>Random Forest<a class="headerlink" href="#random-forest" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_dt</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># rf_entrenamiento</span>
+<span class="n">inicio</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">pipe_rf</span> <span class="o">=</span> <span class="n">ImbPipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">&#39;smote&#39;</span><span class="p">,</span> <span class="n">SMOTE</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s1">&#39;modelo&#39;</span><span class="p">,</span> <span class="n">RandomForestClassifier</span><span class="p">(</span>
+    <span class="n">class_weight</span><span class="o">=</span><span class="s1">&#39;balanced&#39;</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
+<span class="p">))])</span>
+
+<span class="c1"># Espacio de búsqueda reducido</span>
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;modelo__n_estimators&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+    <span class="s1">&#39;modelo__max_depth&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span>
+    <span class="s1">&#39;modelo__max_features&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;sqrt&#39;</span><span class="p">,</span> <span class="s1">&#39;log2&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">grid_rf</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span>
+    <span class="n">pipe_rf</span><span class="p">,</span>
+    <span class="n">param_grid</span><span class="p">,</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;roc_auc&#39;</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Entrenando RandomForest&#39;</span><span class="p">)</span>
+<span class="n">grid_rf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Mejores parámetros encontrados:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">grid_rf</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mejor AUC validación:&#39;</span><span class="p">,</span> <span class="n">grid_rf</span><span class="o">.</span><span class="n">best_score_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tiempo:&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">inicio</span><span class="p">)</span>
+
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">grid_rf</span><span class="o">.</span><span class="n">best_estimator_</span><span class="p">,</span> <span class="s1">&#39;drive/MyDrive/punto_2_rf.pkl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
-
-           0       0.99      0.83      0.90    113975
-           1       0.14      0.74      0.23      4133
-
-    accuracy                           0.83    118108
-   macro avg       0.56      0.78      0.57    118108
-weighted avg       0.96      0.83      0.88    118108
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Entrenando RandomForest
+Fitting 3 folds for each of 12 candidates, totalling 36 fits
 </pre></div>
 </div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.11/dist-packages/joblib/externals/loky/process_executor.py:752: UserWarning: A worker stopped while some jobs were given to the executor. This can be caused by a too short worker timeout or by a memory leak.
+  warnings.warn(
+</pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mejores parámetros encontrados:
+{&#39;modelo__max_depth&#39;: 20, &#39;modelo__max_features&#39;: &#39;sqrt&#39;, &#39;modelo__n_estimators&#39;: 200}
+Mejor AUC validación: 0.9084535084467271
+Tiempo: 2375.4289305210114
+</pre></div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # rf_entrenamiento</span>
-<span class="c1"># inicio = time.time()</span>
-<span class="c1"># pipe_rf = Pipeline([(&#39;modelo&#39;, RandomForestClassifier(class_weight=&#39;balanced&#39;, n_jobs=-1))])</span>
-<span class="c1"># esp_rf = {&#39;modelo__n_estimators&#39;: Integer(100, 300), &#39;modelo__max_depth&#39;: Integer(5, 20), &#39;modelo__max_features&#39;: Categorical([&#39;sqrt&#39;, &#39;log2&#39;])}</span>
-<span class="c1"># bay_rf = BayesSearchCV(pipe_rf, esp_rf, scoring=&#39;roc_auc&#39;, n_jobs=-1, cv=cv, n_iter=5, random_state=42)</span>
-<span class="c1"># print(&#39;Entrenando RandomForest&#39;)</span>
-<span class="c1"># bay_rf.fit(X_train, y_train)</span>
-<span class="c1"># print(&#39;Mejor AUC validación:&#39;, bay_rf.best_score_)</span>
-<span class="c1"># print(&#39;Tiempo:&#39;, time.time() - inicio)</span>
-<span class="c1"># joblib.dump(bay_rf.best_estimator_, &#39;drive/MyDrive/rf.pkl&#39;)</span>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;drive/MyDrive/punto_2_rf.pkl&#39;]
 </pre></div>
 </div>
 </div>
 </div>
 <p>Entrenando RandomForest</p>
-<p>Mejor AUC validación: 0.901874053800999</p>
-<p>Tiempo: 220.5481595993042</p>
-<p>[‘rf.pkl’]</p>
+<p>Fitting 3 folds for each of 12 candidates, totalling 36 fits</p>
+<p>/usr/local/lib/python3.11/dist-packages/joblib/externals/loky/process_executor.py:752: UserWarning: A worker stopped while some jobs were given to the executor. This can be caused by a too short worker timeout or by a memory leak.
+warnings.warn(</p>
+<p>Mejores parámetros encontrados:</p>
+<p>{‘modelo__max_depth’: 20, ‘modelo__max_features’: ‘sqrt’, ‘modelo__n_estimators’: 200}</p>
+<p>Mejor AUC validación: 0.9084535084467271</p>
+<p>Tiempo: 2375.4289305210114</p>
+<p>[‘drive/MyDrive/punto_2_rf.pkl’]</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># rf_metricas</span>
-<span class="n">modelo_rf</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;drive/MyDrive/rf.pkl&#39;</span><span class="p">)</span>
+<span class="n">modelo_rf</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;drive/MyDrive/punto_2_rf.pkl&#39;</span><span class="p">)</span>
 <span class="n">pro_rf</span> <span class="o">=</span> <span class="n">modelo_rf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="n">pr_rf</span> <span class="o">=</span> <span class="p">(</span><span class="n">pro_rf</span> <span class="o">&gt;=</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 <span class="n">cm_rf</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_rf</span><span class="p">)</span>
@@ -1845,16 +2099,27 @@ weighted avg       0.96      0.83      0.88    118108
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <span class="n">res</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Random Forest&#39;</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_rf</span><span class="p">),</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_rf</span><span class="p">),</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_rf</span><span class="p">),</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pro_rf</span><span class="p">)]</span>
 <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">resultados</span><span class="p">)]</span> <span class="o">=</span> <span class="n">res</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_rf</span><span class="p">))</span>
 
 <span class="n">resultados</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f565ee28f54e01ea8732a6f7946b8ab16dd14e65b6708b5954ced84463c07f3d.png" src="_images/f565ee28f54e01ea8732a6f7946b8ab16dd14e65b6708b5954ced84463c07f3d.png" />
-<img alt="_images/f7caf091e8a44e555ad254bd8dfe0ef0716702cb13b1e34f4ad6e48d3f86cc51.png" src="_images/f7caf091e8a44e555ad254bd8dfe0ef0716702cb13b1e34f4ad6e48d3f86cc51.png" />
+<img alt="_images/5d833de0e3f23888559cd025b364c5e47a97ca754c9155b5a91cbed26a9d3fa1.png" src="_images/5d833de0e3f23888559cd025b364c5e47a97ca754c9155b5a91cbed26a9d3fa1.png" />
+<img alt="_images/41ede4c22d5b46e58b4627372cb419d6702fae1b1c14891470a5246c3f2ba8b6.png" src="_images/41ede4c22d5b46e58b4627372cb419d6702fae1b1c14891470a5246c3f2ba8b6.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+           0       0.98      1.00      0.99    113975
+           1       0.76      0.43      0.55      4133
+
+    accuracy                           0.98    118108
+   macro avg       0.87      0.71      0.77    118108
+weighted avg       0.97      0.98      0.97    118108
+</pre></div>
+</div>
 <div class="output text_html">
-  <div id="df-1a45d0c4-1159-4669-b11f-e94c10294740" class="colab-df-container">
+  <div id="df-8cc508f9-5529-471e-9f86-0825ebc8187b" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1884,42 +2149,42 @@ weighted avg       0.96      0.83      0.88    118108
     <tr>
       <th>0</th>
       <td>KNN</td>
-      <td>0.847169</td>
-      <td>0.372853</td>
-      <td>0.517809</td>
-      <td>0.865627</td>
+      <td>0.215107</td>
+      <td>0.742076</td>
+      <td>0.333533</td>
+      <td>0.877271</td>
     </tr>
     <tr>
       <th>1</th>
       <td>Logistic Regression</td>
-      <td>0.095399</td>
-      <td>0.731430</td>
-      <td>0.168784</td>
-      <td>0.815279</td>
+      <td>0.092754</td>
+      <td>0.733366</td>
+      <td>0.164679</td>
+      <td>0.814901</td>
     </tr>
     <tr>
       <th>2</th>
       <td>Bayesian Classification</td>
-      <td>0.089574</td>
-      <td>0.088556</td>
-      <td>0.089062</td>
-      <td>0.666605</td>
+      <td>0.043368</td>
+      <td>0.856279</td>
+      <td>0.082555</td>
+      <td>0.686120</td>
     </tr>
     <tr>
       <th>3</th>
       <td>Decision Tree</td>
-      <td>0.137152</td>
-      <td>0.736995</td>
-      <td>0.231266</td>
-      <td>0.859555</td>
+      <td>0.300034</td>
+      <td>0.428018</td>
+      <td>0.352777</td>
+      <td>0.833576</td>
     </tr>
     <tr>
       <th>4</th>
       <td>Random Forest</td>
-      <td>0.318861</td>
-      <td>0.696588</td>
-      <td>0.437472</td>
-      <td>0.918166</td>
+      <td>0.759810</td>
+      <td>0.426325</td>
+      <td>0.546187</td>
+      <td>0.912900</td>
     </tr>
   </tbody>
 </table>
@@ -1927,7 +2192,7 @@ weighted avg       0.96      0.83      0.88    118108
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-1a45d0c4-1159-4669-b11f-e94c10294740')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-8cc508f9-5529-471e-9f86-0825ebc8187b')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
 
@@ -1979,12 +2244,12 @@ weighted avg       0.96      0.83      0.88    118108
 
     <script>
       const buttonEl =
-        document.querySelector('#df-1a45d0c4-1159-4669-b11f-e94c10294740 button.colab-df-convert');
+        document.querySelector('#df-8cc508f9-5529-471e-9f86-0825ebc8187b button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-1a45d0c4-1159-4669-b11f-e94c10294740');
+        const element = document.querySelector('#df-8cc508f9-5529-471e-9f86-0825ebc8187b');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -2004,8 +2269,8 @@ weighted avg       0.96      0.83      0.88    118108
   </div>
 
 
-<div id="df-d59014b7-0479-4b5c-8141-faed33c750b8">
-  <button class="colab-df-quickchart" onclick="quickchart('df-d59014b7-0479-4b5c-8141-faed33c750b8')"
+<div id="df-6f48ad70-9b93-4a8b-9f0d-4d950bfc66f8">
+  <button class="colab-df-quickchart" onclick="quickchart('df-6f48ad70-9b93-4a8b-9f0d-4d950bfc66f8')"
             title="Suggest charts"
             style="display:none;">
 
@@ -2124,14 +2389,14 @@ weighted avg       0.96      0.83      0.88    118108
     }
     (() => {
       let quickchartButtonEl =
-        document.querySelector('#df-d59014b7-0479-4b5c-8141-faed33c750b8 button');
+        document.querySelector('#df-6f48ad70-9b93-4a8b-9f0d-4d950bfc66f8 button');
       quickchartButtonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
     })();
   </script>
 </div>
 
-  <div id="id_be26a17d-5c83-4ced-9a5a-905c6841c756">
+  <div id="id_daabf84a-7524-43fe-ab73-2057c138a6a3">
     <style>
       .colab-df-generate {
         background-color: #E8F0FE;
@@ -2175,7 +2440,7 @@ weighted avg       0.96      0.83      0.88    118108
     <script>
       (() => {
       const buttonEl =
-        document.querySelector('#id_be26a17d-5c83-4ced-9a5a-905c6841c756 button.colab-df-generate');
+        document.querySelector('#id_daabf84a-7524-43fe-ab73-2057c138a6a3 button.colab-df-generate');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
@@ -2190,49 +2455,87 @@ weighted avg       0.96      0.83      0.88    118108
   </div>
 </div></div>
 </div>
+<div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;"> <div style="background-color: #d4f8e8; padding: 8px 12px;"> <strong>💡 Análisis:</strong> </div> <div style="background-color: #f5fdf9; padding: 12px;"> <ul> <li>La **clase 0** muestra un rendimiento con una precisión de 0.98 y un recall de 1.00, lo que resulta en un f1-score de 0.99. Esto indica que el modelo identifica correctamente a todas las instancias de la clase mayoritaria y casi todas sus predicciones positivas son correctas.</li> <li>La **clase 1** tiene una precisión relativamente alta (0.76) en comparación con los ejemplos anteriores, lo que significa que cuando el modelo predice la clase 1, hay una buena probabilidad de que sea correcto. Sin embargo, el recall es bajo (0.43), lo que indica que el modelo solo logra identificar menos de la mitad de los casos reales de la clase minoritaria. El f1-score para la clase 1 es moderado (0.55), reflejando el bajo recall a pesar de la precisión mejorada.</li> <li>La **precisión general** es muy alta (0.98), lo cual se debe principalmente al excelente rendimiento en la clase mayoritaria.</li> <li>El **macro avg** muestra un mejor equilibrio en las métricas en comparación con ejemplos anteriores, con valores más altos para precisión (0.87), recall (0.71) y f1-score (0.77), lo que indica un mejor rendimiento general sin ponderar por el tamaño de la clase.</li> <li>El **weighted avg** es muy alto (0.97-0.98), reflejando el dominio de la clase mayoritaria.</li> </ul> <br>
+<p><strong> Conclusiones: </strong></p>
+  </div>
+  <div style="background-color: #f5fdf9; padding: 12px;"> <ul> <li>Este modelo muestra un rendimiento muy fuerte en la clase mayoritaria y una mejora significativa en la precisión para la clase minoritaria en comparación con ejemplos anteriores. Aunque el recall para la clase minoritaria sigue siendo bajo, la alta precisión en esta clase sugiere que las predicciones positivas para la clase 1 son más confiables. </li> </ul> <br></section>
+<section id="xgboost">
+<h2>XGBoost<a class="headerlink" href="#xgboost" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_rf</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># xgboost_entrenamiento</span>
+<span class="n">inicio</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">pipe_xgb</span> <span class="o">=</span> <span class="n">ImbPipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">&#39;smote&#39;</span><span class="p">,</span> <span class="n">SMOTE</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)),</span>
+     <span class="p">(</span><span class="s1">&#39;modelo&#39;</span><span class="p">,</span> <span class="n">xgb</span><span class="o">.</span><span class="n">XGBClassifier</span><span class="p">(</span>
+    <span class="n">objective</span><span class="o">=</span><span class="s1">&#39;binary:logistic&#39;</span><span class="p">,</span>
+    <span class="n">eval_metric</span><span class="o">=</span><span class="s1">&#39;auc&#39;</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">scale_pos_weight</span><span class="o">=</span><span class="n">escala</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
+<span class="p">))])</span>
+
+<span class="c1"># Espacio de búsqueda simplificado</span>
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;modelo__max_depth&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>          <span class="c1"># 3 valores en lugar de rango</span>
+    <span class="s1">&#39;modelo__n_estimators&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>       <span class="c1"># 2 valores clave</span>
+    <span class="s1">&#39;modelo__learning_rate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">]</span>       <span class="c1"># Valores comunes predefinidos</span>
+<span class="p">}</span>
+
+<span class="n">grid_xgb</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span>
+    <span class="n">pipe_xgb</span><span class="p">,</span>
+    <span class="n">param_grid</span><span class="p">,</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;roc_auc&#39;</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Entrenando XGBoost&#39;</span><span class="p">)</span>
+<span class="n">grid_xgb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Mejores parámetros encontrados:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">grid_xgb</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mejor AUC validación:&#39;</span><span class="p">,</span> <span class="n">grid_xgb</span><span class="o">.</span><span class="n">best_score_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tiempo:&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">inicio</span><span class="p">)</span>
+
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">grid_xgb</span><span class="o">.</span><span class="n">best_estimator_</span><span class="p">,</span> <span class="s1">&#39;drive/MyDrive/punto_2_xgb.pkl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
-
-           0       0.99      0.95      0.97    113975
-           1       0.32      0.70      0.44      4133
-
-    accuracy                           0.94    118108
-   macro avg       0.65      0.82      0.70    118108
-weighted avg       0.97      0.94      0.95    118108
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Entrenando XGBoost
+Fitting 3 folds for each of 12 candidates, totalling 36 fits
 </pre></div>
 </div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.11/dist-packages/joblib/externals/loky/process_executor.py:752: UserWarning: A worker stopped while some jobs were given to the executor. This can be caused by a too short worker timeout or by a memory leak.
+  warnings.warn(
+</pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mejores parámetros encontrados:
+{&#39;modelo__learning_rate&#39;: 0.2, &#39;modelo__max_depth&#39;: 5, &#39;modelo__n_estimators&#39;: 200}
+Mejor AUC validación: 0.912648639859673
+Tiempo: 347.3052227497101
+</pre></div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # xgboost_entrenamiento</span>
-<span class="c1"># inicio = time.time()</span>
-<span class="c1"># pipe_xgb = Pipeline([(&#39;modelo&#39;, xgb.XGBClassifier(objective=&#39;binary:logistic&#39;, eval_metric=&#39;auc&#39;, n_jobs=-1, scale_pos_weight=escala))])</span>
-<span class="c1"># esp_xgb = {&#39;modelo__max_depth&#39;: Integer(3, 6), &#39;modelo__n_estimators&#39;: Integer(100, 300), &#39;modelo__learning_rate&#39;: Real(0.01, 0.3, prior=&#39;log-uniform&#39;)}</span>
-<span class="c1"># bay_xgb = BayesSearchCV(pipe_xgb, esp_xgb, scoring=&#39;roc_auc&#39;, n_jobs=-1, cv=cv, n_iter=5, random_state=42)</span>
-<span class="c1"># print(&#39;Entrenando XGBoost&#39;)</span>
-<span class="c1"># bay_xgb.fit(X_train, y_train)</span>
-<span class="c1"># print(&#39;Mejor AUC validación:&#39;, bay_xgb.best_score_)</span>
-<span class="c1"># print(&#39;Tiempo:&#39;, time.time() - inicio)</span>
-<span class="c1"># joblib.dump(bay_xgb.best_estimator_, &#39;drive/MyDrive/xgb.pkl&#39;)</span>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;drive/MyDrive/xgb.pkl&#39;]
 </pre></div>
 </div>
 </div>
 </div>
 <p>Entrenando XGBoost</p>
-<p>Mejor AUC validación: 0.9217030429293049</p>
-<p>Tiempo: 67.46106290817261</p>
-<p>[‘xgb.pkl’]</p>
+<p>Fitting 3 folds for each of 12 candidates, totalling 36 fits</p>
+<p>/usr/local/lib/python3.11/dist-packages/joblib/externals/loky/process_executor.py:752: UserWarning: A worker stopped while some jobs were given to the executor. This can be caused by a too short worker timeout or by a memory leak.
+warnings.warn(</p>
+<p>Mejores parámetros encontrados:</p>
+<p>{‘modelo__learning_rate’: 0.2, ‘modelo__max_depth’: 5, ‘modelo__n_estimators’: 200}</p>
+<p>Mejor AUC validación: 0.912648639859673</p>
+<p>Tiempo: 347.3052227497101</p>
+<p>[‘drive/MyDrive/xgb.pkl’]</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># xgboost_metricas</span>
-<span class="n">modelo_xgb</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;drive/MyDrive/xgb.pkl&#39;</span><span class="p">)</span>
+<span class="n">modelo_xgb</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;drive/MyDrive/punto_2_xgb.pkl&#39;</span><span class="p">)</span>
 <span class="n">pro_xgb</span> <span class="o">=</span> <span class="n">modelo_xgb</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="n">pr_xgb</span> <span class="o">=</span> <span class="p">(</span><span class="n">pro_xgb</span> <span class="o">&gt;=</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 <span class="n">cm_xgb</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_xgb</span><span class="p">)</span>
@@ -2245,16 +2548,27 @@ weighted avg       0.97      0.94      0.95    118108
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <span class="n">res</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;XGBoost&#39;</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_xgb</span><span class="p">),</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_xgb</span><span class="p">),</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_xgb</span><span class="p">),</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pro_xgb</span><span class="p">)]</span>
 <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">resultados</span><span class="p">)]</span> <span class="o">=</span> <span class="n">res</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_xgb</span><span class="p">))</span>
 
 <span class="n">resultados</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/da926ab184e5366d57542d0b74c430bf1f83bf80a44782cd1c5c856f11aadc25.png" src="_images/da926ab184e5366d57542d0b74c430bf1f83bf80a44782cd1c5c856f11aadc25.png" />
-<img alt="_images/8882b83aac7bcd987a8d7512d398f05f5ba9122094ecf29d32d0e979db3417f1.png" src="_images/8882b83aac7bcd987a8d7512d398f05f5ba9122094ecf29d32d0e979db3417f1.png" />
+<img alt="_images/230dfaaf4b979ebf11623c31df9418d4b4298843003285c1419018213a32a112.png" src="_images/230dfaaf4b979ebf11623c31df9418d4b4298843003285c1419018213a32a112.png" />
+<img alt="_images/d32e6dfd339eaee29aee08212f37a55630753aab7734ca3e14d421beedfb17f7.png" src="_images/d32e6dfd339eaee29aee08212f37a55630753aab7734ca3e14d421beedfb17f7.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+           0       0.99      0.84      0.91    113975
+           1       0.16      0.82      0.27      4133
+
+    accuracy                           0.84    118108
+   macro avg       0.58      0.83      0.59    118108
+weighted avg       0.96      0.84      0.89    118108
+</pre></div>
+</div>
 <div class="output text_html">
-  <div id="df-a6795694-fc7f-455d-a6c7-5716a9629155" class="colab-df-container">
+  <div id="df-23659f33-4375-4831-a926-90c8ef96afa9" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -2284,50 +2598,50 @@ weighted avg       0.97      0.94      0.95    118108
     <tr>
       <th>0</th>
       <td>KNN</td>
-      <td>0.847169</td>
-      <td>0.372853</td>
-      <td>0.517809</td>
-      <td>0.865627</td>
+      <td>0.215107</td>
+      <td>0.742076</td>
+      <td>0.333533</td>
+      <td>0.877271</td>
     </tr>
     <tr>
       <th>1</th>
       <td>Logistic Regression</td>
-      <td>0.095399</td>
-      <td>0.731430</td>
-      <td>0.168784</td>
-      <td>0.815279</td>
+      <td>0.092754</td>
+      <td>0.733366</td>
+      <td>0.164679</td>
+      <td>0.814901</td>
     </tr>
     <tr>
       <th>2</th>
       <td>Bayesian Classification</td>
-      <td>0.089574</td>
-      <td>0.088556</td>
-      <td>0.089062</td>
-      <td>0.666605</td>
+      <td>0.043368</td>
+      <td>0.856279</td>
+      <td>0.082555</td>
+      <td>0.686120</td>
     </tr>
     <tr>
       <th>3</th>
       <td>Decision Tree</td>
-      <td>0.137152</td>
-      <td>0.736995</td>
-      <td>0.231266</td>
-      <td>0.859555</td>
+      <td>0.300034</td>
+      <td>0.428018</td>
+      <td>0.352777</td>
+      <td>0.833576</td>
     </tr>
     <tr>
       <th>4</th>
       <td>Random Forest</td>
-      <td>0.318861</td>
-      <td>0.696588</td>
-      <td>0.437472</td>
-      <td>0.918166</td>
+      <td>0.759810</td>
+      <td>0.426325</td>
+      <td>0.546187</td>
+      <td>0.912900</td>
     </tr>
     <tr>
       <th>5</th>
       <td>XGBoost</td>
-      <td>0.238126</td>
-      <td>0.810307</td>
-      <td>0.368083</td>
-      <td>0.932998</td>
+      <td>0.160280</td>
+      <td>0.824825</td>
+      <td>0.268404</td>
+      <td>0.913099</td>
     </tr>
   </tbody>
 </table>
@@ -2335,7 +2649,7 @@ weighted avg       0.97      0.94      0.95    118108
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-a6795694-fc7f-455d-a6c7-5716a9629155')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-23659f33-4375-4831-a926-90c8ef96afa9')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
 
@@ -2387,12 +2701,12 @@ weighted avg       0.97      0.94      0.95    118108
 
     <script>
       const buttonEl =
-        document.querySelector('#df-a6795694-fc7f-455d-a6c7-5716a9629155 button.colab-df-convert');
+        document.querySelector('#df-23659f33-4375-4831-a926-90c8ef96afa9 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-a6795694-fc7f-455d-a6c7-5716a9629155');
+        const element = document.querySelector('#df-23659f33-4375-4831-a926-90c8ef96afa9');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -2412,8 +2726,8 @@ weighted avg       0.97      0.94      0.95    118108
   </div>
 
 
-<div id="df-118f6ef5-5b28-4f88-8cfe-2f6be36886e5">
-  <button class="colab-df-quickchart" onclick="quickchart('df-118f6ef5-5b28-4f88-8cfe-2f6be36886e5')"
+<div id="df-60e78dce-82e9-438d-85a0-68522fa84fd3">
+  <button class="colab-df-quickchart" onclick="quickchart('df-60e78dce-82e9-438d-85a0-68522fa84fd3')"
             title="Suggest charts"
             style="display:none;">
 
@@ -2532,14 +2846,14 @@ weighted avg       0.97      0.94      0.95    118108
     }
     (() => {
       let quickchartButtonEl =
-        document.querySelector('#df-118f6ef5-5b28-4f88-8cfe-2f6be36886e5 button');
+        document.querySelector('#df-60e78dce-82e9-438d-85a0-68522fa84fd3 button');
       quickchartButtonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
     })();
   </script>
 </div>
 
-  <div id="id_9b8ea215-ed91-4ab0-b12e-9aac072fe53d">
+  <div id="id_de07868a-b8e2-43db-b185-89a2c1168dbf">
     <style>
       .colab-df-generate {
         background-color: #E8F0FE;
@@ -2583,7 +2897,7 @@ weighted avg       0.97      0.94      0.95    118108
     <script>
       (() => {
       const buttonEl =
-        document.querySelector('#id_9b8ea215-ed91-4ab0-b12e-9aac072fe53d button.colab-df-generate');
+        document.querySelector('#id_de07868a-b8e2-43db-b185-89a2c1168dbf button.colab-df-generate');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
@@ -2598,73 +2912,67 @@ weighted avg       0.97      0.94      0.95    118108
   </div>
 </div></div>
 </div>
+<div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;"> <div style="background-color: #d4f8e8; padding: 8px 12px;"> <strong>💡 Análisis:</strong> </div> <div style="background-color: #f5fdf9; padding: 12px;"> <br><br> <ul> <li>La **clase 0** tiene una precisión muy alta (0.99) y un recall bueno (0.84), lo que resulta en un f1-score alto (0.91). Esto indica que el modelo es muy preciso al predecir la clase mayoritaria y logra identificar la mayoría de sus casos reales.</li> <li>La **clase 1** tiene un recall muy alto (0.82), lo que significa que el modelo es muy bueno identificando los casos reales de la clase minoritaria. Sin embargo, la precisión es muy baja (0.16), lo que sugiere que la mayoría de las predicciones positivas para la clase 1 son incorrectas (altos falsos positivos). El f1-score para la clase 1 es bajo (0.27) debido a la baja precisión.</li> <li>La **precisión general** es buena (0.84), influenciada por el rendimiento sólido en la clase mayoritaria.</li> <li>El **macro avg** muestra un desequilibrio, con un recall alto (0.83) pero una precisión (0.58) y f1-score (0.59) más bajos, destacando el problema de precisión en la clase minoritaria.</li> <li>El **weighted avg** es alto (0.96 para precisión, 0.84 para recall, 0.89 para f1-score), reflejando el buen rendimiento general ponderado por el tamaño de las clases.</li> </ul> <br>
+<p><strong> Conclusiones: </strong></p>
+  </div>
+  <div style="background-color: #f5fdf9; padding: 12px;"> <ul> <li>Este modelo prioriza fuertemente el recall en la clase minoritaria (clase 1), logrando identificar una gran proporción de sus casos. Sin embargo, esto viene a costa de una precisión muy baja en la clase 1, lo que significa un alto número de falsos positivos. El rendimiento en la clase mayoritaria (clase 0) es bueno, aunque no perfecto en términos de recall. </li> </ul> <br>
+</section>
+<section id="mlp">
+<h2>MLP<a class="headerlink" href="#mlp" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_xgb</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
 
-           0       0.99      0.91      0.95    113975
-           1       0.24      0.81      0.37      4133
-
-    accuracy                           0.90    118108
-   macro avg       0.62      0.86      0.66    118108
-weighted avg       0.97      0.90      0.93    118108
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># svm_entrenamiento</span>
+<span class="c1"># mlp_entrenamiento</span>
 <span class="n">inicio</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="n">pipe_svm</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span> <span class="p">(</span><span class="s1">&#39;modelo&#39;</span><span class="p">,</span> <span class="n">SVC</span><span class="p">(</span><span class="n">probability</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">class_weight</span><span class="o">=</span><span class="s1">&#39;balanced&#39;</span><span class="p">))])</span>
-<span class="n">esp_svm</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;modelo__C&#39;</span><span class="p">:</span> <span class="n">Real</span><span class="p">(</span><span class="mf">1e-2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">prior</span><span class="o">=</span><span class="s1">&#39;log-uniform&#39;</span><span class="p">),</span> <span class="s1">&#39;modelo__gamma&#39;</span><span class="p">:</span> <span class="n">Real</span><span class="p">(</span><span class="mf">1e-4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">prior</span><span class="o">=</span><span class="s1">&#39;log-uniform&#39;</span><span class="p">)}</span>
-<span class="n">bay_svm</span> <span class="o">=</span> <span class="n">BayesSearchCV</span><span class="p">(</span><span class="n">pipe_svm</span><span class="p">,</span> <span class="n">esp_svm</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;roc_auc&#39;</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Entrenando SVM&#39;</span><span class="p">)</span>
-<span class="n">bay_svm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mejor AUC validación:&#39;</span><span class="p">,</span> <span class="n">bay_svm</span><span class="o">.</span><span class="n">best_score_</span><span class="p">)</span>
+<span class="n">pipe_mlp</span> <span class="o">=</span> <span class="n">ImbPipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
+    <span class="p">(</span><span class="s1">&#39;smote&#39;</span><span class="p">,</span> <span class="n">SMOTE</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s1">&#39;modelo&#39;</span><span class="p">,</span> <span class="n">MLPClassifier</span><span class="p">(</span>
+        <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+        <span class="n">early_stopping</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
+    <span class="p">))</span>
+<span class="p">])</span>
+
+<span class="c1"># Espacio de búsqueda optimizado</span>
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;modelo__hidden_layer_sizes&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="mi">64</span><span class="p">,),</span> <span class="p">(</span><span class="mi">128</span><span class="p">,),</span> <span class="p">(</span><span class="mi">256</span><span class="p">,)],</span>
+    <span class="s1">&#39;modelo__alpha&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">grid_mlp</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span>
+    <span class="n">pipe_mlp</span><span class="p">,</span>
+    <span class="n">param_grid</span><span class="p">,</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;roc_auc&#39;</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Entrenando MLP&#39;</span><span class="p">)</span>
+<span class="n">grid_mlp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Mejores parámetros encontrados:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">grid_mlp</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mejor AUC validación:&#39;</span><span class="p">,</span> <span class="n">grid_mlp</span><span class="o">.</span><span class="n">best_score_</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tiempo:&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">inicio</span><span class="p">)</span>
-<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">bay_svm</span><span class="o">.</span><span class="n">best_estimator_</span><span class="p">,</span> <span class="s1">&#39;drive/MyDrive/svm.pkl&#39;</span><span class="p">)</span>
+
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">grid_mlp</span><span class="o">.</span><span class="n">best_estimator_</span><span class="p">,</span> <span class="s1">&#39;drive/MyDrive/punto_2_mlp.pkl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Entrenando SVM
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Entrenando MLP
+Fitting 3 folds for each of 9 candidates, totalling 27 fits
+
+Mejores parámetros encontrados:
+{&#39;modelo__alpha&#39;: 0.01, &#39;modelo__hidden_layer_sizes&#39;: (256,)}
+Mejor AUC validación: 0.8674189478627773
+Tiempo: 4345.680210590363
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># svm_metricas</span>
-<span class="n">modelo_svm</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;drive/MyDrive/svm.pkl&#39;</span><span class="p">)</span>
-<span class="n">pro_svm</span> <span class="o">=</span> <span class="n">modelo_svm</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="n">pr_svm</span> <span class="o">=</span> <span class="p">(</span><span class="n">pro_svm</span> <span class="o">&gt;=</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<span class="n">cm_svm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_svm</span><span class="p">)</span>
-<span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">cm_svm</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="n">RocCurveDisplay</span><span class="o">.</span><span class="n">from_predictions</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pro_svm</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="n">res</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SVM&#39;</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_svm</span><span class="p">),</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_svm</span><span class="p">),</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_svm</span><span class="p">),</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pro_svm</span><span class="p">)]</span>
-<span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">resultados</span><span class="p">)]</span> <span class="o">=</span> <span class="n">res</span><span class="p">;</span> <span class="nb">print</span><span class="p">(</span><span class="n">resultados</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # mlp_entrenamiento</span>
-<span class="c1"># inicio = time.time()</span>
-<span class="c1"># pipe_mlp = Pipeline([(&#39;scaler&#39;, StandardScaler()), (&#39;modelo&#39;, MLPClassifier(max_iter=100, early_stopping=True))])</span>
-<span class="c1"># esp_mlp = {&#39;modelo__hidden_layer_sizes&#39;: Integer(32, 256), &#39;modelo__alpha&#39;: Real(1e-5, 1e-2, prior=&#39;log-uniform&#39;)}</span>
-<span class="c1"># bay_mlp = BayesSearchCV(pipe_mlp, esp_mlp, scoring=&#39;roc_auc&#39;, n_jobs=-1, cv=cv, n_iter=5, random_state=42)</span>
-<span class="c1"># print(&#39;Entrenando MLP&#39;)</span>
-<span class="c1"># bay_mlp.fit(X_train, y_train)</span>
-<span class="c1"># print(&#39;Mejor AUC validación:&#39;, bay_mlp.best_score_)</span>
-<span class="c1"># print(&#39;Tiempo:&#39;, time.time() - inicio)</span>
-<span class="c1"># joblib.dump(bay_mlp.best_estimator_, &#39;drive/MyDrive/mlp.pkl&#39;)</span>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;drive/MyDrive/punto_2_mlp.pkl&#39;]
 </pre></div>
 </div>
 </div>
@@ -2676,7 +2984,7 @@ weighted avg       0.97      0.90      0.93    118108
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># mlp_metricas</span>
-<span class="n">modelo_mlp</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;drive/MyDrive/mlp.pkl&#39;</span><span class="p">)</span>
+<span class="n">modelo_mlp</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;drive/MyDrive/punto_2_mlp.pkl&#39;</span><span class="p">)</span>
 <span class="n">pro_mlp</span> <span class="o">=</span> <span class="n">modelo_mlp</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_val</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="n">pr_mlp</span> <span class="o">=</span> <span class="p">(</span><span class="n">pro_mlp</span> <span class="o">&gt;=</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 <span class="n">cm_mlp</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_mlp</span><span class="p">)</span>
@@ -2692,16 +3000,27 @@ weighted avg       0.97      0.90      0.93    118108
 <span class="n">res</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MLP&#39;</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_mlp</span><span class="p">),</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_mlp</span><span class="p">),</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_mlp</span><span class="p">),</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pro_mlp</span><span class="p">)]</span>
 
 <span class="n">resultados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">resultados</span><span class="p">)]</span> <span class="o">=</span> <span class="n">res</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_mlp</span><span class="p">))</span>
 
 <span class="n">resultados</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7b5562ad30a735147b6d437371823e615306847a6d5cc3d51a1899d491c88ea8.png" src="_images/7b5562ad30a735147b6d437371823e615306847a6d5cc3d51a1899d491c88ea8.png" />
-<img alt="_images/2462d547e6868c43159872d7750e5b2092cc35f7579a4c840192734dd5142cec.png" src="_images/2462d547e6868c43159872d7750e5b2092cc35f7579a4c840192734dd5142cec.png" />
+<img alt="_images/9060d9a2d854b4ff3125ae2e559bb3a53114b260710d71e1a53022a532d4000f.png" src="_images/9060d9a2d854b4ff3125ae2e559bb3a53114b260710d71e1a53022a532d4000f.png" />
+<img alt="_images/82a2488ac29581e1d1f773bb6d7177fea05f155c6c4ecc9549d7ad2ed3bcfc00.png" src="_images/82a2488ac29581e1d1f773bb6d7177fea05f155c6c4ecc9549d7ad2ed3bcfc00.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+           0       0.99      0.92      0.95    113975
+           1       0.24      0.70      0.36      4133
+
+    accuracy                           0.91    118108
+   macro avg       0.61      0.81      0.66    118108
+weighted avg       0.96      0.91      0.93    118108
+</pre></div>
+</div>
 <div class="output text_html">
-  <div id="df-d0c52cc0-605a-4286-be0c-adca98ec4467" class="colab-df-container">
+  <div id="df-dab5d4f8-77ec-413a-b1ff-81dbe39ce657" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -2731,58 +3050,58 @@ weighted avg       0.97      0.90      0.93    118108
     <tr>
       <th>0</th>
       <td>KNN</td>
-      <td>0.847169</td>
-      <td>0.372853</td>
-      <td>0.517809</td>
-      <td>0.865627</td>
+      <td>0.215107</td>
+      <td>0.742076</td>
+      <td>0.333533</td>
+      <td>0.877271</td>
     </tr>
     <tr>
       <th>1</th>
       <td>Logistic Regression</td>
-      <td>0.095399</td>
-      <td>0.731430</td>
-      <td>0.168784</td>
-      <td>0.815279</td>
+      <td>0.092754</td>
+      <td>0.733366</td>
+      <td>0.164679</td>
+      <td>0.814901</td>
     </tr>
     <tr>
       <th>2</th>
       <td>Bayesian Classification</td>
-      <td>0.089574</td>
-      <td>0.088556</td>
-      <td>0.089062</td>
-      <td>0.666605</td>
+      <td>0.043368</td>
+      <td>0.856279</td>
+      <td>0.082555</td>
+      <td>0.686120</td>
     </tr>
     <tr>
       <th>3</th>
       <td>Decision Tree</td>
-      <td>0.137152</td>
-      <td>0.736995</td>
-      <td>0.231266</td>
-      <td>0.859555</td>
+      <td>0.300034</td>
+      <td>0.428018</td>
+      <td>0.352777</td>
+      <td>0.833576</td>
     </tr>
     <tr>
       <th>4</th>
       <td>Random Forest</td>
-      <td>0.318861</td>
-      <td>0.696588</td>
-      <td>0.437472</td>
-      <td>0.918166</td>
+      <td>0.759810</td>
+      <td>0.426325</td>
+      <td>0.546187</td>
+      <td>0.912900</td>
     </tr>
     <tr>
       <th>5</th>
       <td>XGBoost</td>
-      <td>0.238126</td>
-      <td>0.810307</td>
-      <td>0.368083</td>
-      <td>0.932998</td>
+      <td>0.160280</td>
+      <td>0.824825</td>
+      <td>0.268404</td>
+      <td>0.913099</td>
     </tr>
     <tr>
       <th>6</th>
       <td>MLP</td>
-      <td>0.789848</td>
-      <td>0.402855</td>
-      <td>0.533568</td>
-      <td>0.897257</td>
+      <td>0.240301</td>
+      <td>0.695379</td>
+      <td>0.357174</td>
+      <td>0.891795</td>
     </tr>
   </tbody>
 </table>
@@ -2790,7 +3109,7 @@ weighted avg       0.97      0.90      0.93    118108
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-d0c52cc0-605a-4286-be0c-adca98ec4467')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-dab5d4f8-77ec-413a-b1ff-81dbe39ce657')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
 
@@ -2842,12 +3161,12 @@ weighted avg       0.97      0.90      0.93    118108
 
     <script>
       const buttonEl =
-        document.querySelector('#df-d0c52cc0-605a-4286-be0c-adca98ec4467 button.colab-df-convert');
+        document.querySelector('#df-dab5d4f8-77ec-413a-b1ff-81dbe39ce657 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-d0c52cc0-605a-4286-be0c-adca98ec4467');
+        const element = document.querySelector('#df-dab5d4f8-77ec-413a-b1ff-81dbe39ce657');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -2867,8 +3186,8 @@ weighted avg       0.97      0.90      0.93    118108
   </div>
 
 
-<div id="df-dc9d0b5c-4d37-477d-8aeb-fabbea80cc0c">
-  <button class="colab-df-quickchart" onclick="quickchart('df-dc9d0b5c-4d37-477d-8aeb-fabbea80cc0c')"
+<div id="df-3a45089c-3fec-4505-a6a5-ee78c8282564">
+  <button class="colab-df-quickchart" onclick="quickchart('df-3a45089c-3fec-4505-a6a5-ee78c8282564')"
             title="Suggest charts"
             style="display:none;">
 
@@ -2987,14 +3306,14 @@ weighted avg       0.97      0.90      0.93    118108
     }
     (() => {
       let quickchartButtonEl =
-        document.querySelector('#df-dc9d0b5c-4d37-477d-8aeb-fabbea80cc0c button');
+        document.querySelector('#df-3a45089c-3fec-4505-a6a5-ee78c8282564 button');
       quickchartButtonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
     })();
   </script>
 </div>
 
-  <div id="id_18a8bf3f-2ffc-4261-9dd9-703c41bc2266">
+  <div id="id_b2dd681e-8aca-40cb-86e9-9b2ec9c8ba9b">
     <style>
       .colab-df-generate {
         background-color: #E8F0FE;
@@ -3038,7 +3357,7 @@ weighted avg       0.97      0.90      0.93    118108
     <script>
       (() => {
       const buttonEl =
-        document.querySelector('#id_18a8bf3f-2ffc-4261-9dd9-703c41bc2266 button.colab-df-generate');
+        document.querySelector('#id_b2dd681e-8aca-40cb-86e9-9b2ec9c8ba9b button.colab-df-generate');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
@@ -3053,334 +3372,139 @@ weighted avg       0.97      0.90      0.93    118108
   </div>
 </div></div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">pr_mlp</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
-
-           0       0.98      1.00      0.99    113975
-           1       0.79      0.40      0.53      4133
-
-    accuracy                           0.98    118108
-   macro avg       0.88      0.70      0.76    118108
-weighted avg       0.97      0.98      0.97    118108
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># resumen_final</span>
-
-<span class="n">resultados</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;auc&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">resultados</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-  <div id="df-0f16897c-93de-4caa-acf2-2c672f795f21" class="colab-df-container">
-    <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>modelo</th>
-      <th>precision</th>
-      <th>recall</th>
-      <th>f1</th>
-      <th>auc</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>XGBoost</td>
-      <td>0.238126</td>
-      <td>0.810307</td>
-      <td>0.368083</td>
-      <td>0.932998</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Random Forest</td>
-      <td>0.318861</td>
-      <td>0.696588</td>
-      <td>0.437472</td>
-      <td>0.918166</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>MLP</td>
-      <td>0.789848</td>
-      <td>0.402855</td>
-      <td>0.533568</td>
-      <td>0.897257</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>KNN</td>
-      <td>0.847169</td>
-      <td>0.372853</td>
-      <td>0.517809</td>
-      <td>0.865627</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Decision Tree</td>
-      <td>0.137152</td>
-      <td>0.736995</td>
-      <td>0.231266</td>
-      <td>0.859555</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>Logistic Regression</td>
-      <td>0.095399</td>
-      <td>0.731430</td>
-      <td>0.168784</td>
-      <td>0.815279</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>Bayesian Classification</td>
-      <td>0.089574</td>
-      <td>0.088556</td>
-      <td>0.089062</td>
-      <td>0.666605</td>
-    </tr>
-  </tbody>
+<div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;"> <div style="background-color: #d4f8e8; padding: 8px 12px;"> <strong>💡 Análisis</strong> </div> <div style="background-color: #f5fdf9; padding: 12px;"> <ul> <li>La **clase 0** muestra una precisión muy alta (0.99) y un recall bueno (0.92), lo que resulta en un f1-score alto (0.95). Esto indica que el modelo es muy preciso al predecir la clase mayoritaria y logra identificar la gran mayoría de sus casos reales.</li> <li>La **clase 1** tiene un recall bueno (0.70), lo que significa que el modelo identifica una proporción significativa de los casos reales de la clase minoritaria. Sin embargo, la precisión es baja (0.24), lo que sugiere que hay un número considerable de falsos positivos al predecir la clase 1. El f1-score para la clase 1 es bajo (0.36) debido a la baja precisión.</li> <li>La **precisión general** es alta (0.91), influenciada por el buen rendimiento en la clase mayoritaria.</li> <li>El **macro avg** muestra un desequilibrio, con un recall alto (0.81) pero una precisión (0.61) y f1-score (0.66) más bajos, destacando el problema de precisión en la clase minoritaria.</li> <li>El **weighted avg** es alto (0.96 para precisión, 0.91 para recall, 0.93 para f1-score).</li> </ul> <br>
+<p><strong> Conclusiones: </strong></p>
+  </div>
+  <div style="background-color: #f5fdf9; padding: 12px;"> <ul> <li>Este modelo logra un buen equilibrio en el recall, identificando una proporción significativa de ambas clases. Sin embargo, la precisión en la clase minoritaria sigue siendo un desafío, lo que lleva a un número apreciable de falsos positivos para esa clase. El rendimiento general es sólido, pero la mejora en la precisión de la clase 1 sin sacrificar demasiado el recall sería el siguiente paso lógico. Este modelo sería adecuado en escenarios donde un buen recall en la clase minoritaria es importante, incluso si hay un número moderado de falsos positivos asociados. </li> </ul> <br></section>
+<section id="analisis">
+<h2>Analisis<a class="headerlink" href="#analisis" title="Permalink to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Modelo</p></th>
+<th class="head"><p>AUC-ROC</p></th>
+<th class="head"><p>Precision (fraude = 1)</p></th>
+<th class="head"><p>Recall (fraude = 1)</p></th>
+<th class="head"><p>F1-score (fraude = 1)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Random Forest</p></td>
+<td><p>0.91</p></td>
+<td><p>0.76</p></td>
+<td><p>0.43</p></td>
+<td><p>0.55</p></td>
+</tr>
+<tr class="row-odd"><td><p>XGBoost</p></td>
+<td><p>0.91</p></td>
+<td><p>0.16</p></td>
+<td><p>0.82</p></td>
+<td><p>0.27</p></td>
+</tr>
+<tr class="row-even"><td><p>MLP</p></td>
+<td><p>0.89</p></td>
+<td><p>0.24</p></td>
+<td><p>0.70</p></td>
+<td><p>0.36</p></td>
+</tr>
+<tr class="row-odd"><td><p>K-NN</p></td>
+<td><p>0.88</p></td>
+<td><p>0.22</p></td>
+<td><p>0.74</p></td>
+<td><p>0.33</p></td>
+</tr>
+<tr class="row-even"><td><p>Decision Tree</p></td>
+<td><p>0.83</p></td>
+<td><p>0.30</p></td>
+<td><p>0.43</p></td>
+<td><p>0.35</p></td>
+</tr>
+<tr class="row-odd"><td><p>Logistic Regression</p></td>
+<td><p>0.81</p></td>
+<td><p>0.09</p></td>
+<td><p>0.73</p></td>
+<td><p>0.16</p></td>
+</tr>
+<tr class="row-even"><td><p>Gaussian NB</p></td>
+<td><p>0.69</p></td>
+<td><p>0.04</p></td>
+<td><p>0.86</p></td>
+<td><p>0.08</p></td>
+</tr>
+</tbody>
 </table>
-</div>
-    <div class="colab-df-buttons">
-
-  <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-0f16897c-93de-4caa-acf2-2c672f795f21')"
-            title="Convert this dataframe to an interactive table."
-            style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
-    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
-  </svg>
-    </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-    <script>
-      const buttonEl =
-        document.querySelector('#df-0f16897c-93de-4caa-acf2-2c672f795f21 button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-0f16897c-93de-4caa-acf2-2c672f795f21');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
+<p><strong> METRICAS:</strong></p>
   </div>
-
-
-<div id="df-868dfa88-44c8-420b-a00f-bf14cf019240">
-  <button class="colab-df-quickchart" onclick="quickchart('df-868dfa88-44c8-420b-a00f-bf14cf019240')"
-            title="Suggest charts"
-            style="display:none;">
-
-<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-     width="24px">
-    <g>
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-    </g>
-</svg>
-  </button>
-
-<style>
-  .colab-df-quickchart {
-      --bg-color: #E8F0FE;
-      --fill-color: #1967D2;
-      --hover-bg-color: #E2EBFA;
-      --hover-fill-color: #174EA6;
-      --disabled-fill-color: #AAA;
-      --disabled-bg-color: #DDD;
-  }
-
-  [theme=dark] .colab-df-quickchart {
-      --bg-color: #3B4455;
-      --fill-color: #D2E3FC;
-      --hover-bg-color: #434B5C;
-      --hover-fill-color: #FFFFFF;
-      --disabled-bg-color: #3B4455;
-      --disabled-fill-color: #666;
-  }
-
-  .colab-df-quickchart {
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    fill: var(--fill-color);
-    height: 32px;
-    padding: 0;
-    width: 32px;
-  }
-
-  .colab-df-quickchart:hover {
-    background-color: var(--hover-bg-color);
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    fill: var(--button-hover-fill-color);
-  }
-
-  .colab-df-quickchart-complete:disabled,
-  .colab-df-quickchart-complete:disabled:hover {
-    background-color: var(--disabled-bg-color);
-    fill: var(--disabled-fill-color);
-    box-shadow: none;
-  }
-
-  .colab-df-spinner {
-    border: 2px solid var(--fill-color);
-    border-color: transparent;
-    border-bottom-color: var(--fill-color);
-    animation:
-      spin 1s steps(1) infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-      border-left-color: var(--fill-color);
-    }
-    20% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    30% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-      border-right-color: var(--fill-color);
-    }
-    40% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    60% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-    }
-    80% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-bottom-color: var(--fill-color);
-    }
-    90% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-    }
-  }
-</style>
-
-  <script>
-    async function quickchart(key) {
-      const quickchartButtonEl =
-        document.querySelector('#' + key + ' button');
-      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-      quickchartButtonEl.classList.add('colab-df-spinner');
-      try {
-        const charts = await google.colab.kernel.invokeFunction(
-            'suggestCharts', [key], {});
-      } catch (error) {
-        console.error('Error during call to suggestCharts:', error);
-      }
-      quickchartButtonEl.classList.remove('colab-df-spinner');
-      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-    }
-    (() => {
-      let quickchartButtonEl =
-        document.querySelector('#df-868dfa88-44c8-420b-a00f-bf14cf019240 button');
-      quickchartButtonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-    })();
-  </script>
-</div>
-
-    </div>
+  <div style="background-color: #f5fdf9; padding: 12px;"> <ul> <li> **AUC-ROC:** Random Forest y XGBoost tienen el mejor rendimiento general en términos de la capacidad de distinguir entre clases positivas y negativas, con un AUC-ROC de 0.91. Gaussian NB tiene el peor AUC-ROC (0.69).<br><br> </li> <li>**Precision (fraude = 1):** Random Forest logra la mayor precisión para la clase minoritaria (fraude = 1) con 0.76. Esto significa que cuando Random Forest predice fraude, es más probable que sea correcto en comparación con los otros modelos. Gaussian NB tiene la menor precisión (0.04).<br><br></li> <li>**Recall (fraude = 1):** Gaussian NB y XGBoost tienen el mayor recall para la clase minoritaria (0.86 y 0.82 respectivamente). Esto indica que son los mejores identificando la mayoría de los casos reales de fraude. Random Forest y Decision Tree tienen el recall más bajo (0.43).<br><br> </li> <li>**F1-score (fraude = 1):** Random Forest tiene el mejor F1-score para la clase minoritaria (0.55), lo que representa el mejor equilibrio entre precisión y recall para detectar fraude. Gaussian NB tiene el F1-score más bajo (0.08).</li> </ul> <br><p><strong> ANÁLISIS DE MODELOS: </strong></p>
   </div>
-</div></div>
-</div>
+  <div style="background-color: #f5fdf9; padding: 12px;"> <ul> <li>
+  **Random Forest** parece ser el modelo más equilibrado en general, ofreciendo el mejor F1-score y la mayor precisión para la detección de fraude. Aunque su recall no es el más alto, su alta precisión hace que sus predicciones de fraude sean más fiables.<br><br> </li> <li>**XGBoost y Gaussian NB** son los mejores para identificar la mayoría de los casos de fraude (alto recall), pero tienen una precisión muy baja, lo que resulta en un alto número de falsos positivos.<br><br> </li> <li>**MLP y K-NN** ofrecen un recall moderado para la clase de fraude, pero su precisión es baja, lo que también lleva a un número significativo de falsos positivos.<br><br> </li> <li>**Decision Tree** y **Logistic Regression** tienen un rendimiento más débil en general, con un AUC-ROC más bajo y métricas para la clase de fraude menos destacadas en comparación con Random Forest.</li> </ul> <br><p><strong> RECOMENDACIONES: </strong></p>
+  </div>
+  <div style="background-color: #f5fdf9; padding: 12px;"> <ul> <li> La elección del mejor modelo dependerá de la prioridad del negocio. Si minimizar los falsos positivos es crucial, **Random Forest** es probablemente la mejor opción. Si maximizar la detección de fraude (incluso con muchos falsos positivos) es la prioridad, **XGBoost o Gaussian NB** podrían considerarse, aunque con precaución debido a su baja precisión.</li> </ul> <br><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pregunta de negocio</p></th>
+<th class="head"><p>Métrica crítica</p></th>
+<th class="head"><p>Modelos más fuertes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>¿Queremos investigar sólo alertas muy confiables?</p></td>
+<td><p>Precision alta (menos falsos positivos)</p></td>
+<td><p>Random Forest (0 .76)</p></td>
+</tr>
+<tr class="row-odd"><td><p>¿Queremos capturar el mayor número de fraudes posible, aceptando más falsos positivos?</p></td>
+<td><p>Recall alto</p></td>
+<td><p>XGBoost (0 .82),  Gaussian NB (0 .86 aunque con muy bajo precision)</p></td>
+</tr>
+<tr class="row-even"><td><p>¿Buscamos balancear ambas cosas y maximizar la ganancia global?</p></td>
+<td><p>AUC-ROC + ajuste de umbral</p></td>
+<td><p>Random Forest / XGBoost</p></td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple">
+<li><p><strong>Random Forest</strong></p>
+<ul class="simple">
+<li><p>Lo más valioso: AUC máximo y precision líder ⇒ pocas alarmas falsas (557 FP).</p></li>
+<li><p>Lo que falta: su recall 0.43 deja escapar el 57 % del fraude.</p></li>
+</ul>
+</li>
+<li><p><strong>XGBoost</strong></p>
+<ul class="simple">
+<li><p>Ventajas: iguala el AUC de RF y llega a 0.82 de recall, segundo mejor precision dentro de los modelos que priorizan cobertura.</p></li>
+<li><p>Desventaja: todavía 17 860 FP; el coste operativo debe compararse con el ahorro de fraude.</p></li>
+</ul>
+</li>
+<li><p><strong>MLP</strong></p>
+<ul class="simple">
+<li><p>Buen compromiso (0.24 / 0.70 precision/recall) y AUC 0.89, pero 4 h 20 min de entrenamiento en CPU.</p></li>
+<li><p>Útil si se dispone de GPU o si se quiere un modelo “soft” para stacking.</p></li>
+</ul>
+</li>
+<li><p><strong>K-NN</strong></p>
+<ul class="simple">
+<li><p>Recall 0.74 parecido a MLP, pero precision 0.22 y coste de predicción muy alto en producción (búsqueda de vecinos).</p></li>
+<li><p>Puede servir como capa adicional en un ensamble votante.</p></li>
+</ul>
+</li>
+<li><p><strong>Decision Tree</strong></p>
+<ul class="simple">
+<li><p>Interpretabilidad clara (profundidad 10), AUC aceptable.</p></li>
+<li><p>Produce reglas que ayudan a explicar los modelos más complejos (extraer paths importantes del bosque).</p></li>
+</ul>
+</li>
+<li><p><strong>Logistic Regression</strong></p>
+<ul class="simple">
+<li><p>Base lineal sencilla y rápida; muy bajo precision.</p></li>
+</ul>
+</li>
+<li><p><strong>Gaussian Naive Bayes</strong></p>
+<ul class="simple">
+<li><p>Casi todo el fraude detectado (0.86 recall) pero precision 0.04: un “detector de humo” para descartar casos limpios NO es viable.</p></li>
+<li><p>Sin embargo, como pre-filtro inverso (marcar definitivamente transacciones válidas con probabilidad &lt; 0.01) puede aliviar el volumen de datos para modelos pesados.</p></li>
+</ul>
+</li>
+</ol>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -3441,6 +3565,27 @@ weighted avg       0.97      0.98      0.97    118108
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#knn">KNN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-reg">Log-Reg</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes">Bayes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree">Decision Tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest">Random Forest</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xgboost">XGBoost</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mlp">MLP</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis">Analisis</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
