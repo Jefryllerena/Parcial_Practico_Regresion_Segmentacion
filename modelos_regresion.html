@@ -361,12 +361,14 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Ejercicio 3. Modelos de Regresión</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#knn"><strong>1. KNN</strong></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entrenamiento"><strong>1.1 Entrenamiento</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metricas"><strong>2.1 Métricas</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-del-modelo-knn"><strong>3.1 Análisis del Modelo KNN</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metricas"><strong>1.2 Métricas</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-del-modelo-knn"><strong>1.3 Análisis del Modelo KNN</strong></a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lineal"><strong>2. Regresion Lineal</strong></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entremaniemto"><strong>2.1 Entremaniemto</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entremaniemto"><strong>2.1 Entremaniemto</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>2.2 Métricas</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-del-modelo-de-regresion-lineal"><strong>2.3 Análisis del Modelo de Regresión Lineal</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-ridge">Codigo de Ridge</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-lasso">Codigo de Lasso</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-arbol-de-decision">Codigo de Arbol de decision</a></li>
@@ -397,7 +399,7 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-lineales"><strong>2. Modelos Lineales</strong></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-de-soporte-vectorial"><strong>3. Modelos de Soporte Vectorial</strong></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#redes-neuronales"><strong>4. Redes Neuronales</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>5. K‑NN</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>5. K‑NN</strong></a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-de-rendimiento-en-metricas"><strong>Comparación de Rendimiento en Métricas</strong></a></li>
@@ -830,7 +832,7 @@ KNN ventana 28 días 11.15s
 </div>
 </section>
 <section id="metricas">
-<h2><strong>2.1 Métricas</strong><a class="headerlink" href="#metricas" title="Permalink to this heading">#</a></h2>
+<h2><strong>1.2 Métricas</strong><a class="headerlink" href="#metricas" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res_knn</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="n">metricas</span><span class="p">(</span><span class="n">y_true_knn</span><span class="p">[</span><span class="n">v</span><span class="p">],</span> <span class="n">y_pred_knn</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ventanas</span><span class="p">}</span>
@@ -1186,10 +1188,10 @@ Mejor ventana KNN 28
 </div>
 </section>
 <section id="analisis-del-modelo-knn">
-<h2><strong>3.1 Análisis del Modelo KNN</strong><a class="headerlink" href="#analisis-del-modelo-knn" title="Permalink to this heading">#</a></h2>
-<div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;"> <div style="background-color: #d4f8e8; padding: 8px 12px;"> <strong>💡 1. Mejora en las Métricas con el Tamaño de la Ventana</strong> </div> <div style="background-color: #f5fdf9; padding: 12px;">
-<ul> <li><strong>MAPE (Mean Absolute Percentage Error):</strong><br> Aunque el MAPE disminuye con ventanas más grandes, los valores siguen siendo muy altos (del orden de 10<sup>8</sup>), lo que indica un gran error porcentual en las predicciones.<br> T=7: <code>2.487e+08</code><br> T=28: <code>2.166e+08</code> (mejora del 12.9%) </li> <li><strong>MAE (Mean Absolute Error):</strong><br> El error absoluto disminuye con ventanas más grandes:<br> T=7: <code>6.745e-01</code><br> T=28: <code>5.926e-01</code> (mejora del 12.0%) </li> <li><strong>RMSE (Root Mean Squared Error):</strong><br> Similar al MAE, el RMSE también mejora con ventanas más grandes:<br> T=7: <code>8.753e-01</code><br> T=28: <code>7.705e-01</code> (mejora del 11.8%) </li> <li><strong>MSE (Mean Squared Error):</strong><br> El error cuadrático medio sigue la misma tendencia que RMSE:<br> T=7: <code>7.661e-01</code><br> T=28: <code>5.937e-01</code> (mejora del 22.4%) </li> <li><strong>R2 (R-squared):</strong><br> El coeficiente de determinación mejora con ventanas más grandes, aunque sigue siendo relativamente bajo:<br> T=7: <code>5.564e-01</code> (R2=0.556)<br> T=28: <code>6.565e-01</code> (R2=0.656) </li> </ul> </div> </div><div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;"> <div style="background-color: #d4f8e8; padding: 8px 12px;"> <strong>💡 2. Problemas Identificados</strong> </div> <div style="background-color: #f5fdf9; padding: 12px;">
-<ul> <li><strong>Altos Valores de MAPE:</strong><br> Los valores de MAPE son extremadamente altos en todas las ventanas, lo que podría indicar: <ul> <li>Problemas de escala</li> <li>Ruido en los datos</li> </ul> </li> <li><strong>Autocorrelación en Residuos:</strong><br> El valor <code>LB_p = 0.e+00</code> en todas las ventanas, lo que indica autocorrelación significativa en los residuos. Esto viola los supuestos de regresión y sugiere que el modelo no captura la dinámica temporal de los datos. </li> </ul> </div> </div><div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;"> <div style="background-color: #d4f8e8; padding: 8px 12px;"> <strong>💡 3. Mejores Resultados</strong> </div> <div style="background-color: #f5fdf9; padding: 12px;">
+<h2><strong>1.3 Análisis del Modelo KNN</strong><a class="headerlink" href="#analisis-del-modelo-knn" title="Permalink to this heading">#</a></h2>
+<div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;"> <div style="background-color: #d4f8e8; padding: 8px 12px;"> <strong>💡 1.3.1 Mejora en las Métricas con el Tamaño de la Ventana</strong> </div> <div style="background-color: #f5fdf9; padding: 12px;">
+<ul> <li><strong>MAPE (Mean Absolute Percentage Error):</strong><br> Aunque el MAPE disminuye con ventanas más grandes, los valores siguen siendo muy altos (del orden de 10<sup>8</sup>), lo que indica un gran error porcentual en las predicciones.<br> T=7: <code>2.487e+08</code><br> T=28: <code>2.166e+08</code> (mejora del 12.9%) </li> <li><strong>MAE (Mean Absolute Error):</strong><br> El error absoluto disminuye con ventanas más grandes:<br> T=7: <code>6.745e-01</code><br> T=28: <code>5.926e-01</code> (mejora del 12.0%) </li> <li><strong>RMSE (Root Mean Squared Error):</strong><br> Similar al MAE, el RMSE también mejora con ventanas más grandes:<br> T=7: <code>8.753e-01</code><br> T=28: <code>7.705e-01</code> (mejora del 11.8%) </li> <li><strong>MSE (Mean Squared Error):</strong><br> El error cuadrático medio sigue la misma tendencia que RMSE:<br> T=7: <code>7.661e-01</code><br> T=28: <code>5.937e-01</code> (mejora del 22.4%) </li> <li><strong>R2 (R-squared):</strong><br> El coeficiente de determinación mejora con ventanas más grandes, aunque sigue siendo relativamente bajo:<br> T=7: <code>5.564e-01</code> (R2=0.556)<br> T=28: <code>6.565e-01</code> (R2=0.656) </li> </ul> </div> </div><div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;"> <div style="background-color: #d4f8e8; padding: 8px 12px;"> <strong>💡 1.3.2. Problemas Identificados</strong> </div> <div style="background-color: #f5fdf9; padding: 12px;">
+<ul> <li><strong>Altos Valores de MAPE:</strong><br> Los valores de MAPE son extremadamente altos en todas las ventanas, lo que podría indicar: <ul> <li>Problemas de escala</li> <li>Ruido en los datos</li> </ul> </li> <li><strong>Autocorrelación en Residuos:</strong><br> El valor <code>LB_p = 0.e+00</code> en todas las ventanas, lo que indica autocorrelación significativa en los residuos. Esto viola los supuestos de regresión y sugiere que el modelo no captura la dinámica temporal de los datos. </li> </ul> </div> </div><div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;"> <div style="background-color: #d4f8e8; padding: 8px 12px;"> <strong>💡 1.3.3. Mejores Resultados</strong> </div> <div style="background-color: #f5fdf9; padding: 12px;">
 <p>La ventana de tamaño <strong>T=28</strong> muestra los mejores resultados:</p> <ul> <li>Menor MAPE: <code>2.166e+08</code></li> <li>Menor RMSE: <code>7.705e-01</code></li> <li>Mayor R2: <code>6.565e-01</code></li> </ul> </div> </div><div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;">
   <div style="background-color: #d4f8e8; padding: 8px 12px;">
     <strong>💡 Conclusión</strong>
@@ -1206,8 +1208,7 @@ Mejor ventana KNN 28
 <h2><strong>2.1 Entremaniemto</strong><a class="headerlink" href="#entremaniemto" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SECCIÓN 3 ─ REGRESIÓN LINEAL ENTRENAMIENTO</span>
-<span class="n">modelo_lr</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modelo_lr</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
 <span class="n">y_true_lr</span><span class="p">,</span> <span class="n">y_pred_lr</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ventanas</span><span class="p">:</span>
     <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
@@ -1226,14 +1227,12 @@ LR ventana 28 días 4.11s
 </div>
 </div>
 </div>
-<p>LR ventana 7 días 3.69s</p>
-<p>LR ventana 14 días 3.75s</p>
-<p>LR ventana 21 días 3.94s</p>
-<p>LR ventana 28 días 4.11s</p>
+</section>
+<section id="id1">
+<h2><strong>2.2 Métricas</strong><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SECCIÓN 4 ─ REGRESIÓN LINEAL MÉTRICAS</span>
-<span class="n">res_lr</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="n">metricas</span><span class="p">(</span><span class="n">y_true_lr</span><span class="p">[</span><span class="n">v</span><span class="p">],</span> <span class="n">y_pred_lr</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ventanas</span><span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res_lr</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="n">metricas</span><span class="p">(</span><span class="n">y_true_lr</span><span class="p">[</span><span class="n">v</span><span class="p">],</span> <span class="n">y_pred_lr</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ventanas</span><span class="p">}</span>
 <span class="n">df_lr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">res_lr</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;MAPE&quot;</span><span class="p">,</span><span class="s2">&quot;MAE&quot;</span><span class="p">,</span><span class="s2">&quot;RMSE&quot;</span><span class="p">,</span><span class="s2">&quot;MSE&quot;</span><span class="p">,</span><span class="s2">&quot;R2&quot;</span><span class="p">,</span><span class="s2">&quot;LB_p&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_lr</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mejor ventana LR&quot;</span><span class="p">,</span> <span class="n">df_lr</span><span class="o">.</span><span class="n">RMSE</span><span class="o">.</span><span class="n">idxmin</span><span class="p">())</span>
@@ -1585,66 +1584,59 @@ Mejor ventana LR 28
   </div>
 </div></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        <span class="n">MAPE</span>       <span class="n">MAE</span>      <span class="n">RMSE</span>       <span class="n">MSE</span>        <span class="n">R2</span>      <span class="n">LB_p</span>
-<span class="mi">7</span>  <span class="mf">1.646e+08</span> <span class="mf">4.975e-01</span> <span class="mf">1.282e+00</span> <span class="mf">1.643e+00</span> <span class="mf">4.891e-02</span> <span class="mf">0.000e+00</span>
-<span class="mi">14</span> <span class="mf">1.545e+08</span> <span class="mf">4.733e-01</span> <span class="mf">1.013e+00</span> <span class="mf">1.027e+00</span> <span class="mf">4.057e-01</span> <span class="mf">0.000e+00</span>
-<span class="mi">21</span> <span class="mf">1.519e+08</span> <span class="mf">4.612e-01</span> <span class="mf">8.246e-01</span> <span class="mf">6.800e-01</span> <span class="mf">6.065e-01</span> <span class="mf">0.000e+00</span>
-<span class="mi">28</span> <span class="mf">1.518e+08</span> <span class="mf">4.584e-01</span> <span class="mf">7.998e-01</span> <span class="mf">6.397e-01</span> <span class="mf">6.299e-01</span> <span class="mf">0.000e+00</span>
-
-<span class="n">Mejor</span> <span class="n">ventana</span> <span class="n">LR</span> <span class="mi">28</span>
-
-<span class="n">MAPE</span>	<span class="n">MAE</span>	<span class="n">RMSE</span>	<span class="n">MSE</span>	<span class="n">R2</span>	<span class="n">LB_p</span>
-<span class="mi">7</span>	<span class="mf">1.646e+08</span>	<span class="mf">4.975e-01</span>	<span class="mf">1.282e+00</span>	<span class="mf">1.643e+00</span>	<span class="mf">4.891e-02</span>	<span class="mf">0.000e+00</span>
-<span class="mi">14</span>	<span class="mf">1.545e+08</span>	<span class="mf">4.733e-01</span>	<span class="mf">1.013e+00</span>	<span class="mf">1.027e+00</span>	<span class="mf">4.057e-01</span>	<span class="mf">0.000e+00</span>
-<span class="mi">21</span>	<span class="mf">1.519e+08</span>	<span class="mf">4.612e-01</span>	<span class="mf">8.246e-01</span>	<span class="mf">6.800e-01</span>	<span class="mf">6.065e-01</span>	<span class="mf">0.000e+00</span>
-<span class="mi">28</span>	<span class="mf">1.518e+08</span>	<span class="mf">4.584e-01</span>	<span class="mf">7.998e-01</span>	<span class="mf">6.397e-01</span>	<span class="mf">6.299e-01</span>	<span class="mf">0.000e+00</span>
-
-</pre></div>
-</div>
+</section>
+<section id="analisis-del-modelo-de-regresion-lineal">
+<h2><strong>2.3 Análisis del Modelo de Regresión Lineal</strong><a class="headerlink" href="#analisis-del-modelo-de-regresion-lineal" title="Permalink to this heading">#</a></h2>
+<div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;">
+  <div style="background-color: #d4f8e8; padding: 8px 12px;">
+    <strong>💡 Análisis</strong>
+  </div>
   <div style="background-color: #f5fdf9; padding: 12px;">
-    <h3><strong>💡Análisis del Modelo de Regresión Lineal</strong></h3>
-    <p>A continuación, se presenta el análisis de los resultados obtenidos con el modelo de Regresión Lineal para diferentes tamaños de ventana (T = 7, 14, 21, 28).</p>
-    <hr>
-    <h3><strong>1. Mejora en las Métricas con el Tamaño de la Ventana</strong></h3>
-    <h4><strong>1.1. Reducción del Error</strong></h4>
-    <ul>
-      <li><strong>MAPE (Mean Absolute Percentage Error):</strong> El MAPE disminuye ligeramente con el aumento del tamaño de la ventana:
-        <ul>
-          <li>T=7: <code>1.646e+08</code></li>
-          <li>T=28: <code>1.518e+08</code> (reducción del 7.8%)</li>
-        </ul>
-      </li>
-      <li><strong>MAE (Mean Absolute Error):</strong> El error absoluto también disminuye:
-        <ul>
-          <li>T=7: <code>4.975e-01</code></li>
-          <li>T=28: <code>4.584e-01</code> (reducción del 7.9%)</li>
-        </ul>
-      </li>
-      <li><strong>RMSE (Root Mean Squared Error):</strong> El error cuadrático medio muestra una mejora significativa:
-        <ul>
-          <li>T=7: <code>1.282e+00</code></li>
-          <li>T=28: <code>7.998e-01</code> (reducción del 37.7%)</li>
-        </ul>
-      </li>
-      <li><strong>MSE (Mean Squared Error):</strong> El error cuadrático medio sigue la misma tendencia:
-        <ul>
-          <li>T=7: <code>1.643e+00</code></li>
-          <li>T=28: <code>6.397e-01</code> (reducción del 61.0%)</li>
-        </ul>
-      </li>
-    </ul>
-    <h4><strong>1.2. Mejora en el Coeficiente de Determinación (R2)</strong></h4>
-    <ul>
-      <li><strong>R2:</strong> El coeficiente de determinación aumenta con el tamaño de la ventana:
-        <ul>
-          <li>T=7: <code>4.891e-02</code> (R2=0.049)</li>
-          <li>T=28: <code>6.299e-01</code> (R2=0.629)</li>
-        </ul>
-      </li>
-    </ul>
-    <hr>
-    <h3><strong>2. Comparación con el Modelo KNN</strong></h3>
-    <ul>
+<p><strong>2.3.1 Mejora en las Métricas con el Tamaño de la Ventana</strong><br><br></p>
+<p><strong>2.3.1.1 Reducción del Error</strong>
+<ul>
+<li><strong>MAPE (Mean Absolute Percentage Error)</strong>: El MAPE disminuye ligeramente con el aumento del tamaño de la ventana:
+<ul>
+<li>T=7: <code>1.646e+08</code></li>
+<li>T=28: <code>1.518e+08</code> (reducción del 7.8%)</li>
+</ul>
+</li>
+<li><strong>MAE (Mean Absolute Error)</strong>: El error absoluto también disminuye:
+<ul>
+<li>T=7: <code>4.975e-01</code></li>
+<li>T=28: <code>4.584e-01</code> (reducción del 7.9%)</li>
+</ul>
+</li>
+<li><strong>RMSE (Root Mean Squared Error)</strong>: El error cuadrático medio muestra una mejora significativa:
+<ul>
+<li>T=7: <code>1.282e+00</code></li>
+<li>T=28: <code>7.998e-01</code> (reducción del 37.7%)</li>
+</ul>
+</li>
+<li><strong>MSE (Mean Squared Error)</strong>: El error cuadrático medio sigue la misma tendencia:
+<ul>
+<li>T=7: <code>1.643e+00</code></li>
+<li>T=28: <code>6.397e-01</code> (reducción del 61.0%)</li>
+</ul>
+</li>
+</ul></p>
+<p><strong>2.3.1.2 Mejora en el Coeficiente de Determinación (R2)</strong>
+<ul>
+<li><strong>R2</strong>: El coeficiente de determinación aumenta con el tamaño de la ventana:
+<ul>
+<li>T=7: <code>4.891e-02</code> (R2=0.049)</li>
+<li>T=28: <code>6.299e-01</code> (R2=0.629)</li>
+</ul>
+</li>
+</ul></p>
+  </div>
+</div><div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;">
+  <div style="background-color: #d4f8e8; padding: 8px 12px;">
+    <strong>💡 Análisis</strong>
+  </div>
+  <div style="background-color: #f5fdf9; padding: 12px;">
+<p><strong>2.3.2 Comparación con el Modelo KNN</strong><br><br></p>
+   <ul>
       <li><strong>MAPE:</strong> El modelo de Regresión Lineal muestra un MAPE significativamente menor:
         <ul>
           <li>T=28: <code>1.518e+08</code> (Regresión Lineal) vs. <code>2.166e+08</code> (KNN)</li>
@@ -1656,18 +1648,28 @@ Mejor ventana LR 28
         </ul>
       </li>
     </ul>
-    <hr>
-    <h3><strong>3. Ventana Óptima</strong></h3>
-    <p>La ventana de tamaño <strong>T=28</strong> muestra los mejores resultados:</p>
-    <ul>
-      <li><strong>MAPE más bajo:</strong> <code>1.518e+08</code></li>
-      <li><strong>RMSE más bajo:</strong> <code>7.998e-01</code></li>
-      <li><strong>MSE más bajo:</strong> <code>6.397e-01</code></li>
-      <li><strong>R2 más alto:</strong> <code>6.299e-01</code></li>
-    </ul>
-    <hr>
-    <h3><strong>Conclusión</strong></h3>
-    <p>El modelo de Regresión Lineal mejora sus métricas con ventanas mayores y supera al modelo KNN en MAPE y RMSE, pero su capacidad de capturar la dinámica temporal sigue siendo limitada.</p>
+  </div>
+</div><div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;">
+  <div style="background-color: #d4f8e8; padding: 8px 12px;">
+    <strong>💡 Análisis</strong>
+  </div>
+  <div style="background-color: #f5fdf9; padding: 12px;">
+<p><strong>2.3.3. Ventana Óptima</strong><br><br></p>
+<p>La ventana de tamaño <strong>T=28</strong> muestra los mejores resultados:
+<ul>
+<li><strong>MAPE más bajo:</strong> <code>1.518e+08</code></li>
+<li><strong>RMSE más bajo:</strong> <code>7.998e-01</code></li>
+<li><strong>MSE más bajo:</strong> <code>6.397e-01</code></li>
+<li><strong>R2 más alto:</strong> <code>6.299e-01</code></li>
+</ul></p>
+  </div>
+</div>
+<div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;">
+  <div style="background-color: #d4f8e8; padding: 8px 12px;">
+    <strong>💡 Conclusión</strong>
+  </div>
+  <div style="background-color: #f5fdf9; padding: 12px;">
+<p>El modelo de Regresión Lineal mejora sus métricas con ventanas mayores y supera al modelo KNN en MAPE y RMSE, pero su capacidad de capturar la dinámica temporal sigue siendo limitada.</p>
   </div>
 </div>
 <section id="codigo-de-ridge">
@@ -5993,8 +5995,8 @@ $<span class="math notranslate nohighlight">\(Q = n(n+2)\sum_{k=1}^{h}\frac{\hat
 <li><p><strong>MLP</strong>: Muestra un rendimiento intermedio, mejorando con ventanas más largas, pero sin igualar a los modelos tradicionales.</p></li>
 </ul>
 </section>
-<section id="id1">
-<h4><strong>5. K‑NN</strong><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
+<section id="id2">
+<h4><strong>5. K‑NN</strong><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p><strong>K‑NN</strong>: Tiene un rendimiento medio, siendo más efectivo con ventanas largas, aunque su sensibilidad a la escala puede ser una desventaja.</p></li>
 </ul>
@@ -6129,7 +6131,7 @@ $<span class="math notranslate nohighlight">\(Q = n(n+2)\sum_{k=1}^{h}\frac{\hat
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Ejercicio 4. Modelos de Segmentación</p>
+        <p class="prev-next-title"><strong>Ejercicio 4. Modelos de Segmentación</strong></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -6154,12 +6156,14 @@ $<span class="math notranslate nohighlight">\(Q = n(n+2)\sum_{k=1}^{h}\frac{\hat
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Ejercicio 3. Modelos de Regresión</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#knn"><strong>1. KNN</strong></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entrenamiento"><strong>1.1 Entrenamiento</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metricas"><strong>2.1 Métricas</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-del-modelo-knn"><strong>3.1 Análisis del Modelo KNN</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metricas"><strong>1.2 Métricas</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-del-modelo-knn"><strong>1.3 Análisis del Modelo KNN</strong></a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lineal"><strong>2. Regresion Lineal</strong></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entremaniemto"><strong>2.1 Entremaniemto</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entremaniemto"><strong>2.1 Entremaniemto</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>2.2 Métricas</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-del-modelo-de-regresion-lineal"><strong>2.3 Análisis del Modelo de Regresión Lineal</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-ridge">Codigo de Ridge</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-lasso">Codigo de Lasso</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-de-arbol-de-decision">Codigo de Arbol de decision</a></li>
@@ -6190,7 +6194,7 @@ $<span class="math notranslate nohighlight">\(Q = n(n+2)\sum_{k=1}^{h}\frac{\hat
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-lineales"><strong>2. Modelos Lineales</strong></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-de-soporte-vectorial"><strong>3. Modelos de Soporte Vectorial</strong></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#redes-neuronales"><strong>4. Redes Neuronales</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>5. K‑NN</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>5. K‑NN</strong></a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-de-rendimiento-en-metricas"><strong>Comparación de Rendimiento en Métricas</strong></a></li>
