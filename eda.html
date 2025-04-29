@@ -159,6 +159,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Ejercicio 1. Análisis Exploratorio de Datos</a></li>
 
+
 <li class="toctree-l1"><a class="reference internal" href="modelos_clasificacion.html">Ejercicio 2. Modelos de Clasificación</a></li>
 
 
@@ -375,22 +376,19 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Ejercicio 1. Análisis Exploratorio de Datos</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-exploratorio-de-datos"><strong>1. Análisis Exploratorio de Datos</strong></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-velocidad-del-viento"><strong>1.1. Dataset Velocidad del Viento</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reduccion-de-nombres-extensos-en-columnas"><strong>1.1.1 Reducción de nombres extensos en columnas</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#descripcion-de-media-desv-min-max-cuartiles"><strong>1.1.2 Descripcion de media, desv, min, max, cuartiles</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datos-faltantes"><strong>1.1.3. Datos faltantes</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-de-variables-independientes"><strong>1.1.4. Seleccion de variables independientes</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-velocidad-del-viento"><strong>1. Dataset Velocidad del Viento</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduccion-de-nombres-extensos-en-columnas"><strong>1.1 Reducción de nombres extensos en columnas</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descripcion-de-media-desv-min-max-cuartiles"><strong>1.2 Descripcion de media, desv, min, max, cuartiles</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datos-faltantes"><strong>1.3 Datos faltantes</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-de-variables-independientes"><strong>1.4 Seleccion de variables independientes</strong></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-deteccion-de-fraude"><strong>1.2. Dataset Deteccion de Fraude</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>1.1.4. Seleccion de variables independientes</strong></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limpieza-y-preparacion"><strong>1.3. Limpieza y Preparación</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tratamiento-de-nulos"><strong>1.3.1. Tratamiento de Nulos</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reduccion-de-dimencionalidad-con-chi2"><strong>1.3.2. Reduccion de Dimencionalidad con Chi2</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reduccion-de-dimensionalidad-con-vif"><strong>1.3.3. Reduccion de dimensionalidad con VIF</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-deteccion-de-fraude"><strong>2. Dataset Detección de Fraude</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>2.1 Selección de variables independientes</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limpieza-y-preparacion"><strong>2.2 Limpieza y Preparación</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tratamiento-de-nulos"><strong>2.2.1. Tratamiento de Nulos</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reduccion-de-dimencionalidad-con-chi2"><strong>2.2.2. Reducción de Dimencionalidad con Chi2</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reduccion-de-dimensionalidad-con-vif"><strong>2.2.3. Reducción de dimensionalidad con VIF</strong></a></li>
 </ul>
 </li>
 </ul>
@@ -410,8 +408,8 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="ejercicio-1-analisis-exploratorio-de-datos">
 <h1>Ejercicio 1. Análisis Exploratorio de Datos<a class="headerlink" href="#ejercicio-1-analisis-exploratorio-de-datos" title="Permalink to this heading">#</a></h1>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="analisis-exploratorio-de-datos">
-<h1><strong>1. Análisis Exploratorio de Datos</strong><a class="headerlink" href="#analisis-exploratorio-de-datos" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="dataset-velocidad-del-viento">
+<h1><strong>1. Dataset Velocidad del Viento</strong><a class="headerlink" href="#dataset-velocidad-del-viento" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
@@ -475,8 +473,6 @@ Successfully installed pyaml-25.1.0 scikit-optimize-0.10.2
 </div>
 </div>
 </div>
-<section id="dataset-velocidad-del-viento">
-<h2><strong>1.1. Dataset Velocidad del Viento</strong><a class="headerlink" href="#dataset-velocidad-del-viento" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_viento</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/lihkir/Data/refs/heads/main/wind_speed/data_treino_dv_df_2000_2010.csv&quot;</span><span class="p">)</span>
@@ -992,7 +988,7 @@ Successfully installed pyaml-25.1.0 scikit-optimize-0.10.2
 </div>
 </div>
 <section id="reduccion-de-nombres-extensos-en-columnas">
-<h3><strong>1.1.1 Reducción de nombres extensos en columnas</strong><a class="headerlink" href="#reduccion-de-nombres-extensos-en-columnas" title="Permalink to this heading">#</a></h3>
+<h2><strong>1.1 Reducción de nombres extensos en columnas</strong><a class="headerlink" href="#reduccion-de-nombres-extensos-en-columnas" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_viento</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span>
@@ -1525,7 +1521,7 @@ memory usage: 8.7+ MB
 <p>No hay valores nulos en ninguna de las columnas, lo cual es excelente para el análisis predictivo.</p>
 </section>
 <section id="descripcion-de-media-desv-min-max-cuartiles">
-<h3><strong>1.1.2 Descripcion de media, desv, min, max, cuartiles</strong><a class="headerlink" href="#descripcion-de-media-desv-min-max-cuartiles" title="Permalink to this heading">#</a></h3>
+<h2><strong>1.2 Descripcion de media, desv, min, max, cuartiles</strong><a class="headerlink" href="#descripcion-de-media-desv-min-max-cuartiles" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_viento</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -1904,7 +1900,7 @@ memory usage: 8.7+ MB
 </div>
 <div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;"> <div style="background-color: #d4f8e8; padding: 8px 12px;"> <strong>💡 Análisis</strong> </div> <div style="background-color: #f5fdf9; padding: 12px;"> A partir del resumen estadístico general de las variables numéricas del dataset <code>df_viento</code>, se pueden destacar los siguientes puntos clave: <ul> <li><strong>Viento dirección horaria:</strong> Sus valores oscilan entre -1 y 1, confirmando que se trata probablemente de una transformación trigonométrica (como coseno o seno de la dirección del viento).</li> <li><strong>Viento velocidad horaria:</strong> La media es 2.46 m/s, con un máximo de 10 m/s. Predominan velocidades bajas, como se anticipaba en los histogramas anteriores.</li> <li><strong>Humedad relativa:</strong> La humedad promedio es alta (66.1%), con valores mínimos desde 10% y máximos hasta 99%, lo cual refleja una amplia variabilidad atmosférica.</li> <li><strong>Temperatura mínima y máxima por hora:</strong> Las temperaturas mínimas varían de 9.2°C a 35.3°C y las máximas de 8.4°C a 34.4°C, mostrando rangos compatibles con climas variados.</li> <li><strong>Presión atmosférica:</strong> Valores normales para estaciones meteorológicas de baja altitud (media de 887.25 mB), pero con algunos extremos que podrían ser revisados en limpieza.</li> <li><strong>Precipitación total horaria:</strong> Presenta una media muy baja (0.16 mm), lo que indica que en la mayoría de las horas no llueve, aunque existen máximos puntuales de hasta 70.8 mm.</li> <li><strong>Viento bajada máxima:</strong> Alcanzó valores extremos hasta 24.3 m/s en algunas mediciones, sugiriendo posibles eventos de ráfagas de viento importantes.</li> </ul> El análisis confirma patrones de asimetría, posibles outliers y heterogeneidad en algunas variables que deberán ser considerados en futuras etapas de modelado. </div> </div></section>
 <section id="datos-faltantes">
-<h3><strong>1.1.3. Datos faltantes</strong><a class="headerlink" href="#datos-faltantes" title="Permalink to this heading">#</a></h3>
+<h2><strong>1.3 Datos faltantes</strong><a class="headerlink" href="#datos-faltantes" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cantidad de nulos:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -1938,7 +1934,7 @@ No hay valores nulos en ninguna columna.
 </div>
 </section>
 <section id="seleccion-de-variables-independientes">
-<h3><strong>1.1.4. Seleccion de variables independientes</strong><a class="headerlink" href="#seleccion-de-variables-independientes" title="Permalink to this heading">#</a></h3>
+<h2><strong>1.4 Seleccion de variables independientes</strong><a class="headerlink" href="#seleccion-de-variables-independientes" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">viento_variables_independientes</span> <span class="o">=</span> <span class="p">[</span>
@@ -2084,12 +2080,10 @@ No hay valores nulos en ninguna columna.
 <img alt="_images/550cbc9571e62d91b6ca1809f49ca96728233cbabf0159419709ff1b3da02637.png" src="_images/550cbc9571e62d91b6ca1809f49ca96728233cbabf0159419709ff1b3da02637.png" />
 </div>
 </div>
-<p>ChatGPT dijo:
-Excelente, ahora incluyo el análisis de los gráficos de regresión lineal (regplot) en el mismo formato estructurado:</p>
 <div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;"> <div style="background-color: #d4f8e8; padding: 8px 12px;"> <strong>💡Pareja de variables:</strong> <code>temp_min_hora</code> vs <code>humedad_min_hora</code><br>  </div> <div style="background-color: #f5fdf9; padding: 12px;"> El gráfico de regresión confirma la fuerte relación negativa observada en el scatterplot. La pendiente descendente indica que a menor temperatura mínima corresponde una mayor humedad mínima. Este patrón podría deberse al efecto de la condensación del agua en temperaturas bajas, común en ambientes húmedos durante la noche o madrugada. </div> </div> <br> <div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;"> <div style="background-color: #d4f8e8; padding: 8px 12px;"> <strong>💡Pareja de variables:</strong> <code>precip_atmos_min</code> vs <code>humedad_min_hora</code><br>  </div> <div style="background-color: #f5fdf9; padding: 12px;"> A pesar de la dispersión de los datos, la línea de regresión presenta una pendiente levemente negativa, lo que sugiere una posible y muy débil relación inversa. Sin embargo, la baja pendiente y la gran variabilidad de los datos indican que la presión atmosférica mínima no es un buen predictor de la humedad mínima en este conjunto. </div> </div> <br> <div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;"> <div style="background-color: #d4f8e8; padding: 8px 12px;"> <strong>💡 Pareja de variables:</strong> <code>temp_max_hora</code> vs <code>humedad_max_hora</code><br>  </div> <div style="background-color: #f5fdf9; padding: 12px;"> La regresión lineal refuerza la observación de una correlación negativa. La línea descendente es bastante pronunciada, lo que indica que a mayores temperaturas máximas, se asocian niveles más bajos de humedad máxima. Esto puede ser explicado por la mayor capacidad del aire caliente de retener vapor de agua sin condensarse. </div> </div> <br> <div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;"> <div style="background-color: #d4f8e8; padding: 8px 12px;"> <strong>💡 Pareja de variables:</strong> <code>humedad_relativa</code> vs <code>viento_velocidad_horaria</code><br>  </div> <div style="background-color: #f5fdf9; padding: 12px;"> La línea de regresión es prácticamente plana, lo que confirma la falta de correlación entre estas dos variables. En este caso, la velocidad del viento no parece verse afectada por los niveles de humedad relativa, lo cual puede indicar que están reguladas por diferentes mecanismos atmosféricos o geográficos. </div> </div></section>
 </section>
-<section id="dataset-deteccion-de-fraude">
-<h2><strong>1.2. Dataset Deteccion de Fraude</strong><a class="headerlink" href="#dataset-deteccion-de-fraude" title="Permalink to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="dataset-deteccion-de-fraude">
+<h1><strong>2. Dataset Detección de Fraude</strong><a class="headerlink" href="#dataset-deteccion-de-fraude" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_test_identity</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/content/drive/MyDrive/Trabajo Online/Andres Pedraza/Trabajo 3/fraude/test_identity.csv&quot;</span><span class="p">)</span>
@@ -6161,7 +6155,7 @@ Cantidad de columnas sin nulos
 </div></div>
 </div>
 <div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;"> <div style="background-color: #d4f8e8; padding: 8px 12px;"> <strong>💡 Análisis</strong> </div> <div style="background-color: #f5fdf9; padding: 12px;"> El resumen estadístico de <code>df_train_full</code> muestra las principales características numéricas del conjunto de datos después del merge: <ul> <li><strong>TransactionID:</strong> Los valores varían desde 2,987,000 hasta 3,577,539, confirmando que el ID cubre un rango amplio y secuencial.</li> <li><strong>isFraud:</strong> El valor medio es de 0.03499, indicando que aproximadamente el 3.5% de las transacciones fueron catalogadas como fraudulentas. Esto revela un fuerte desbalance de clases (clase minoritaria: fraude).</li> <li><strong>TransactionAmt:</strong> El monto de las transacciones tiene una gran dispersión, con un valor máximo de aproximadamente 31,937 y una media de 135.02, sugiriendo la presencia de algunas transacciones extremadamente altas.</li> <li><strong>Variables como card1, card2, card3, card5, addr1:</strong> Muestran gran cantidad de registros, aunque se observa que algunas variables no tienen el 100% de cobertura (por ejemplo, <code>card2</code> y <code>addr2</code>).</li> <li><strong>Variables de identidad (id_01 a id_38):</strong> También presentan alta dispersión y variabilidad en sus valores, algunas de ellas mostrando promedios muy alejados de sus medianas, indicando posible asimetría.</li> </ul> Este análisis es fundamental para identificar variables que podrían necesitar: <ul> <li>Tratamiento de outliers.</li> <li>Normalización o estandarización previa al modelado.</li> <li>Revisión de valores faltantes y su posterior imputación o eliminación.</li> </ul> </div> </div><section id="id1">
-<h3><strong>1.1.4. Seleccion de variables independientes</strong><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h2><strong>2.1 Selección de variables independientes</strong><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fraude_variables_independientes</span> <span class="o">=</span> <span class="p">[</span>
@@ -6192,11 +6186,10 @@ Cantidad de columnas sin nulos
 </div>
 </div>
 <div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;"> <div style="background-color: #d4f8e8; padding: 8px 12px;"> <strong>💡 Análisis</strong> </div> <div style="background-color: #f5fdf9; padding: 12px;"> Se analizaron las distribuciones de las siguientes variables independientes consideradas relevantes para la detección de fraude: <ul> <li><strong>card4:</strong> Predominan dos emisores principales de tarjetas: <em>visa</em> (384,767 registros) y <em>mastercard</em> (189,217 registros), representando conjuntamente la gran mayoría de transacciones. Las categorías <em>discover</em> (6,651) y <em>american express</em> (8,328) tienen una participación mucho menor.</li> <li><strong>DeviceType:</strong> Se observa que el 60% de las transacciones provienen de dispositivos <em>desktop</em> (85,165 registros) y el 40% restante de dispositivos <em>mobile</em> (55,645 registros). Esto podría ser útil para detectar comportamientos sospechosos al comparar el tipo de dispositivo y el monto de la transacción.</li> <li><strong>D9:</strong> Esta variable muestra una distribución bastante uniforme y continua entre 0 y 1, aunque se destacan discretamente varios valores que se repiten, sugiriendo que podría tratarse de una característica normalizada o relacionada con tiempos de sesión o historial.</li> <li><strong>M1:</strong> Presenta un fuerte desbalance: la categoría <em>T</em> ("True") domina con 319,415 registros, mientras que la categoría <em>F</em> ("False") es casi inexistente (25 registros). Esto puede indicar que casi todas las transacciones cumplen con una condición determinada y que las excepciones podrían ser útiles como indicadores de fraude.</li> </ul> Estos patrones son esenciales para la etapa de ingeniería de características, permitiendo priorizar la selección y transformación de variables según su distribución y balance. </div> </div></section>
-</section>
 <section id="limpieza-y-preparacion">
-<h2><strong>1.3. Limpieza y Preparación</strong><a class="headerlink" href="#limpieza-y-preparacion" title="Permalink to this heading">#</a></h2>
+<h2><strong>2.2 Limpieza y Preparación</strong><a class="headerlink" href="#limpieza-y-preparacion" title="Permalink to this heading">#</a></h2>
 <section id="tratamiento-de-nulos">
-<h3><strong>1.3.1. Tratamiento de Nulos</strong><a class="headerlink" href="#tratamiento-de-nulos" title="Permalink to this heading">#</a></h3>
+<h3><strong>2.2.1. Tratamiento de Nulos</strong><a class="headerlink" href="#tratamiento-de-nulos" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hay varias columnas que tienen demasiadas categorias como para ser consideradas</span>
@@ -6512,7 +6505,7 @@ Moda para columna  V321 : 0.0
 </div>
 <div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;"> <div style="background-color: #d4f8e8; padding: 8px 12px;"> <strong>💡 Análisis</strong> </div> <div style="background-color: #f5fdf9; padding: 12px;"> Se realizaron acciones importantes para la limpieza del conjunto de datos: <ul> <li><strong>Eliminación de variables:</strong> Se eliminaron 7 columnas (<code>TransactionID</code>, <code>id_30</code>, <code>id_31</code>, <code>id_33</code>, <code>DeviceInfo</code>, <code>P_emaildomain</code> y <code>R_emaildomain</code>) debido a que presentan demasiadas categorías distintas o niveles únicos, lo cual dificulta su codificación y uso efectivo en modelos predictivos.</li> <li><strong>Cálculo de porcentaje de valores nulos:</strong> Se determinó el porcentaje de valores nulos para cada columna. Se identificó que un total de <strong>227 variables</strong> presentan más del <strong>30% de valores faltantes</strong>.</li> <li><strong>Variables con nulos extremos:</strong> Por ejemplo, columnas como <code>id_24</code>, <code>id_25</code>, <code>id_07</code> y <code>id_08</code> tienen aproximadamente un <strong>99% de datos faltantes</strong>, lo cual sugiere que no serían útiles para el modelado y podrían ser candidatas para eliminación o imputación especial.</li> <li><strong>Variables parcialmente afectadas:</strong> Variables como <code>V11</code>, <code>M2</code>, <code>M3</code>, <code>M1</code> y <code>D3</code> tienen entre <strong>44% y 47%</strong> de datos faltantes, por lo cual es necesario evaluar si su información es relevante antes de decidir su eliminación.</li> </ul> Este paso es fundamental para optimizar el rendimiento del modelo, reducir dimensionalidad, y evitar sesgos debido a imputaciones inapropiadas en columnas con demasiados valores nulos. </div> </div></section>
 <section id="reduccion-de-dimencionalidad-con-chi2">
-<h3><strong>1.3.2. Reduccion de Dimencionalidad con Chi2</strong><a class="headerlink" href="#reduccion-de-dimencionalidad-con-chi2" title="Permalink to this heading">#</a></h3>
+<h3><strong>2.2.2. Reducción de Dimencionalidad con Chi2</strong><a class="headerlink" href="#reduccion-de-dimencionalidad-con-chi2" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_categoricas</span> <span class="o">=</span> <span class="n">df_train_full</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;object&quot;</span><span class="p">])</span>
@@ -7639,7 +7632,7 @@ Columnas categoricas que se eliminan [&#39;ProductCD&#39;, &#39;card4&#39;, &#39
 </div>
 <div style="border-left: 6px solid #2ecc71; border-radius: 6px; overflow: hidden;"> <div style="background-color: #d4f8e8; padding: 8px 12px;"> <strong>💡 Análisis</strong> </div> <div style="background-color: #f5fdf9; padding: 12px;"> Se implementó una estrategia automática para eliminar variables categóricas altamente correlacionadas entre sí: <ul> <li>Se inició con 4 variables categóricas: <code>ProductCD</code>, <code>card4</code>, <code>card6</code> y <code>M6</code>.</li> <li>Se calculó, para cada variable, el número de correlaciones significativas detectadas previamente mediante la prueba de Chi-cuadrado.</li> <li>Iterativamente, se eliminó la variable que tenía el mayor número de correlaciones significativas, reduciendo progresivamente el conjunto de variables.</li> </ul> <strong>Resultados:</strong> <ul> <li>Variables eliminadas: <code>ProductCD</code>, <code>card4</code> y <code>card6</code>.</li> <li>Variable retenida: <code>M6</code>.</li> </ul> <strong>Interpretación:</strong> <ul> <li>La variable <code>M6</code> fue la que presentó menor redundancia de información frente a las demás, justificando su conservación en el conjunto de entrenamiento y prueba.</li> <li>La eliminación de variables altamente correlacionadas ayuda a <strong>reducir la multicolinealidad</strong> en modelos de clasificación, mejora la interpretabilidad y evita que modelos complejos se sobreajusten a patrones espurios.</li> </ul> </div> </div></section>
 <section id="reduccion-de-dimensionalidad-con-vif">
-<h3><strong>1.3.3. Reduccion de dimensionalidad con VIF</strong><a class="headerlink" href="#reduccion-de-dimensionalidad-con-vif" title="Permalink to this heading">#</a></h3>
+<h3><strong>2.2.3. Reducción de dimensionalidad con VIF</strong><a class="headerlink" href="#reduccion-de-dimensionalidad-con-vif" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_numerico</span> <span class="o">=</span> <span class="n">df_train_full</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;float64&quot;</span><span class="p">,</span> <span class="s2">&quot;int64&quot;</span><span class="p">])</span>
@@ -9482,22 +9475,19 @@ Editar
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Ejercicio 1. Análisis Exploratorio de Datos</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-exploratorio-de-datos"><strong>1. Análisis Exploratorio de Datos</strong></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-velocidad-del-viento"><strong>1.1. Dataset Velocidad del Viento</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reduccion-de-nombres-extensos-en-columnas"><strong>1.1.1 Reducción de nombres extensos en columnas</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#descripcion-de-media-desv-min-max-cuartiles"><strong>1.1.2 Descripcion de media, desv, min, max, cuartiles</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datos-faltantes"><strong>1.1.3. Datos faltantes</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-de-variables-independientes"><strong>1.1.4. Seleccion de variables independientes</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-velocidad-del-viento"><strong>1. Dataset Velocidad del Viento</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduccion-de-nombres-extensos-en-columnas"><strong>1.1 Reducción de nombres extensos en columnas</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descripcion-de-media-desv-min-max-cuartiles"><strong>1.2 Descripcion de media, desv, min, max, cuartiles</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datos-faltantes"><strong>1.3 Datos faltantes</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-de-variables-independientes"><strong>1.4 Seleccion de variables independientes</strong></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-deteccion-de-fraude"><strong>1.2. Dataset Deteccion de Fraude</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>1.1.4. Seleccion de variables independientes</strong></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limpieza-y-preparacion"><strong>1.3. Limpieza y Preparación</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tratamiento-de-nulos"><strong>1.3.1. Tratamiento de Nulos</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reduccion-de-dimencionalidad-con-chi2"><strong>1.3.2. Reduccion de Dimencionalidad con Chi2</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reduccion-de-dimensionalidad-con-vif"><strong>1.3.3. Reduccion de dimensionalidad con VIF</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-deteccion-de-fraude"><strong>2. Dataset Detección de Fraude</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>2.1 Selección de variables independientes</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limpieza-y-preparacion"><strong>2.2 Limpieza y Preparación</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tratamiento-de-nulos"><strong>2.2.1. Tratamiento de Nulos</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reduccion-de-dimencionalidad-con-chi2"><strong>2.2.2. Reducción de Dimencionalidad con Chi2</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reduccion-de-dimensionalidad-con-vif"><strong>2.2.3. Reducción de dimensionalidad con VIF</strong></a></li>
 </ul>
 </li>
 </ul>
